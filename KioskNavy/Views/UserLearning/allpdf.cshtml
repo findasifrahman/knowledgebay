@@ -1,0 +1,53 @@
+﻿@model IEnumerable<KioskNavy.Models.LearningModels>
+<style>
+    body {
+        background-color: #ffffff; //<!--- #@ViewBag.backcol; -->
+        //background-image: url("@ViewBag.backimg");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        font-size: @ViewBag.fontsize;
+        color: @ViewBag.fontcol
+    }
+</style>
+@{
+    ViewBag.Title = "Level Index Learning";
+}
+<div class="container">
+    <h3 class="well" style="text-align:center">Select Learning Material</h3>
+
+    @{
+
+        var g = Model.GroupBy(r => Model.ToList().IndexOf(r) / 4).ToList();
+    }
+
+
+    @foreach (var item in g)
+    {
+        <div class="row container margin-smalla">
+            @foreach (var Item in item)
+            {
+                <div class="col-md-3 customBorder1">
+                    <br />
+                    <div style="text-align:center; font-size:18px;font-style:italic">
+                        <b>@Item.SubjectName</b>
+                    </div>
+                    <table class="table borderless">
+                        <tr>
+                            <td>
+                                <a href="/UserLearning/viewpdf?subject=@Item.SubjectName&topic=@Item.TopicName">
+                                    <img src="~/img/navy2.jpg" class="img-circle" alt="Cinque Terre" width="128" height="128" />
+                                    <h4 style="text-align:center"> @Item.TopicName </h4>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            }
+
+        </div>
+        <br /> <br />
+    }
+
+</div>

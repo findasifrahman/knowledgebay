@@ -1,0 +1,449 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,user-scalable=no,minimal-ui,minimum-scale=1.0,maximum-scale=1.0">
+    <link rel="stylesheet" href="/homeDesign/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/homeDesign/css/bootstrap.css">
+
+    <link rel="stylesheet" href="~/Content/slideshow.css" />
+    <link rel="stylesheet" href="/homeDesign/css/style.css">
+    <title>Bangladesh Navy</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    <script src="/homeDesign/js/jquery.min.js"></script>
+    <script src="/homeDesign/js/popper.min.js"></script>
+
+    <script src="/homeDesign/js/bootstrap.min.js"></script>
+    <script src="/homeDesign/js/jQuery.NumPad.js"></script>
+    <script type="text/javascript">
+        $('#name').numpad();
+    </script>
+    <script>
+        var commonwindow1 = window.open('/user/commonpage', 'learningindex', 'channelmode=1,resizable=0,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+        function CallParent(name, code, rank) {
+
+            if (code != null) {
+                url = '/user/choice' + '?Name=' + name + '&code=' + code + '&rank=' + rank;
+                location.href = url;
+            }
+            else {
+                $('#Name').val(name);
+                $('#rank').val(rank);
+                $('#numpad').show();
+                $('#code').attr('readonly', false);
+
+                $('#code').focus();
+            }
+        }
+       
+        $(document).ready(function () {
+
+            var el = document.getElementById('Name');
+            el.focus();
+            el.onblur = function () {
+                setTimeout(function () {
+                    el.focus();
+                });
+            };
+
+            var mywindow =  window.open('/HOME/InstructionPage', 'Instruction', 'channelmode=1,resizable=0,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+             //window.open('/HOME/InstructionPage', 'Instruction', 'channelmode=1,resizable=0,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+            window.onunload = function () {
+                if (mywindow && !mywindow.closed) {
+                    mywindow.close();
+                }
+            };
+
+
+            $('#code').attr('readonly', true);
+            $('#rank').attr('readonly', true);
+            $('#numpad').hide();
+
+            $('#Name').focus();
+            var music_flag = 1;
+            var lastValue = '';
+            $('#bnhome').click(function () {
+                $('#Name').focus();
+            })
+            $('#indexPlayStopAudio').click(function () {
+                var vid = document.getElementById("music_audio");
+                if (vid.paused) {
+                    vid.play();
+                } else {
+                    vid.pause();
+                }
+                $('#Name').focus();
+            })
+
+			var ty = "";
+            $("#Name").on('keyup', function () {
+                ty = $(this).val();
+                
+                setTimeout(function () {
+                    var numb = ty.match(/\d/g);
+
+                    var code;
+                    var rank;
+                    var name;
+                    if (numb == null) {
+ 
+                        $('#code').attr('readonly', false);
+                        var tempty = ty;
+                        var tempty1 = tempty.replace(/\s+/g, '');
+                        for (var i = 1; i < (tempty1.length); i++) {
+                            if (tempty1[i] == tempty1[i].toUpperCase()) {                             
+                                if (tempty1[i - 1] == (tempty1[i - 1].toUpperCase())) {
+                                    //alert(tempty1[i] + tempty1[i-1]);
+                                    rank = tempty1.substring(tempty1.indexOf(tempty1[i-1]), tempty1.length);
+                                    var indexx = tempty.indexOf(rank); //tempty.substring(0, tempty.indexOf(tempty[i]));
+                                    name = tempty.substring(0, indexx);
+                                    $('#numpad').show();
+                                    break;
+                                }
+                            }
+                        }
+                        $('#code').focus();
+                    }
+                    else {
+                        numb = numb.join("");
+                        code = numb;
+                        name = ty.substring(0, ty.indexOf(numb));
+                        rank = ty.substring(ty.indexOf(numb) + numb.length, (ty.length - 3));
+                    }
+
+                    $('#Name').val(name);
+                    $('#rank').val(rank);
+                    $('#code').val(numb);
+
+                    if (name != null && code != null && rank != null) {
+                        url = '/user/choice' + '?Name=' + name + '&code=' + code + '&rank=' + rank;
+                        location.href = url;
+                    }
+
+                }, 3000);
+                return false;
+            });
+            $('#submit1').click(function () {
+                var text = $('#Name').val();
+                var cd = $('#code').val();
+                var rn = $('#rank').val();
+                if (text == "" || cd == "" || rn == "") {
+                    $("#modalAlert").modal('show');
+                    return false;
+                }
+                $('#load').show();
+                url = '/user/choice' + '?Name=' + text + '&code=' + cd + '&rank=' + rn;
+                location.href = url;
+
+                return false;
+            });
+            $('#clear').click(function () {
+
+                $('#Name').val("");
+                $('#rank').val("");
+                $('#code').val("");
+
+                return false;
+            });
+            var totalcode = 0;
+            function codenum(val) {
+                var codetimeout;
+                if (codetimeout != null) {
+                    clearTimeout(codetimeout);
+                    codetimeout = null;
+                }
+
+                var txt = $('#code').val();
+                $('#code').val(txt + val);
+                totalcode++;
+                if (totalcode > 5) {
+                    codetimeout = setTimeout(function () {
+                        if (totalcode > 5) {
+                            var text = $('#Name').val();
+                            var cd = $('#code').val();
+                            var rn = $('#rank').val();
+
+                            url = '/user/choice' + '?Name=' + text + '&code=' + cd + '&rank=' + rn;
+                            location.href = url;
+                        }
+                    }, 5000);
+                }
+            }
+            $('#num1').click(function () {
+                codenum('1');
+                return false;
+            });
+            $('#num2').click(function () {
+                codenum('2');
+                return false;
+            });
+            $('#num3').click(function () {
+                codenum('3');
+                return false;
+            });
+            $('#num4').click(function () {
+                codenum('4');
+                return false;
+            });
+            $('#num5').click(function () {
+                codenum('5');
+                return false;
+            });
+            $('#num6').click(function () {
+                codenum('6');
+                return false;
+            });
+            $('#num7').click(function () {
+                codenum('7');
+                return false;
+            });
+            $('#num8').click(function () {
+                codenum('8');
+                return false;
+            });
+            $('#num9').click(function () {
+                codenum('9');
+                return false;
+            });
+            $('#num0').click(function () {
+                codenum('0');
+                return false;
+            });
+            $('#numx').click(function () {
+                var txt = $('#code').val();
+                if (txt.length > 0) {
+                    $('#code').val(txt.substring(0, txt.length - 1));
+                    totalcode--;
+                }
+                return false;
+            });
+            $('#numc').click(function () {
+                var txt = $('#code').val();
+                if (txt.length > 0) {
+                    totalcode = 0;
+                    $('#code').val("");
+                }
+                return false;
+            });
+        })
+    </script>
+    <style>
+        .a2 { font-size:0.9em; padding:6px 28px; display:inline-block; margin:5px; border-radius:6px; border:solid rgba(0,0,0,0.2); border-width:1px 1px 5px; box-shadow:0 5px 0 rgba(0,0,0,0.1), inset 0 0 3px rgba(255,255,255,0.3); cursor:pointer; user-select:none; transition:0.4s ease; }
+        .a2:hover { transform:translateY(-3px); box-shadow:0 6px 0 rgba(0,0,0,0.1), inset 0 0 1px rgba(255,255,255,0.4); border-bottom-width:8px; }
+        .a2:active { transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,0.1), inset 0 0 5px rgba(255,255,255,0.4); border-bottom-width:2px; transition:0.1s ease; }
+        .red { background:hsl(8,59%,59%); color:rgba(255,255,255,0.95); text-shadow:-1px -1px 1px rgba(0,0,0,0.1); }
+        .orange { background:hsl(41,76%,65%); }
+        .yellow { background:hsl(50,81%,65%); }
+        .green { background:hsl(104,51%,62%); }
+        .blue { background:hsl(176,59%,59%); }
+        .container{
+                  margin: 0 auto;
+                 max-width: 1080px;
+        }
+        .h1,h2,h3,h4,h5,h6{
+            font-size:xx-large;
+        }
+        .nmpd-wrapper {display: none;}
+        .nmpd-target {cursor: pointer;}
+        .nmpd-grid {position:absolute; left:50px; top:50px; z-index:5000; -khtml-user-select: none; padding:10px; width: initial;}
+        .nmpd-overlay {z-index:4999;}
+        input.nmpd-display {text-align: right;}
+
+    </style>
+</head>
+
+<body id="home" oncontextmenu="return false;">
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <div class="container">
+            <a  href="/home/index" id="bnhome" class="navbar-brand">Bangladesh Navy</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a id="indexPlayStopAudio" href="#" class="nav-link"> Play/Pause Audio</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- HOME SECTION -->
+    <header id="home-section">
+        <div class="dark-overlay">
+            <div class="home-inner">
+                <div class="container">
+                    <ul class="slideshow">
+                        <li><span>Image 01</span><div><h3 style="font-family:Tahoma;font-weight:bolder;color:greenyellow">Training Leads To Success</h3></div></li>
+                        <li><span>Image 02</span></li>
+                        <li><span>Image 03</span></li>
+                        <li><span>Image 04</span><div><h3 style="font-family:'Genghis Khan framed';font-weight:bold;color:yellow">Learn Yourself</h3></div></li>
+                        <li><span>Image 05</span></li>
+                        <li><span>Image 06</span></li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-lg-8 d-none d-lg-block card card-form bg-dark">
+                            <h3 class="display-4" style="color:#99c2ff;font-family:'Genghis Khan framed';font-size:45px"> <strong><b>Bangladesh Navy</b> Interactive Learning Aid<br/></strong></h3>
+                            <h1 class="display-4" style="color:yellow;font-family:'Genghis Khan framed';font-size:60px">'Knowledge Bay '</h1>
+                            <div class="d-flex flex-row">
+                                <div class="p-4 align-self-start">
+                                    <i class="fa fa-anchor"></i>
+                                </div>
+                                <div class="p-4 align-self-end " style="color:#99c2ff;font-size:large">
+                                    Participate in Professional Quiz Test On Different Subjects
+                                </div>
+                            </div>
+                                    
+                            <div class="d-flex flex-row">
+                                <div class="p-4 align-self-start">
+                                    <i class="fa fa-binoculars"></i>
+                                </div>
+                                <div class="p-4 align-self-end" style="color:#99c2ff;font-size:large;text-align:left">
+                                    Enhance your knowledge by learning various study Materials
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card bg-dark text-center card-form">
+                                <div class="card-body">
+                                    <h4>Scan QR Code of ID Card</h4>
+                                    <p>Your Particulars </p>                                       
+                                        <div class="form-group">
+                                            <input type="text" autofocus class="form-control form-control-lg" name="Name" id="Name" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="rank" name="rank" type="text" class="form-control form-control-lg" placeholder="Rank">
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="code" name="code" type="text" class="form-control form-control-lg" placeholder="P/O No">
+                                        </div>
+
+                                        <div class="card-form" id="numpad">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num1" id="num1" value="1" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num2" id="num2" value="2" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num3" id="num3" value="3" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num4" id="num4" value="4" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num5" id="num5" value="5" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num6" id="num6" value="6" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                            </div>
+                                            &nbsp;
+                                            <div class="row" id="numpad">
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num7" id="num7" value="7" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num8" id="num8" value="8" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num9" id="num9" value="9" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="num0" id="num0" value="0" class="btn btn-outline-light btn-block" style="width:40px">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="numx" id="numx" value="X" class="btn btn-outline-light btn-block" style="width:40px;background-color:red;color:whitesmoke">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input type="submit" name="numc" id="numc" value="C" class="btn btn-outline-light btn-block" style="width:40px;background-color:yellow;color:darkslateblue">
+                                                </div>
+                                            </div>
+
+                                            <br />
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="submit" name="submit1" id="submit1" value="submit" class="btn btn-outline-light btn-block" style="width:140px;height:40px;">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="submit" name="clear" id="clear" value="Clear" class="btn btn-outline-light btn-block" style="width:130px">
+                                            </div>
+                                         </div>
+                                           
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        </div>
+    </header>
+    <br/>
+    <br />
+    <br />
+    <!-- MAIN FOOTER -->
+    <footer id="main-footer" class="bg-dark">
+
+    </footer>
+    <!-- Central Modal Medium Warning -->
+    <!--Modal: modalPush-->
+    <div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-info" role="document" style="color:whitesmoke;width:30%;height:30%;margin:auto;margin-top:20px;">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div style="background-color:#337ab7" class="modal-header d-flex justify-content-center">
+                    <p id="headingModal" class="heading">Hello</p>
+                </div>
+                
+                <!--Body-->
+                <div class="modal-body" style="padding:0;background-color:#337ab7">
+                    <div class="row">
+                        <i class="fa fa-envelope-open fa-3x " style="color:white; position: absolute;margin:-10px 0 0 200px;"></i>
+                    </div>
+                    <br/><br/>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a id="quiz" style="width:180px" class="a2 green">Participate in Quiz</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a class="a2 green" style="width:170px" id="learning">Start Learning</a>
+                        </div>
+                    </div>
+                </div>              
+                
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: modal Alert-->
+    <div class="modal fade" id="modalAlert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-info" role="document" style="color:whitesmoke;width:30%;height:20%;margin:auto;margin-top:200px;">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div style="background-color:#337ab7" class="modal-header d-flex justify-content-center">
+                    <p id="headingModal" style="color:whitesmoke" class="heading">Please Enter Name, Rank and P/O no </p>
+                </div>
+
+
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
+</body>
+</html>

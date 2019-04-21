@@ -1,0 +1,67 @@
+﻿@model IEnumerable<KioskNavy.Models.LearningModels>
+<style>
+    body{
+        color:whitesmoke;
+        background-image:none;
+        background-color:  #0066cc;
+    }
+</style>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br/>
+<div class="row">
+    <div class="col-md-3">
+        <a class="a2 green" style="font-size:x-large" href="/LearningModels/create?type=pdf"> Upload PDF Document</a>
+    </div>
+    <div class="col-md-3">
+        <a class="a2 green" style="font-size:x-large" href="/LearningModels/create?type=ppt"> Upload Power Point</a>
+    </div>
+    <div class="col-md-3">
+        <a class="a2 green" style="font-size:x-large" href="/LearningModels/create?type=typed"> Upload Typed Content</a>
+    </div>
+    <div class="col-md-3">
+        <a class="a2 green" style="font-size:x-large" href="/LearningModels/create?type=video"> Upload Video Content</a>
+    </div>
+</div>
+<br/>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TopicName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subsubject)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TopicName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subsubject)
+        </td>
+        <td>
+            @Html.ActionLink("Edit Index", "Edit", new { id = item.TopicName, subject = item.SubjectName, subsubject = item.subsubject }, new { @Style = "color:red" }) ||
+            @Html.ActionLink("Delete", "Delete", new { id=item.TopicName, subject = item.SubjectName, subsubject = item.subsubject }, new { @Style = "color:red" })
+        </td>
+    </tr>
+}
+
+</table>

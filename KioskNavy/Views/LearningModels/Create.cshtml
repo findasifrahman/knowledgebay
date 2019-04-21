@@ -1,0 +1,377 @@
+﻿@model KioskNavy.Models.LearningModels
+<style>
+    body{
+        color:whitesmoke;
+        background-image:none;
+        background-color:  #0066cc;
+    }
+</style>
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Scripts
+{
+<script type="text/javascript">
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        specialKeys.push(9); //Tab
+        specialKeys.push(46); //Delete
+        specialKeys.push(36); //Home
+        specialKeys.push(35); //End
+        specialKeys.push(37); //Left
+        specialKeys.push(39); //Right
+        specialKeys.push(32); //Right
+        specialKeys.push(45); //Right
+        function IsAlphaNumeric(e) {
+            var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
+            var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode || keyCode == 32) || keyCode == 45 || keyCode == 40 || keyCode == 41);
+            //document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+        }
+</script>
+    <script type="text/javascript">
+        function SubjectChangefunc(val) {
+
+            var t = val;
+            if (t !== "") {
+                $.post("@Url.Action("subsubjectlist", "LearningModels")?val=" + t, function (res) {
+
+                    $("#subsubject").html(""); // clear before appending new list 
+                    $("#subsubject").append($('<option></option>').html("nosub"));
+                    $.each(res, function (i, city) {
+                        $("#subsubject").append(
+                             $('<option></option>').html(city.SubSubject));
+                    });
+
+                });
+            }
+        }
+    </script>
+    <script>
+        var comCheck;
+
+
+        $(document).on("change", ".file_multi_video", function (evt) {
+
+            var $source = $('#video_here');
+            $source[0].src = URL.createObjectURL(this.files[0]);
+            $source.parent()[0].load();
+        });
+
+        $(document).ready(function () {
+            var type = @Html.Raw(Json.Encode(ViewBag.type));
+            ///////////////
+            var IndexForLeaningDetails = [];
+            $('#addIndex').click(function () {
+                IndexForLeaningDetails.push({
+                    IndexName: $('#indexname').val().trim(),
+                    startPage: $('#startpage').val().trim(),
+                    endPage: $('#endpage').val().trim(),
+                    TopicName: $('#TopicName').val().trim(),
+                    SubjectName: $('#SubjectName').val().trim(),
+                    subsubject: $('#subsubject').val().trim()
+                });
+                //alert(IndexForLeaningDetails[0].subsubject);
+                GeneratIndexTable();
+            })
+
+            function GeneratIndexTable() {
+                //if (VoucherDetail.length > 0)
+                {
+                    var $table = $('<table class="table"/>');
+                    $table.append('<thead><th >Index Name</th><th >Start Number</th><th >End page</th><tr/></thead>');
+                    var $tbody = $('<tbody/>');
+                    $.each(IndexForLeaningDetails, function (i, val) {
+                        var $row = $('<tr/>');
+                        $row.append($('<td />').html(val.IndexName));
+                        $row.append($('<td  style="text-align:center"/>').html(val.startPage));
+                        $row.append($('<td  style="text-align:center"/>').html(val.endPage));
+                        var $removeSub = $('<a href="#">RemoveSub</a>');
+                        $removeSub.click(function (e) {
+                            e.preventDefault();
+                            IndexForLeaningDetails.splice(i, 1);
+                            GeneratIndexTable();
+                        });
+                        $row.append($('<td style="color:red;text-align:right"/>').html($removeSub));
+                        $tbody.append($row);
+                    });
+                    //console.log("current", LevelDetail);
+                    $table.append($tbody);
+                    $('#IndexForLeaningDetail').html($table);
+                }
+
+            }
+            $('#submit').click(function () {
+                var isAllValid = true;
+                var data1;
+                if(type == "video"){
+                    data1 = {
+                        TopicName:$('#TopicName').val().trim(),
+                        SubjectName: $('#SubjectName').val().trim(),
+                        subsubject: $('#subsubject').val().trim()
+                    }
+                }
+                else{
+                    data1 = {
+                        TopicName:$('#TopicName').val().trim(),
+                        SubjectName: $('#SubjectName').val().trim(),
+                        subsubject: $('#subsubject').val().trim(),
+                        noofpage: $('#noofpage1').val().trim(),
+                        content:$('#content').val().trim(),
+                        indexForLearning:IndexForLeaningDetails
+                    }
+                    //alert(data1.noofpage);
+                }
+                $(this).val('Please wait...');
+
+                $.ajax({
+                    url: '/LearningModels/Create',
+                    type: "POST",
+                    data: JSON.stringify(data1),
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    success: function (d) {
+                        if (d.status == true) {  
+                            if(type == "pdf" || type == "ppt" || type == "video"){
+                                var data = new FormData();
+                                data.append("TopicName",$('#TopicName').val().trim());
+                                data.append("SubjectName",$('#SubjectName').val().trim());
+                                data.append("subsubject",$('#subsubject').val().trim());
+                                data.append("noofpage",$('#noofpage1').val().trim());
+                                data.append("content",$('#content').val().trim());
+                            
+                                if(type == "pdf"){
+                                    var fileUpload = $("#pdffile").get(0);
+                                    var files = fileUpload.files;
+                                    data.append("pdffile",files[0]);
+                                }
+                                else if(type == "ppt"){
+                                    var fileUpload = $("#pptfile").get(0);
+                                    var files = fileUpload.files;
+                                    data.append("pptfile",files[0]);
+                                }
+                                else if(type == "video"){
+                                    var fileUpload = $("#vidfile").get(0);
+                                    var files = fileUpload.files;
+                                    data.append("vidfile",files[0]);
+                                }
+                                $.ajax({                             
+                                    url: '/LearningModels/SaveImage',
+                                    type: "POST",
+                                    data: data,
+                                    processData: false,  // Important!
+                                    contentType: false,
+                                    success: function (d) {
+                                        if (d.status == true) {
+                                           // alert('Successfully done.');
+                                            window.location.href = "/LearningModels/Index";                           
+                                        }
+                                        else {
+                                            //alert('Failed');
+                                        }
+                                        $('#submit').val('Save');
+                                    },
+                                    error: function () {
+                                       // alert('Error. Please try again.');
+                                        $('#submit').val('Save');
+                                    }
+                                });
+                            }
+                            ///////////////////////////////////////
+                            alert('Successfully done.');
+                            window.location.href = "/LearningModels/Index";                           
+                        }
+                        else {
+                            alert('Failed');
+                        }
+                        $('#submit').val('Save');
+                    },
+                    done: function(){
+
+                    },
+                    error: function () {
+                        alert('Error. Please try again.');
+                        $('#submit').val('Save');
+                    }
+                });
+
+            });
+
+            ///////////////
+            
+            var x = document.getElementById('divindex');
+            x.style.display = 'none';
+            var x = document.getElementById('noofpage');
+            x.style.display = 'none';
+            var x = document.getElementById('divcontent');
+            x.style.display = 'none';
+            var x = document.getElementById('hides');
+            x.style.display = 'none';
+            x = document.getElementById('divppthide');
+            x.style.display = 'none';
+            x = document.getElementById('divpdfhide');
+            x.style.display = 'none';
+
+            if(type == "pdf"){
+                x = document.getElementById('divpdfhide');
+                x.style.display = 'block';
+                x = document.getElementById('noofpage');
+                x.style.display = 'block';
+                
+                var x = document.getElementById('divindex');
+                x.style.display = 'block';
+            }
+            else if(type == "ppt"){
+                x = document.getElementById('divppthide');
+                x.style.display = 'block';
+            }
+            else if(type == "typed"){
+                var x = document.getElementById('hides');
+                x.style.display = 'none';
+                var x = document.getElementById('divcontent');
+                x.style.display = 'block';
+            }
+            else if(type == "video"){
+                var x = document.getElementById('hides');
+                x.style.display = 'block';
+                var x = document.getElementById('divcontent');
+                x.style.display = 'none';
+            }
+
+        })
+    </script>
+}
+
+<div class="container">
+    
+        <div class="form-horizontal">
+            <div class="row" id="hides">
+                <hr />
+                <div class="form-group col-lg-2"></div>
+                <div class="form-group col-lg-6">
+                    @Html.Label("Upload Video", htmlAttributes: new { @class = "control-label col-md-2", @style = "text-allign:center" })
+                    <div class="col-md-10">
+                        <video width="400" height="270">
+                            <source src="mov_bbb.mp4" id="video_here">
+                            Your browser does not support HTML5 video.
+                        </video>
+                        <br />
+                        <div>
+                            <input type="file" id="vidfile" name="vidfile" class="btn btn-default file_multi_video" accept="video/*">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <hr />
+                <div class="form-group col-lg-1"></div>
+                <div id="divpdfhide" class="form-group col-lg-5">
+                    @Html.Label("Upload PDF", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3">
+                         <input class="btn btn-default" type="file" title="search image" id="pdffile" name="pdffile"/>
+                    </div>
+                    <br/>           
+                </div>
+                <div class="form-group col-lg-1"></div>
+                <div id="divppthide" class="form-group col-lg-4">
+                    <div class="form-group col-lg-5">
+                        @Html.Label("Upload Power Point", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div>
+                                <input class="btn btn-default" type="file" title="search image" id="pptfile" name="pptfile" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div id="noofpage" class="form-group">
+                @Html.Label("Total page", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" id="noofpage1" name="noofpage1" class="form-control" style="max-width:90%"/>
+                     @Html.ValidationMessageFor(model => model.noofpage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("SubjectName", (SelectList)ViewBag.SubjectName, string.Empty, new { @class = "form-control", @style = "max-width:90%", @onchange = "SubjectChangefunc(this.value)" })
+                    @Html.ValidationMessageFor(model => model.SubjectName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.subsubject, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("subsubject", (SelectList)ViewBag.subsubject, string.Empty, new { @class = "form-control",@style = "max-width:90%" })
+                    @Html.ValidationMessageFor(model => model.subsubject, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TopicName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input id="TopicName" name="TopicName" class="form-control" style="max-width:90%" onkeypress="return IsAlphaNumeric(event);" 
+                                       ondrop="return false;" onpaste="return IsAlphaNumeric(event);" />
+                    @Html.ValidationMessageFor(model => model.TopicName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div id="divcontent" class="form-group">
+                @Html.LabelFor(model => model.content, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.content, 10, 30, new { @class = "col-md-10 form-control", @style = "max-width:90%;color:black;" })
+                    @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <!--          ---------------------------                 -->
+            <!--          ---------------------------                 -->
+            <br />
+            <div id="IndexForLeaningDetail" class="table-responsive">
+            </div>
+            <br />
+            <div class="form-group" id="divindex">
+                <h4 style="text-align:center;color:whitesmoke">Index Create</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="text-align:center">Index Name</th>
+                            <th style="text-align:center">Start Page</th>
+                            <th style="text-align:center">End Page</th>
+                            <th style="text-align:right">
+                                &nbsp;
+                            </th>
+                        <tr>
+
+                            <td style="text-align:center">
+                                <input class="form-control" type="text" name="indexname" id="indexname" />
+                            </td>
+                            <td style="text-align:center">
+                                <input class="form-control" type="text" name="startpage" id="startpage" />
+                            </td>
+                            <td style="text-align:center">
+                                <input class="form-control" type="text" name="endpage" id="endpage" />
+                            </td>
+                            <td style="text-align:right">
+                                <input type="button" id="addIndex" name="addIndex" value="Add Index" class="btn btn-info" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>            
+            <!--          ---------------------------                 -->
+            <!--          ---------------------------                 -->
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" id="submit" name="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    
+
+
+</div>

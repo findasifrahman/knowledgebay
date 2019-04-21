@@ -1,0 +1,323 @@
+﻿@model KioskNavy.Models.LearningModels
+<style>
+    body {
+        color: whitesmoke;
+        background-image: none;
+        background-color: #0066cc;
+    }
+</style>
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section Scripts
+{
+    <script type="text/javascript">
+        function SubjectChangefunc(val) {
+
+            var t = val;
+            if (t !== "") {
+                $.post("@Url.Action("subsubjectlist", "LearningModels")?val=" + t, function (res) {
+
+                    $("#subsubject").html(""); // clear before appending new list
+                    $("#subsubject").append($('<option></option>').html("nosub"));
+                    $.each(res, function (i, city) {
+                        $("#subsubject").append(
+                             $('<option></option>').html(city.SubSubject));
+                    });
+
+                });
+            }
+        }
+    </script>
+    <script>
+        var comCheck;
+
+
+        $(document).on("change", ".file_multi_video", function (evt) {
+
+            var $source = $('#video_here');
+            $source[0].src = URL.createObjectURL(this.files[0]);
+            $source.parent()[0].load();
+        });
+
+        $(document).ready(function () {
+            var type = @Html.Raw(Json.Encode(ViewBag.type));
+            ///////////////
+            var IndexForLeaningDetails = [];
+
+            @foreach (var item in Model.indexForLearning)
+            {
+                <text>
+                    IndexForLeaningDetails.push({
+                        IndexName: @Html.Raw(Json.Encode((item.IndexName))),
+                        startPage: @Html.Raw(Json.Encode((item.startPage))),
+                        endPage: @Html.Raw(Json.Encode((item.endPage))),
+                        SubjectName: @Html.Raw(Json.Encode((item.SubjectName))),
+                        subsubject: @Html.Raw(Json.Encode((item.subsubject))),
+                        TopicName: @Html.Raw(Json.Encode((item.TopicName))),
+                    });
+                </text>
+            }
+            GeneratIndexTable();
+            $('#addIndex').click(function () {
+                IndexForLeaningDetails.push({
+                    IndexName: $('#indexname').val().trim(),
+                    startPage: $('#startpage').val().trim(),
+                    endPage: $('#endpage').val().trim(),
+                    TopicName: $('#TopicName').val().trim(),
+                    SubjectName: $('#SubjectName').val().trim(),
+                    subsubject: $('#subsubject').val().trim()
+                });
+                //alert(IndexForLeaningDetails[0].subsubject);
+                GeneratIndexTable();
+            })
+
+            function GeneratIndexTable() {                      
+                    var $table = $('<table class="table"/>');
+                    $table.append('<thead><th >Index Name</th><th  style="text-align:center">Start Number</th><th  style="text-align:center">End page</th><tr/></thead>');
+                        var $tbody = $('<tbody/>');
+                    $.each(IndexForLeaningDetails, function (i, val) {
+                        var $row = $('<tr/>');
+                        $row.append($('<td />').html(val.IndexName));
+                        $row.append($('<td  style="text-align:center"/>').html(val.startPage));
+                        $row.append($('<td  style="text-align:center"/>').html(val.endPage));
+                                var $removeSub = $('<a href="#">RemoveSub</a>');
+                        $removeSub.click(function (e) {
+                                    e.preventDefault();
+                                    IndexForLeaningDetails.splice(i, 1);
+                                    GeneratIndexTable();
+                                });
+                        $row.append($('<td style="color:white;text-align:right"/>').html($removeSub));
+                        $tbody.append($row);
+                            });
+                    //console.log("current", LevelDetail);
+                    $table.append($tbody);
+                    $('#IndexForLeaningDetail').html($table);
+            }
+
+            
+            $('#submit').click(function () {
+                var isAllValid = true;
+                var data1;
+                if(type == "video"){
+                    data1 = {
+                        TopicName:$('#TopicName').val().trim(),
+                        SubjectName: $('#SubjectName').val().trim(),
+                        subsubject: $('#subsubject').val().trim()
+                    }
+                }
+                else{
+                    data1 = {
+                        TopicName:$('#TopicName').val().trim(),
+                        SubjectName: $('#SubjectName').val().trim(),
+                        subsubject: $('#subsubject').val().trim(),
+                        noofpage: $('#noofpage1').val().trim(),
+                        content:$('#content').val().trim(),
+                        indexForLearning:IndexForLeaningDetails
+                    }
+                    //alert(data1.noofpage);
+                }
+                $(this).val('Please wait...');
+
+                $.ajax({
+                    url: '/LearningModels/Edit',
+                    type: "POST",
+                    data: JSON.stringify(data1),
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    success: function (d) {
+                                if (d.status == true) {
+                                    
+                                    ///////////////////////////////////////
+                                    alert('Successfully done.');
+                                    window.location.href = "/LearningModels/Index";
+                                }
+                                else {
+                                    alert('Failed');
+                                }
+                        $('#submit').val('Save');
+                            },
+                    done: function(){
+
+                            },
+                    error: function () {
+                                alert('Error. Please try again.');
+                        $('#submit').val('Save');
+                            }
+                        });
+
+                    });
+
+            ///////////////
+
+            var x = document.getElementById('divindex');
+            x.style.display = 'none';
+            var x = document.getElementById('noofpage');
+            x.style.display = 'none';
+            var x = document.getElementById('divcontent');
+            x.style.display = 'none';
+            var x = document.getElementById('hides');
+            x.style.display = 'none';
+            x = document.getElementById('divppthide');
+            x.style.display = 'none';
+            x = document.getElementById('divpdfhide');
+            x.style.display = 'none';
+
+            if(type == "pdf"){
+                x = document.getElementById('divpdfhide');
+                x.style.display = 'block';
+                x = document.getElementById('noofpage');
+                x.style.display = 'block';
+
+                var x = document.getElementById('divindex');
+                    x.style.display = 'block';
+            }
+            else if(type == "ppt"){
+                x = document.getElementById('divppthide');
+                x.style.display = 'block';
+            }
+            else if(type == "typed"){
+                var x = document.getElementById('hides');
+                x.style.display = 'none';
+                var x = document.getElementById('divcontent');
+                x.style.display = 'block';
+            }
+            else if(type == "video"){
+                var x = document.getElementById('hides');
+                x.style.display = 'block';
+                var x = document.getElementById('divcontent');
+                x.style.display = 'none';
+            }
+
+        })
+    </script>
+}
+
+<div class="container">
+
+    <div class="form-horizontal">
+        <div class="row" id="hides">
+            <hr />
+            <div class="form-group col-lg-2"></div>
+            <div class="form-group col-lg-6">
+                @Html.Label("Video", htmlAttributes: new { @class = "control-label col-md-2", @style = "text-allign:center" })
+                <div class="col-md-10">
+                    
+                    <br />
+                    <div>
+                        <input type="file" id="vidfile" name="vidfile" class="btn btn-default file_multi_video" accept="video/*">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <hr />
+            <div class="form-group col-lg-1"></div>
+            <div id="divpdfhide" class="form-group col-lg-5">
+                @Html.Label("PDF-- ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+
+                </div>
+                <br />
+            </div>
+            <div class="form-group col-lg-1"></div>
+            <div id="divppthide" class="form-group col-lg-4">
+                <div class="form-group col-lg-5">
+                    @Html.Label("Power Point--", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div id="noofpage" class="form-group">
+            @Html.Label("Total page", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="noofpage1" name="noofpage1" value='@ViewBag.nopage' class="form-control" style="max-width:90%" readonly />
+                @Html.ValidationMessageFor(model => model.noofpage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SubjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="SubjectName" name="SubjectName" value='@ViewBag.subject' class="form-control" style="max-width:90%" readonly />
+                @Html.ValidationMessageFor(model => model.SubjectName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.subsubject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="subsubject" name="subsubject" value='@ViewBag.sub' class="form-control" style="max-width:90%" readonly />
+                @Html.ValidationMessageFor(model => model.subsubject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TopicName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" id="TopicName" name="TopicName" value='@ViewBag.topic' class="form-control" style="max-width:90%" readonly />
+                @Html.ValidationMessageFor(model => model.TopicName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div id="divcontent" class="form-group">
+            @Html.LabelFor(model => model.content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.content, 10, 30, new { @class = "col-md-10 form-control", @style = "max-width:90%;color:black;" })
+                @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--          ---------------------------                 -->
+        <!--          ---------------------------                 -->
+        <br />
+        <div id="IndexForLeaningDetail" class="table-responsive">
+        </div>
+        <br />
+        <div class="form-group" id="divindex">
+            <h4 style="text-align:center;color:whitesmoke">Index Create</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="text-align:center">Index Name</th>
+                        <th style="text-align:center">Start Page</th>
+                        <th style="text-align:center">End Page</th>
+                        <th style="text-align:right">
+                            &nbsp;
+                        </th>
+                    <tr>
+
+                        <td style="text-align:center">
+                            <input class="form-control" type="text" name="indexname" id="indexname" />
+                        </td>
+                        <td style="text-align:center">
+                            <input class="form-control" type="text" name="startpage" id="startpage" />
+                        </td>
+                        <td style="text-align:center">
+                            <input class="form-control" type="text" name="endpage" id="endpage" />
+                        </td>
+                        <td style="text-align:right">
+                            <input type="button" id="addIndex" name="addIndex" value="Add Index" class="btn btn-info" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <!--          ---------------------------                 -->
+        <!--          ---------------------------                 -->
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-10">
+                <input type="submit" id="submit" name="submit" value="Edit" style="max-width:90%;width:500px" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

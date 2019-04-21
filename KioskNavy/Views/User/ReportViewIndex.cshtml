@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "ReportViewIndex";
+}
+
+<div class="container">
+    <h2 class="well" style="text-align:center">View User Report </h2>
+    <br />
+    <div class="row">
+        <div class="col-lg-6" style="text-align:center">
+            @Html.ActionLink("AllUserReport", "../User/AllUserReport", null, new { @class = "btn btn-success" })
+        </div>
+        <div class="col-lg-6" style="text-align:center">
+
+        @using (Html.BeginForm("userreport","user",FormMethod.Get))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Label("Users", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("mCode", (SelectList)ViewBag.users, string.Empty, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="View Report" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    </div>
+
+</div>

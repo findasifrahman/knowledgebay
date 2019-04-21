@@ -1,0 +1,87 @@
+﻿@model KioskNavy.Models.QuizQuestionModels
+<style>
+    body {
+        background-color: #337ab7; //<!--- #@ViewBag.backcol; -->
+        background-image: url('img/2.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        font-size: @ViewBag.fontsize;
+        color: #ffffff;
+    }
+
+</style>
+@section Scripts{
+    <script type="text/javascript">
+        document.onload = function(){
+            var elem = document.getElementById("myVid222");
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            }
+        }
+    </script>
+}
+@{
+    ViewBag.Title = "QuestionKnowMore";
+    Layout = "~/Views/Shared/_instruction.cshtml";
+}
+
+<div class="container ">
+    <div class="row">
+        <!-- Modal content-->
+        <div class="">
+            <div style="background-color:#006dcc;color:whitesmoke" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <br />
+                <h3 class="modal-title" style="text-align:center;color:whitesmoke">Details about @Model.QuestionHighlighted</h3>
+            </div>
+            <div style="" class="modal-body">
+                <br />
+                @{
+                    if (Model.furthurInfoVidURL != null && Model.furthurInfoimageURL != null)
+                    {
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="wrapper" style="text-align:center;max-width:100%;max-height:100%;">
+                                    <video width="400" height="350" controls>
+                                        <source src="@Url.Content(Model.furthurInfoVidURL)" id="video_here_fur">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                </div>
+                                <div class="wrapper fade-in" style="text-align:center;max-width:100%;max-height:100%;">
+                                    <img id="myImg2" src="@Url.Content(Model.furthurInfoimageURL)" alt="@Model.Question" width="400" height="350" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <pre><span class="inner-pre" style="font-size: 20px"> @Model.furthurInfo </span> </pre>
+                            </div>
+                        </div>
+                    }
+                    else if (Model.furthurInfoimageURL != null)
+                    {
+                        <pre style="white-space:pre-line;justify-content:space-around"> <span class="inner-pre" style="font-size: 20px"> @Model.furthurInfo </span> </pre>
+
+                    }
+                    else if (Model.furthurInfoVidURL != null)
+                    {
+                        <pre style="white-space:pre-line;justify-content:space-around"> <span class="inner-pre" style="font-size: 20px"> @Model.furthurInfo </span> </pre>
+
+                    }
+                    else
+                    {
+                        <pre style="white-space:pre-line;justify-content:space-around"> <span class="inner-pre" style="font-size: 20px"> @Model.furthurInfo </span> </pre>
+                    }
+
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,436 @@
+﻿@model IEnumerable<KioskNavy.Models.QuizNameModels>
+<style>
+        body {
+        color: whitesmoke;
+        background-image: url(../../img/36.jpg);
+        background-color: #0066cc;
+        background-repeat: no-repeat;
+        background-size: cover; 
+    }
+
+        .btncircle {
+          position: relative;
+          cursor: pointer;
+          width: 120px;
+          height: 120px;
+          line-height: 120px;
+          background: rgba(255,255,255,0.8);
+          margin: 0px auto;
+          text-align: center;
+          border-radius: 999px;
+          color: rgba(155,155,155,1);
+          text-shadow: -1px -1px 0px rgba(255,255,255,0.8), 1px 1px 2px rgba(0,0,0,1);
+          font-size: 1.5em;
+          font-family: sans-serif;
+          box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3), 
+                      inset 3px 15px 45px rgba(255,255,255,0.1),
+                      inset -1px -1px 2px rgba(0,0,0,0.5), 
+                      inset -3px -15px 45px rgba(0,0,0,0.2),
+                      1px 5px 30px -4px rgba(0,0,0,1);
+          -webkit-transition: 0.1s ease-out;
+          -moz-transition:    0.1s ease-out;
+          -o-transition:      0.1s ease-out;
+          transition:         0.1s ease-out;
+        }
+
+        .btncircle:before {
+          content: "";
+          background: #1A1A1A;
+          width: 135px;
+          height: 135px;
+          position: absolute;
+          top: -7px;
+          left: -7px;
+          z-index: -1;
+          border-radius: 999px;
+          box-shadow: inset -1px -1px 2px rgba(255,255,255,0.3), 
+            inset -5px -15px 40px rgba(255,255,255,0.1),
+            inset 1px 1px 2px rgba(0,0,0,0.5), 
+            inset 5px 15px 40px rgba(0,0,0,0.2),
+            -2px -40px 50px -20px rgba(255,255,255,0.1),
+            2px 35px 50px -10px rgba(0,0,0,0.4),
+            0px 0px 25px 8px rgba(60,60,60,1);
+        }
+
+        .btncircle:active {
+          color: rgba(0,0,0,0.7);
+          text-shadow: 1px 1px 0px rgba(255,255,255,0.15);
+          box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3), 
+                      inset 3px 15px 45px rgba(0,0,0,0.2),
+                      inset -1px -1px 2px rgba(0,0,0,0.5), 
+                      inset -3px -15px 45px rgba(255,255,255,0.1),
+                      1px 5px 10px -4px rgba(0,0,0,1);
+        }
+
+        .blob, .blob:before {
+          -webkit-animation: blob 1s linear;
+          -moz-animation:    blob 1s linear;
+          -o-animation:      blob 1s linear;
+          animation:         blob 1s linear;
+        }
+
+        .blob {
+          color: rgba(0,00,0,0.7);
+          text-shadow: 1px 1px 0px rgba(255,255,255,0.15);
+          box-shadow: inset 1px 1px 2px rgba(255,255,255,0.3), 
+                      inset 3px 15px 45px rgba(0,0,0,0.2),
+                      inset -1px -1px 2px rgba(0,0,0,0.5), 
+                      inset -3px -15px 45px rgba(255,255,255,0.1),
+                      1px 5px 10px -4px rgba(0,0,0,1);
+        }
+
+        @@-webkit-keyframes blob { 
+          0%   { border-radius: 999px 999px; }
+          5%   { border-radius: 999px 200px; }
+          22%  { border-radius: 400px 999px; }
+          34%  { border-radius: 999px 700px; }
+          48%  { border-radius: 700px 999px; }
+          70%  { border-radius: 999px 999px; }
+          85%  { border-radius: 850px 999px; }
+          100% { border-radius: 999px 999px; }
+        }
+        @@-moz-keyframes    blob { 
+          0%   { border-radius: 999px 999px; }
+          5%   { border-radius: 999px 200px; }
+          22%  { border-radius: 400px 999px; }
+          34%  { border-radius: 999px 700px; }
+          48%  { border-radius: 700px 999px; }
+          70%  { border-radius: 999px 999px; }
+          85%  { border-radius: 850px 999px; }
+          100% { border-radius: 999px 999px; } 
+        }
+        @@-o-keyframes      blob { 
+          0%   { border-radius: 999px 999px; }
+          5%   { border-radius: 999px 200px; }
+          22%  { border-radius: 400px 999px; }
+          34%  { border-radius: 999px 700px; }
+          48%  { border-radius: 700px 999px; }
+          70%  { border-radius: 999px 999px; }
+          85%  { border-radius: 850px 999px; }
+          100% { border-radius: 999px 999px; }
+        }
+        @@keyframes         blob { 
+          0%   { border-radius: 999px 999px; }
+          5%   { border-radius: 999px 200px; }
+          22%  { border-radius: 400px 999px; }
+          34%  { border-radius: 999px 700px; }
+          48%  { border-radius: 700px 999px; }
+          70%  { border-radius: 999px 999px; }
+          85%  { border-radius: 850px 999px; }
+          100% { border-radius: 999px 999px; }  
+        }
+</style>
+@{
+    ViewBag.Title = "User ";
+}
+@section Scripts{
+<script type="text/javascript">
+        var idleTime = 0;
+        $(document).ready(function () {
+            //Increment the idle time counter every minute.
+            var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+            //Zero the idle timer on mouse movement.
+            $(this).mousemove(function (e) {
+                idleTime = 0;
+            });
+            $(this).keypress(function (e) {
+                idleTime = 0;
+            });
+        });
+
+        function timerIncrement() {
+            idleTime = idleTime + 1;
+            if (idleTime > 10) { // 10 minutes
+                //window.location.reload();
+                url = "/home";
+                location.href = url;
+            }
+        }
+</script>
+
+<style type="text/css">
+    .ui-keyboard h2 {
+        height: 18px;
+        margin: 3px;
+        background: #eee;
+        cursor: move;
+    }
+
+    .ui-autocomplete {
+        position: absolute;
+        cursor: default;
+        background: #ffffff;
+        font-family: Tahoma;
+        font-size: 18px;
+        color: black;
+        border-width: 0 10px 10px 10px;
+        border-color: #006dcc;
+    }
+</style>
+
+<script src="~/Scripts/jquery-ui.js"></script>
+<link href="~/Content/jquery-ui.css" rel="stylesheet">
+
+<link href="~/css/keyboard.css" rel="stylesheet" />
+<link href="~/css/keyboard-previewkeyset.css" rel="stylesheet" />
+<script src="~/js/jquery.keyboard.js"></script>
+<script src="~/js/jquery.keyboard.extension-all.js"></script>
+<script src="~/js/jquery.keyboard.extension-extender.js"></script>
+<script src="~/js/jquery.keyboard.extension-altkeyspopup.js"></script>
+<script src="~/js/jquery.keyboard.extension-navigation.js"></script>
+<script src="~/js/jquery.keyboard.extension-typing.js" type="text/javascript"></script>
+<script src="~/js/jquery.keyboard.extension-autocomplete.js"></script>
+<script src="~/js/jquery.keyboard.extension-scramble.js"></script>
+    
+
+
+ <script>
+        var text =  @Html.Raw(Json.Encode(ViewBag.User));
+        var cd = @Html.Raw(Json.Encode(ViewBag.Code));
+        var rn = @Html.Raw(Json.Encode(ViewBag.Rank));
+
+        var stateofwindow = window.open('/user/subjectpopup?name=' + text + "&rank=" + rn , 'loginsuccess', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+        window.onunload = function() {
+            if (stateofwindow && !stateofwindow.closed) {
+                stateofwindow.close();
+            }
+        };
+        ////////////////
+        $('#btnSearch').click(function ()
+        {
+            var subject = $("#ssubject").val();
+            var val = $("#topic").val();
+            if(subject== null){
+                return false;
+            }
+            $.post("@Url.Action("subexist", "user")?subject=" + subject, function (res) {
+                if(res.Data.LevExist == "true"){
+                    location.href = "/user/LevelIndex?QuizName=" + subject + "&subsubject=" + val + "&Name=" + text + "&code=" + cd + "&rank=" + rn;
+                }
+                else{
+                    return false;
+                    //location.href = "/user/QuestionDetail?id3=" + subject +"&level=" + "nolevel" + "&subsubject=" +  val +"&id1=default&choice=all";
+                }
+            });
+            return false;
+
+        });
+        ////////////////
+     $(document).ready(function () {  
+         $.keyboard.keyaction.cancel = function(base){
+             // alert('cancel pressed');
+             //base.accept(true);
+             $("div.ui-keyboard").css('display','none');
+             return false;
+             
+         };
+         $( "#topic" ).focus(function() {
+             //alert('focus');
+             $("div.ui-keyboard").css('display','block');
+         });
+         $( "#topic" )
+          .focusout(function() {
+              $("div.ui-keyboard").css('display','none');
+          })
+
+            ////////////////////////////
+            $('#topic')
+                  .keyboard({ 
+                      layout       : 'qwerty',
+                      customLayout : { 'normal': ['{cancel}'] },
+                      alwaysOpen: false,
+                      usePreview: false,
+                      stayOpen : false,
+
+                      userClosed : true,
+                      position: {
+                          of: $(window),
+                          my: 'right top',
+                          at: 'left bottom',
+                          at2: 'right top'
+                      },
+                      visible: function (e, keyboard, el) {
+                          keyboard.$keyboard.prepend('<h2/>')
+                              .draggable({
+                                  handle: "h2",
+                                  containment: "window"
+                              });
+                      },
+                      validate: function(keyboard, value, isClosing) {
+                          return true;
+                      },
+                      source: function (request, response) {
+                          $.ajax({
+                              url: '/user/AutoComplete/',
+                              data: "{ 'prefix': '" + request.term + "'}",
+                              dataType: "json",
+                              type: "POST",
+                              contentType: "application/json; charset=utf-8",
+                              success: function (data) {
+                                  response($.map(data, function (item) {
+                                      return item;
+                                  }))
+                              },
+                              error: function (response) {
+                                  alert(response.responseText);
+                              },
+                              failure: function (response) {
+                                  alert(response.responseText);
+                              }
+                          });
+                      },
+                      select: function (e, i) {
+                          $("#ssubject").val(i.item.ssubject);
+                      },
+                      minLength: 1
+                  })
+                  .autocomplete({
+                  })
+                  .addAutocomplete({
+                      // set position of autocomplete popup
+                      position: {
+                          of: $(window),
+                          my: 'right bottom',
+                          at: 'left top',
+                          collision: 'flip'
+                      },
+                      // custom autocomplete widget settings
+                      data: 'uiAutocomplete',
+                      events: 'uiAutocomplete',       
+                      
+                      
+                  }
+                  );
+         //////////////////////////////////
+     
+            ////////////////////////////
+            $(function () {
+                $("#topic").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: '/user/AutoComplete/',
+                            data: "{ 'prefix': '" + request.term + "'}",
+                            dataType: "json",
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                response($.map(data, function (item) {
+                                    return item;
+                                }))
+                            },
+                            error: function (response) {
+                                alert(response.responseText);
+                            },
+                            failure: function (response) {
+                                alert(response.responseText);
+                            }
+                        });
+                    },
+                    select: function (e, i) {
+                        $("#ssubject").val(i.item.ssubject);
+                        ///////////////////////////////////
+                        var subject = i.item.ssubject;
+                        var val = i.item.label;
+                        if(subject== null){
+                            return false;
+                        }
+                        $.post("@Url.Action("subexist", "user")?subject=" + subject, function (res) {
+                            if(res.Data.LevExist == "true"){
+                                location.href = "/user/LevelIndex?QuizName=" + subject + "&subsubject=" + val + "&Name=" + text + "&code=" + cd + "&rank=" + rn;
+                            }
+                            else{
+                                return false;
+                                //location.href = "/user/QuestionDetail?id3=" + subject +"&level=" + "nolevel" + "&subsubject=" +  val +"&id1=default&choice=all";
+                            }
+                        });
+                        ///////////////////////////////////
+                    },
+                    minLength: 1
+                });
+            });
+            ////////////////////////////
+            $('#navgoback').click(function () {
+                $("#nav_audio").get(0).play();
+            })
+
+            $("#navchoice").attr("href","/user/choice?Name=" + text + "&code=" + cd + "&rank=" + rn);
+        })
+        $('#progress').click(function () {
+            $("#click_audio").get(0).play();
+            window.open('/user/ViewProgress?name=' + text + '&code=' + cd + '&rank=' + rn , 'loginsuccess', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+        
+        })
+        /*function ViewProgresss(){
+            window.open('/user/ViewProgress?name=' + text + '&code=' + cd + '&rank=' + rn , 'loginsuccess', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+        }*/
+        function theFunction (val) {
+            //alert(val);
+            $("#click_audio").get(0).play();
+            var cc = @Html.Raw(Json.Encode(ViewBag.Code));
+            var uu = @Html.Raw(Json.Encode(ViewBag.User));
+            var rr = @Html.Raw(Json.Encode(ViewBag.Rank));
+            $.post("@Url.Action("subexist", "user")?subject=" + val, function (res) {
+                //alert(res.Data.rand);
+                if (res.Data.SubExist == "true") {
+                    location.href = "/user/SubSubjectIndex?QuizName=" + val + "&Name=" + uu + "&code=" + cc + "&rank=" + rr;
+                }
+                else if(res.Data.LevExist == "true"){
+                    location.href = "/user/LevelIndex?QuizName=" + val + "&subsubject=" + "nosub" + "&Name=" + uu + "&code=" + cc + "&rank=" + rr;
+                }
+                else{
+                    location.href = "/user/QuestionDetail?id3=" + val +"&level=" + "nolevel" + "&subsubject=" + "nosub" +"&id1=default&choice=all";
+                }
+            });
+
+        }
+    </script>
+}
+
+<audio id="subjecttochoose_audio" src="~/img/subjectchoose.mp3" autoplay></audio>
+<audio id="click_audio" src="~/img/click.mp3"></audio>
+<div class="container">
+        <br />
+        <div class="row">
+            <div class="col-md-9">
+                <div class="input-group"
+                     style="min-width:100%;font-size:25px;height:50px;border-width:10px;border-color:#006dcc;font-family:Tahoma;background-color:#ffffff;color:black">
+                    <input type="text" id="topic" name="topic" class="form-control" placeholder="search" 
+                           style="max-width:1150px;font-size:25px;height:50px;border-width:10px;border-color:#006dcc;font-family:Tahoma;background-color:rgba(255,255,255,0.1);color:black" />
+                    <span class="input-group-addon">
+                        <i style="color:#006dcc" class="fa fa-search fa-2x"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <input type="submit" id="btnSearch" value="Search" style="min-width:100%;height:50px;box-shadow:2px 2px 8px 5px #006dcc;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bold;background-color:#006dcc;color:whitesmoke" />
+            </div>
+        </div>
+        <input type="hidden" id="ssubject" name="ssubject" />
+        <br />
+
+        <div class="col-md-12" style="text-align:center">
+            <div id="progress" class="a2 btncircle btn-blob" style="color:black">Progress </div>
+        </div>
+
+        <br />
+        <br />
+        @{
+            var g = Model.GroupBy(r => Model.ToList().IndexOf(r) / 3).ToList();
+        }
+        @foreach (var item in g)
+        {
+            <div class="row ">
+                @foreach (var Item in item)
+                {
+                    <div class="col-md-4">
+                        <a onClick="theFunction('@Item.SubjectName');" class="a2" style="text-align:center;color:white;font-size:x-large;width:300px;height:50px; background-color:#006dcc;font-family:Tahoma;font-weight:bold;box-shadow:0px 0px 5px 3px rgba(0,0,0,0.2)" href="#">
+                            @Item.SubjectName
+                        </a>
+                    </div>
+                }
+            </div>
+            <br /> <br />
+        }
+    </div>
+

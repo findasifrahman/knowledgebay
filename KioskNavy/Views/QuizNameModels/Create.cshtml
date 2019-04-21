@@ -1,0 +1,322 @@
+﻿@model KioskNavy.Models.QuizNameModels
+
+<style>
+    body {
+        background-color:  #0066cc;
+        background-image: none;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color:whitesmoke;
+    }
+</style>
+@{
+    Layout = @ViewBag.Layout;
+    ViewBag.Title = "Create";
+}
+<script type="text/javascript">
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        specialKeys.push(9); //Tab
+        specialKeys.push(46); //Delete
+        specialKeys.push(36); //Home
+        specialKeys.push(35); //End
+        specialKeys.push(37); //Left
+        specialKeys.push(39); //Right
+        function IsAlphaNumeric(e) {
+            var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
+            var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
+            //document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+        }
+</script>
+
+@section Scripts{
+    <script type="text/javascript">
+        var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+        specialKeys.push(9); //Tab
+        specialKeys.push(46); //Delete
+        specialKeys.push(36); //Home
+        specialKeys.push(35); //End
+        specialKeys.push(37); //Left
+        specialKeys.push(39); //Right
+        specialKeys.push(32); //Right
+        specialKeys.push(189); //Right
+        function IsAlphaNumeric(e) {
+            var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode;
+            var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode || keyCode == 32) || keyCode == 189);
+            //document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+        }
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#Level').siblings('span.error').css('visibility', 'hidden');
+            $('#LevelDescription').siblings('span.error').css('visibility', 'hidden');
+            $('#certificateTreshhold').siblings('span.error').css('visibility', 'hidden');
+
+            $('#SubjectName').siblings('span.error').css('visibility', 'hidden');
+            $('#CreateDate').siblings('span.error').css('visibility', 'hidden');
+            var LevelDetail = [];
+            var SubSubjectDetails = [];
+            $('#addsubsubject').click(function () {
+                SubSubjectDetails.push({
+                    SubSubject: $('#subsubject').val().trim(),
+                    SubjectName: $('#SubjectName').text(),
+                });
+                GeneratSubSubjectTable();
+            })
+
+            function GeneratSubSubjectTable() {
+                //if (VoucherDetail.length > 0)
+                {
+                    var $table = $('<table class="table"/>');
+                    $table.append('<thead><th >Sub Subject</th></tr></thead>');
+                    var $tbody = $('<tbody/>');
+                    $.each(SubSubjectDetails, function (i, val) {
+                        var $row = $('<tr/>');
+                        $row.append($('<td />').html(val.SubSubject));
+                        var $removeSub = $('<a href="#">RemoveSub</a>');
+                        $removeSub.click(function (e) {
+                            e.preventDefault();
+                            SubSubjectDetails.splice(i, 1);
+                            GeneratSubSubjectTable();
+                        });
+                        $row.append($('<td style="color:red;text-align:right"/>').html($removeSub));
+                        $tbody.append($row);
+                    });
+                    //console.log("current", LevelDetail);
+                    $table.append($tbody);
+                    $('#SubSubjectDetail').html($table);
+                }
+
+            }
+            $('#add').click(function () {
+                var isValidItem = true;
+
+                if ($('#Level').val().trim() == '') {
+                    //isValidItem = false;
+                    $('#Level').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#Level').siblings('span.error').css('visibility', 'hidden');
+                }
+                if ($('#LevelDescription').val().trim() == '') {
+                    isValidItem = false;
+                    $('#LevelDescription').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#LevelDescription').siblings('span.error').css('visibility', 'hidden');
+                }
+                if (!($('#certificateTreshhold').val().trim() != '' && !isNaN($('#certificateTreshhold').val().trim()))) {
+                    isValidItem = true;
+                    $('#certificateTreshhold').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#certificateTreshhold').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if (isValidItem)
+                {
+                    LevelDetail.push({
+                        Level: $('#Level').val().trim(),
+                        LevelDescription: $('#LevelDescription').val().trim(),
+                        SubjectName: $('#SubjectName').text(),
+                        certificateTreshhold: parseInt($('#certificateTreshhold').val().trim())
+                    });
+                }
+                GeneratedItemsTable();
+            });
+
+            function GeneratedItemsTable() {
+                //if (VoucherDetail.length > 0)
+                {
+                    var $table = $('<table class="table"/>');
+                    $table.append('<thead><th >Level</th><th style="text-align:center">LevelDescription</th><th style="text-align:center">certificateTreshhold</th><th style="text-align:right"></th></tr></thead>');
+                    var $tbody = $('<tbody/>');
+                    $.each(LevelDetail, function (i, val) {
+                        var $row = $('<tr/>');
+                        $row.append($('<td />').html(val.Level));
+                        $row.append($('<td  style="text-align:center"/>').html(val.LevelDescription));
+                        $row.append($('<td  style="text-align:center"/>').html(val.certificateTreshhold));
+                        var $remove = $('<a href="#">Remove</a>');
+                        $remove.click(function (e) {
+                            e.preventDefault();
+                            LevelDetail.splice(i, 1);
+                            GeneratedItemsTable();
+                        });
+                        $row.append($('<td style="color:red;text-align:right"/>').html($remove));
+                        $tbody.append($row);
+                    });
+                    console.log("current", LevelDetail);
+                    $table.append($tbody);
+                    $('#LevelDetail').html($table);
+
+                }
+
+            }
+            //////////
+            $('#submit').click(function () {
+                var isAllValid = true;
+
+                if ($('#SubjectName').val().trim() == '') {
+                    $('#SubjectName').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                }
+                else {
+                    $('#SubjectName').siblings('span.error').css('visibility', 'hidden');
+                }
+                if ($('#CreateDate').val().trim() == '') {
+                    $('#CreateDate').siblings('span.error').css('visibility', 'visible');
+                    isAllValid = false;
+                }
+                else {
+                    $('#CreateDate').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                //if (isAllValid)
+                {
+
+                    var data = {
+                        SubjectName: $('#SubjectName').val().trim(),
+                        CreateDate:  $('#CreateDate').val().trim(),
+                        LevelDetails: LevelDetail,
+                        SubSubject: SubSubjectDetails
+                    }
+                }
+                $(this).val('Please wait...');
+
+                $.ajax({
+                    url: '/QuizNameModels/Create',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    success: function (d) {
+                        //check is successfully save to database
+                        if (d.status == true) {
+                            alert('Successfully done.');
+                            window.location.href = "/QuizNameModels/Index";
+                            //clear form
+
+                        }
+                        else {
+                            alert('Failed');
+                        }
+                        $('#submit').val('Save');
+                    },
+                    error: function () {
+                        alert('Error. Please try again.');
+                        $('#submit').val('Save');
+                    }
+                });
+
+            });
+
+
+
+        })
+
+    </script>
+}
+
+<div class="container">
+        <h2 style="text-align:center;color:whitesmoke">Create New Quiz</h2>
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.Label("SubjectName", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                <input type="text" id="SubjectName" class="form-control" onkeypress="return IsAlphaNumeric(event);" 
+                                       ondrop="return false;" onpaste="return IsAlphaNumeric(event);" />
+                                <span class="error text-danger">SubjectName required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.Label("CreateDate", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                <input type="date" id="CreateDate" class="form-control" />
+                                <span class="error text-danger">Date required</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+                <div id="SubSubjectDetail" class="table-responsive">
+                </div>
+                <br />
+                <div class="form-group">
+                    <h4 style="text-align:center;color:whitesmoke">Sub Subject Details</h4>
+                    <div class="table-responsive">
+                        <table class="table-responsive">
+                            <tr>
+                                <td style="text-align:center">Sub Subject</td>
+                                <td style="text-align:right">
+                                    &nbsp;
+                                </td>
+                            <tr>
+
+                                <td>
+                                    <input class="form-control" type="text" name="subsubject" id="subsubject" onkeypress="return IsAlphaNumeric(event);" 
+                                       ondrop="return false;" onpaste="return IsAlphaNumeric(event);" />
+                                </td>
+
+                                <td style="text-align:right">
+                                    <input type="button" id="addsubsubject" value="add" class="btn btn-info" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <br/>
+                <div class="form-group">
+                    <h4 style="text-align:center;color:whitesmoke">Level Details</h4>
+                    <div class="table-responsive">
+                        <table id="myTable" class="table">
+                            <tr>
+                                <td style="text-align:center">Level</td>
+                                <td style="text-align:center">Description</td>
+                                <td style="text-align:center">certificateTreshhold </td>
+                                <td style="text-align:right">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="form-control" type="text" name="Level" id="Level" onkeypress="return IsAlphaNumeric(event);" 
+                                       ondrop="return false;" onpaste="return IsAlphaNumeric(event);" />
+                                    <span class="error text-danger">Level required</span>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="text" name="LevelDescription" id="LevelDescription" />
+                                    <span class="error text-danger">Description required</span>
+                                </td>
+                                <td>
+                                    <input class="form-control" name="certificateTreshhold" id="certificateTreshhold" type="number" />
+                                    <span class="error text-danger">certificateTreshhold  required</span>
+                                </td>
+
+                                <td>
+                                    <input type="button" id="add" value="add" class="btn btn-info" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="LevelDetail" class="table-responsive">
+                    </div>
+                    <br />
+                    <input style="width:100%" id="submit" type="button" value="Save" class="btn btn-info" />
+                </div>
+
+            </div>
+        
+
+</div>

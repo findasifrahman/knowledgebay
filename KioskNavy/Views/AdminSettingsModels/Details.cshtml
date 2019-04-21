@@ -1,0 +1,51 @@
+﻿@model KioskNavy.Models.AdminSettingsModels
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdminSettingsModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BackImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackImageUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FontSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FontSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FontColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FontColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Backcolor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Backcolor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

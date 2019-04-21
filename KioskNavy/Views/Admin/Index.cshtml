@@ -1,0 +1,38 @@
+﻿<style>
+    body {
+        background-color: orange;
+        //background-image: url("../../img/ship1.gif");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2 style="text-align:center" class="well"> Welcome to Admin dashbard</h2>
+    <br/>
+    <br/>
+    <br />
+    <div class="row">
+        <div class="col-md-4" style="text-align:center">
+            @Html.ActionLink("Quiz Panel", "../quizNamemodels",null, new { @class = "a2 green", @style = "width:200px;font-size:35px;height:100px;color:white" })
+
+        </div>
+        <div class="col-md-4" style="text-align:center">
+            @Html.ActionLink("Learning Material", "../Learningmodels", null, new { @class = "a2 green", @style = "width:200px;font-size:25px;height:100px;color:white" })
+        </div>
+        <div class="cl-md-4" style="text-align:center">
+            @Html.ActionLink("User Report", "../User/ReportViewIndex", null, new { @class = "a2 green", @style = "width:200px;font-size:35px;height:100px;color:white" })
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+

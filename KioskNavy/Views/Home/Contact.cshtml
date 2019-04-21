@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/homeDesign/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/homeDesign/css/bootstrap.css">
+    <link rel="stylesheet" href="/homeDesign/css/style.css">
+    <title>Bangladesh Navy</title>
+</head>
+<body id="home">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Bangladesh Navy</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/home/about" class="nav-link">Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/admin/Index" class="nav-link">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- HOME SECTION -->
+    <header id="home-section">
+        <div class="dark-overlay">
+            <div class="home-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 d-none d-lg-block">
+                            <h1 class="display-4" <strong>Welcome To Bangladesh Navy Multimedia learning Process</strong> </h1>
+                            <div class="d-flex flex-row">
+                                <div class="p-4 align-self-start">
+                                    <i class="fa fa-superpowers"></i>
+                                </div>
+                                <div class="p-4 align-self-end">
+                                    Participate in Quizzes and verify your knowledge in a fun way. Enter Credentials by palcing your ID card Bar code in the Scanners Top.
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row">
+                                <div class="p-4 align-self-start">
+                                    <i class="fa fa-binoculars"></i>
+                                </div>
+                                <div class="p-4 align-self-end">
+                                    Learn New things and enhance your knowledge by clicking training at the top right menu. Learning is Fun .
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row">
+                                <div class="p-4 align-self-start">
+                                    <i class="fa fa-anchor"></i>
+                                </div>
+                                <div class="p-4 align-self-end">
+                                    Bangladesh Navy Updated Information
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card bg-dark text-center card-form">
+                                <div class="card-body">
+                                    <h3>Enter Credentials</h3>
+                                    <p>Plaese place your card to the Barcode Scanner </p>
+                                    <form action="/user/index">
+                                        <div class="form-group">
+                                            <input autofocus type="text" class="form-control form-control-lg" name="Name" id="Name" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Rank">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-lg" placeholder="ID">
+                                        </div>
+                                        <input type="submit" value="Submit" class="btn btn-outline-light btn-block">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+  
+    <!-- MAIN FOOTER -->
+    <footer id="main-footer" class="bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="py-4">
+                        <h1 class="h3">Developed by Intricate Lab</h1>
+                        <p>Copyright &copy; 2017</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+ 
+    <script src="/homeDesign/js/jquery.min.js"></script>
+    <script src="/homeDesign/js/popper.min.js"></script>
+    <script src="/homeDesign/js/bootstrap.min.js"></script>
+</body>
+</html>

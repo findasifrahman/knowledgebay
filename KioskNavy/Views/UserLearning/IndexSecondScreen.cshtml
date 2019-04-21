@@ -1,0 +1,67 @@
+﻿<style>
+    body {
+        background-color: #337ab7;
+         background-image: url(../../img/10.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        color: #ffffff;
+    }
+
+</style>
+
+@{
+    ViewBag.Title = "IndexSecondScreen";
+    Layout = "~/Views/Shared/_instruction.cshtml";
+}
+
+@section Scripts{
+    <script>
+        var us =  @Html.Raw(Json.Encode(ViewBag.name));
+        var rn = @Html.Raw(Json.Encode(ViewBag.rank));
+        $('#curuser').show();
+        $('#curuser').text(rn + " " + us);
+        $(document).ready(function () {
+            $(window).load(function () {
+                $('#preloader').fadeOut('slow', function () { $(this).remove(); });
+            });
+        })
+    </script>
+}
+<div id="preloader"></div>
+<br/> <br />
+<div class="container">
+    <div class="row">
+        <div class="panel panel-body" style="background-color:#006dcc">
+            <h3 style="text-align:center;font-family:Tahoma"> You Have Choosen to Study/Learn Professional Subjects </h3>
+            <h3 style="text-align:center;color:black;font-family:AdorshoLipi" class="panel panel-body">
+                আপনার পছন্দমত বিষয় এবং Topic বেছে নিন
+            </h3>
+        </div>
+        <br />
+
+        <br />
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="panel fade-in" style="background-color:#006dcc">
+                    <h2 style="text-align:center;color:whitesmoke;font-family:AdorshoLipi">বাংলাদেশ নৌবাহিনী</h2>
+                    <h3 style="text-align:center;color:whitesmoke;font-family:AdorshoLipi">প্রশিক্ষণ পরিদপ্তর </h3>
+                    <br />
+
+                    <div class="panel panel-body" style="text-align:center;color:black">
+                        <h4 style="color:red;font-family:Tahoma;font-size:25px;font-weight:bold">Training Leads To Success</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

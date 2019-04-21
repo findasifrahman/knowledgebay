@@ -1,0 +1,82 @@
+﻿@model IEnumerable<KioskNavy.Models.UserConditionModels>
+<style>
+    body {
+        color: black;
+        background-image: none;
+    }
+</style>
+@{
+    Layout = @ViewBag.Layout;
+    ViewBag.Title = "UserReport";
+}
+<h2 class="text-center" style="font-style:normal;color:black">Bangladesh Navy</h2>
+<h4 class="text-center" style="font-style:normal;color:black">Interactive Learning Report</h4>
+<h4 class="text-center" style="font-style:normal;color:black">@Model.FirstOrDefault().mName</h4>
+<h4 class="text-center" style="font-style:normal;color:black">@Model.FirstOrDefault().mRank , @Model.FirstOrDefault().mCode</h4>
+<hr />
+<br />
+<h4 class="text-center" style="color:black"><u><b>:: @Model.FirstOrDefault().mName Report :: </b></u></h4>
+<br />
+<table style="color:black" class="table borderless">
+    <tr>
+        <td style="font-size:medium">
+            @DateTime.Now.ToShortDateString()
+        </td>
+
+        <td style="font-size:medium;text-align:right">
+            @DateTime.Now.ToShortTimeString()
+        </td>
+    </tr>
+
+</table>
+
+<table style="color:black" class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.quizName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubSubject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subjectLevel)
+        </th>
+        <th>
+            Last Played
+        </th>
+        <th>
+            1st Attemp Ans
+        </th>
+        <th>
+            2nd Attempt Ans
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.quizName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubSubject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subjectLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.allAnswers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userXP)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+

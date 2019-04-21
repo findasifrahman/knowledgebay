@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "pptView";
+}
+
+<style>
+    body {
+        background-color: #778899;
+        background-image: url(/img/50.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #ffffff;
+    }
+
+    .arrow_box {
+        position: relative;
+        background: #000000;
+        border: 60px solid transparent;
+    }
+
+        .arrow_box:after, .arrow_box:before {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .arrow_box:after {
+            border-color: rgba(136, 183, 213, 0);
+            border-bottom-color: black;
+            border-width: 100px;
+            margin-left: -100px;
+        }
+
+        .arrow_box:before {
+            border-color: rgba(194, 225, 245, 0);
+            border-bottom-color: #6d7e8a;
+            border-width: 112px;
+            margin-left: -112px;
+        }
+
+
+    .arrow_bottom {
+        position: relative;
+        background: #000000;
+        border: 60px solid transparent;
+    }
+
+        .arrow_bottom:after, .arrow_bottom:before {
+            top: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .arrow_bottom:after {
+            border-color: rgba(255, 253, 250, 0);
+            border-top-color: #000000;
+            border-width: 100px;
+            margin-left: -100px;
+        }
+
+        .arrow_bottom:before {
+            border-color: rgba(109, 126, 138, 0);
+            border-top-color: #6d7e8a;
+            border-width: 112px;
+            margin-left: -112px;
+        }
+</style>
+@section Scripts{
+    <script>
+        var stateofwindow = window.open('/userlearning/pptviewpopup?ppturl=' + @Html.Raw(Json.Encode(ViewBag.ppturl)), 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+        window.onunload = function () {
+            if (stateofwindow && !stateofwindow.closed) {
+                stateofwindow.close();
+            }
+        };
+        $(document).ready(function () {
+            $('body').keyup(function (e) {
+                //alert('keydown pressed');
+                e.preventDefault();
+                e.stopImmediatePropagation();
+
+                if (e.which == 40) {
+                    stateofwindow.scrollBy(0, -100);
+                } else {
+                    stateofwindow.scrollBy(0, 100);
+                }
+            });
+            var sindex = 800;
+            $('#btnup').click(function ()
+            {
+                //stateofwindow.scrollBy(0, 400);
+                element = stateofwindow.document.getElementById("iframeContainer");
+                element.scrollTo(0, sindex);
+                if(sindex >= 800){
+                    sindex = sindex - 800;
+                }
+            });
+            $('#btndown').click(function ()
+            {
+                element = stateofwindow.document.getElementById("iframeContainer");
+                element.scrollTo(0, sindex);
+
+                sindex = sindex + 800;
+            });
+
+        })
+    </script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 panel panel-header" style="height:600px;background-color:#006dcc;opacity:0.95;color:whitesmoke;font-family:Impact;text-align:center">
+            <br /><br />
+            <br /><br />
+            <br /><br />
+            <br /><br />
+            <br /><br />
+            <a id="btnup" class="arrow_box" href="#"></a>
+
+            <br /><br />
+            <br /><br />
+            <h4 style="text-align:center;color:whitesmoke">Please Press Up or Down arrow For scrolling Up or Down </h4>
+            <br /><br />
+            <br /><br />
+
+            <a id="btndown" class="arrow_bottom" href="#"></a>
+        </div>
+
+    </div>
+
+</div>
+

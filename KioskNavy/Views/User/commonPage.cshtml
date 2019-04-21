@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "commonPage";
+    Layout = "~/Views/Shared/_instruction.cshtml";
+}
+@section Scripts{
+    <script>
+        $('#navinstruction').hide();
+
+        var vid = document.getElementById("music_audio");
+        vid.volume = 0.3;
+        $(document).ready(function () {
+        })
+
+    </script>
+}
+<audio id="music_audio" src="~/img/backmusic4.mp3" autoplay loop></audio>
+<div class="container">
+    <ul class="slideshow">
+        <li><span>Image 01</span></li>
+        <li><span>Image 02</span></li>
+        <li><span>Image 03</span></li>
+        <li><span>Image 04</span></li>
+        <li><span>Image 05</span></li>
+        <li><span>Image 06</span></li>
+    </ul>
+</div>
+<div class="container">
+    <div class="row" style="height:600px;background-color:#006dcc;opacity:0.95;color:whitesmoke;font-family:Impact;text-align:center;font-family:AdorshoLipi">
+        <h3 style="text-align:center">জ্ঞান অর্জন করুন</h3>
+        <h3 style="text-align:center"> নিজের ক্যারিয়ার সমৃদ্ধি করুণ</h3>
+        <br/>
+        <br />
+        <h3 style="text-align:center">বাংলাদেশ নৌবাহিনী</h3>
+  
+        <div class="row" style="text-align:center">
+            <img src="~/img/logo.png" height="128" width="128" />
+        </div>
+        <h3 style="text-align:center;font-weight:bold">শান্তিতে সংগ্রামে সমুদ্রে দুর্জয়</h3>
+        <br />
+        <br />
+        <br />
+        <div class="panel panel-body" style="text-align:center;color:black">
+            <h2 style="color:red;font-family:Arial, Helvetica, sans-serif;font-weight:900">Training Leads To Success</h2>
+            <h3 style="color:red;font-family:Arial, Helvetica, sans-serif;font-weight:bolder">Learn Yourself to enrich your professional career</h3>
+        </div>
+
+    </div>
+</div>
+

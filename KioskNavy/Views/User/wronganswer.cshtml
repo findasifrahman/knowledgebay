@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "wronganswer";
+    Layout = "~/Views/Shared/_instruction.cshtml";
+}
+<style>
+body {
+            background-color: #006dcc;
+  height: 100%;
+  width: 100%;
+ 
+}
+.text-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  font-size: 60px;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+}
+span {
+  display: inline-block;
+}
+.reg-text {
+  transform: translateY(300px);
+  opacity: 0;
+  transition: transform 3.33333s ease-out, opacity 5s ease;
+}
+.reg-text.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+.letter {
+  transition: transform 5s cubic-bezier(0.43, 0.1, 0.57, 0.9), filter 5s ease, opacity 5s ease;
+  opacity: 0;
+  filter: blur(5px);
+}
+.letter:nth-of-type(2) {
+  transform: translateY(-160px);
+  transition-duration: 2.5s;
+}
+.letter:nth-of-type(3) {
+  filter: blur(0);
+  transform: translateY(-170px);
+  transition-duration: 3.84615s;
+}
+.letter:nth-of-type(4) {
+  transform: translateY(-200px);
+  transition-duration: 3.33333s;
+}
+.letter:nth-of-type(5) {
+  transform: translateY(-350px);
+  transition-duration: 2.5s;
+}
+.letter:nth-of-type(6) {
+  filter: blur(0);
+  transform: translateY(-380px);
+  transition-duration: 2.17391s;
+}
+.letter.loaded {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+</style>
+@section Scripts {
+    <script>
+        $('#navinstruction').hide();
+        ////////////// 
+        $(document).ready(function () {
+            setTimeout(function () {
+                $('.letter').addClass('loaded');
+                $('.reg-text').addClass('loaded');
+            }, 2000);
+        });
+
+
+    </script>
+}
+
+<div class="row panel panel-body" style="text-align:center;background-color:#006dcc;color:whitesmoke">
+    <h1 style="color:whitesmoke;font-weight:bold;font-family:Arial, Helvetica, sans-serif;">Sorry This answer is wrong </h1>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="text-container">
+    <span class="reg-text" style="color:red">Please press know more to learn more on this topic and try   </span>
+    <span class="letter">a</span><span class="letter">g</span><span class="letter">a</span><span class="letter">i</span><span class="letter">n</span>
+</div>
+
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

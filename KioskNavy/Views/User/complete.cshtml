@@ -1,0 +1,91 @@
+﻿<style>
+    body {
+        background-color: brown;
+        background-image: url("../../img/50.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+</style>
+@{
+    ViewBag.Title = "complete";
+}
+@section Scripts
+{
+    <script>
+        $("#success_audio").get(0).play();
+        var uu =   @Html.Raw(Json.Encode(ViewBag.user));
+        var cc =  @Html.Raw(Json.Encode(ViewBag.code));
+        var rn = @Html.Raw(Json.Encode(ViewBag.rank));
+        $(document).ready(function () {
+            $('#navgoback').hide();
+            $('#navsubjects').show();
+            $("#navchoice").attr("href","/user/choice?Name=" + uu + "&code=" + cc + "&rank=" + rn);
+            $("#navsubjects").attr("href","/user/Index?Name=" + uu + "&code=" + cc + "&rank=" + rn);
+            //////////////
+            $('#mylink').click(function () {
+                var textbox = document.getElementById('myquiz');
+                var t = textbox.value;
+                var level =  @Html.Raw(Json.Encode(ViewBag.level));
+                var subsubject =  @Html.Raw(Json.Encode(ViewBag.subsubject));
+
+
+
+                if (t !== "") {
+                    $.post("@Url.Action("Reset", "User")?quizname=" + t + "&subsubject=" + subsubject +"&level=" + level, function(res) {
+                        if (res.Success === "true") {
+                            var qq = res.Data.quizname;
+                            alert("Successfull");
+
+                        } else {
+                            alert("Error getting data!");
+                        }
+                    });
+                } else {
+                    $("input.editableItems").val('').prop('disabled', true);
+                }
+            })
+            /////////////////
+
+            $('#goback').click(function () {
+
+
+                var url = "/user/choice?Name=" + uu + "&code=" + cc + "&rank=" + rn;
+                location.href = url;
+
+   
+            })
+        })
+    </script>
+}
+<audio id="success_audio" src="~/img/success.mp3" autoplay="autoplay"></audio>
+
+<div class="slideswitch container slide spin_180">
+    <div class="panel flip" style="background-color:#006dcc">
+        <h2 style="text-align:center;color:whitesmoke"><b>Congratulations!! you have completed this quiz</b></h2>
+        <h3 style="text-align:center;color:whitesmoke">Thank You For participating</h3>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-6 text-center">
+            <button class="a2 green" id="mylink" style="font-size:x-large;height:100px"> Take This Quiz Again</button>
+        </div>
+        <div class="col-lg-6 text-center">
+            <a  href="#" class="a2 green" id="goback" style="font-size:x-large;height:100px;margin:auto;padding-top:30px">Go Back To Quiz Choice</a>
+         </div>
+            <input type="hidden" id="myquiz" value="@ViewBag.quiz" />
+     </div>
+
+    <br/>
+    <div class="row" style="text-align:center">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+    </div>
+    <br/>
+    <div class="row" style="text-align:center">
+        <img height="200" src="~/img/fireworks.gif" />
+    </div>
+
+</div>

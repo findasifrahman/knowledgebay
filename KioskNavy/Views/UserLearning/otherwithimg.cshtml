@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "otherwithimg";
+    Layout = null;//"~/Views/Shared/_instruction.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <link rel="stylesheet" href="/homeDesign/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/homeDesign/css/bootstrap.css">
+
+    <link rel="stylesheet" href="/homeDesign/css/style.css">
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+
+
+
+    <style>
+        .a2 {
+            font-size: 0.9em;
+            padding: 6px 28px;
+            display: inline-block;
+            margin: 5px;
+            border-radius: 6px;
+            border: solid rgba(0,0,0,0.2);
+            border-width: 1px 1px 5px;
+            box-shadow: 0 5px 0 rgba(0,0,0,0.1), inset 0 0 3px rgba(255,255,255,0.3);
+            cursor: pointer;
+            user-select: none;
+            transition: 0.4s ease;
+        }
+
+            .a2:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 0 rgba(0,0,0,0.1), inset 0 0 1px rgba(255,255,255,0.4);
+                border-bottom-width: 8px;
+            }
+
+            .a2:active {
+                transform: translateY(4px);
+                box-shadow: 0 2px 0 rgba(0,0,0,0.1), inset 0 0 5px rgba(255,255,255,0.4);
+                border-bottom-width: 2px;
+                transition: 0.1s ease;
+            }
+
+        .red {
+            background: hsl(8,59%,59%);
+            color: rgba(255,255,255,0.95);
+            text-shadow: -1px -1px 1px rgba(0,0,0,0.1);
+        }
+
+        .orange {
+            background: hsl(41,76%,65%);
+        }
+
+        .yellow {
+            background: hsl(50,81%,65%);
+        }
+
+        .green {
+            background: hsl(104,51%,62%);
+        }
+
+        .blue {
+            background: hsl(176,59%,59%);
+        }
+
+        .container {
+            margin: 0 0;
+            max-width: 1080px;
+        }
+
+        .h1, h2, h3, h4, h5, h6 {
+            font-size: xx-large;
+        }
+
+        .body {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .div {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .body-content {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        * {
+            margin: 0px !important;
+            padding: 0px !important;
+        }
+    </style>
+</head>
+<body>
+    @{
+        if (ViewBag.imgurl != null)
+        {
+            <div style="text-align:center;max-width:100%;max-height:100%;">
+                <div class="wrapper fade-in" style="text-align:center;max-width:100%;max-height:100%;">
+                    <img id="myImg2" src="@Url.Content(ViewBag.imgurl)" alt="@ViewBag.imgurl" width="1360" height="820" />
+                </div>
+            </div>
+        }
+    }
+</body>
+</html>
+

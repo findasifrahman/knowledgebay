@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "pptviewpopup";
+    Layout = null;//"~/Views/Shared/_instruction.cshtml";
+}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/homeDesign/js/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .container {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .body {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    </style>
+
+    <script>
+
+
+            $(document).ready(function () {
+                var sindex = 400;
+                //$('#fr').attr('src', '@ViewBag.pdf');
+                $('#fr1').attr('data', '@ViewBag.ppt');
+                $('#btn1').click(function () {
+                    //window.scrollBy(0, 200);
+
+                    $("#fr1").scrollTo(0, sindex);
+                    sindex = sindex + 1600;
+                    //<iframe id="fr" style="width:1346px;height:16000px"></iframe>
+                });
+            })
+
+    </script>
+</head>
+<body>
+    <div id="iframeContainer" style="width: 1366px; height: 800px;">
+        <object id="fr1" type="application/vnd.openxmlformats-officedocument.presentationml.slideshow" style="width:1346px;height:800px" data="file_with_actions.pdf">
+            Unable to open the PDF file.
+        </object>
+    </div>
+
+
+</body>
+</html>
+
+

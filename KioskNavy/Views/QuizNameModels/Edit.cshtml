@@ -1,0 +1,323 @@
+﻿@model KioskNavy.Models.QuizNameModels
+
+<style>
+    body {
+        background-color: #0066cc;
+        background-image: none;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: whitesmoke;
+    }
+</style>
+@{
+    Layout = @ViewBag.Layout;
+    ViewBag.Title = "Create";
+}
+
+
+@section Scripts{
+    <script>
+        var LevelDetail = [];
+        var SubSubjectDetail = [];
+        @foreach(var item in Model.LevelDetails)
+        {
+            <text>
+                LevelDetail.push({
+                    Level: @Html.Raw(Json.Encode((item.Level))),
+                    LevelDescription: @Html.Raw(Json.Encode((item.LevelDescription))),
+                    SubjectName: @Html.Raw(Json.Encode((item.SubjectName))),
+                    certificateTreshhold: parseInt(@Html.Raw(Json.Encode(@item.certificateTreshhold)))
+                });
+        </text>
+        }
+        @foreach(var item in Model.SubSubject)
+        {
+            <text>
+                SubSubjectDetail.push({
+                    SubSubject: @Html.Raw(Json.Encode((item.SubSubject))),
+                    SubjectName: @Html.Raw(Json.Encode((item.SubjectName)))
+                });
+            </text>
+        }
+        GeneratedItemsTable();
+        GeneratedItemsTableSubSubject();
+        function GeneratedItemsTable() {
+            //if (VoucherDetail.length > 0)
+            {
+                var $table = $('<table class="table"/>');
+                $table.append('<thead><th >Level</th><th style="text-align:center">LevelDescription</th><th style="text-align:center">certificateTreshhold</th><th style="text-align:right"></th></tr></thead>');
+                var $tbody = $('<tbody/>');
+                $.each(LevelDetail, function (i, val) {
+                    var $row = $('<tr/>');
+                    $row.append($('<td />').html(val.Level));
+                    $row.append($('<td><input type="text"  class="form-control" /> </td>').html(val.LevelDescription));
+                    $row.append($('<td  style="text-align:center"/>').html(val.certificateTreshhold));
+                    var $remove = $('<a style="color:red" href="#">Remove</a>');
+                    $remove.click(function (e) {
+                        e.preventDefault();
+                        LevelDetail.splice(i, 1);
+                        GeneratedItemsTable();
+                    });
+                    $row.append($('<td style="color:red;text-align:right"/>').html($remove));
+                    $tbody.append($row);
+                });
+                console.log("current", LevelDetail);
+                $table.append($tbody);
+                $('#LevelDetail').html($table);
+            }
+
+        }
+        function GeneratedItemsTableSubSubject() {
+            //if (VoucherDetail.length > 0)
+            {
+                var $table = $('<table class="table"/>');
+                $table.append('<thead><th >Sub Subject</th><th style="text-align:right"></th></tr></thead>');
+                var $tbody = $('<tbody/>');
+                $.each(SubSubjectDetail, function (i, val) {
+                    var $row = $('<tr/>');
+                    $row.append($('<td />').html(val.SubSubject));
+                    var $remove = $('<a style="color:red" href="#">Remove</a>');
+                    $remove.click(function (e) {
+                        e.preventDefault();
+                        SubSubjectDetail.splice(i, 1);
+                        GeneratedItemsTableSubSubject();
+                    });
+                    $row.append($('<td style="color:red;text-align:right"/>').html($remove));
+                    $tbody.append($row);
+                });
+                //console.log("current", LevelDetail);
+                $table.append($tbody);
+                $('#SubSubjectDetail').html($table);
+            }
+
+        }
+        $(document).ready(function () {
+            $('#Level').siblings('span.error').css('visibility', 'hidden');
+            $('#LevelDescription').siblings('span.error').css('visibility', 'hidden');
+            $('#certificateTreshhold').siblings('span.error').css('visibility', 'hidden');
+
+            $('#SubjectName').siblings('span.error').css('visibility', 'hidden');
+            $('#CreateDate').siblings('span.error').css('visibility', 'hidden');
+
+
+            $('#add').click(function () {
+                     var isValidItem = true;
+
+                     if ($('#Level').val().trim() == '') {
+                    //isValidItem = false;
+                    $('#Level').siblings('span.error').css('visibility', 'visible');
+                     }
+                else {
+                    $('#Level').siblings('span.error').css('visibility', 'hidden');
+                     }
+                     if ($('#LevelDescription').val().trim() == '') {
+                         isValidItem = false;
+                    $('#LevelDescription').siblings('span.error').css('visibility', 'visible');
+                     }
+                else {
+                    $('#LevelDescription').siblings('span.error').css('visibility', 'hidden');
+                     }
+                     if (!($('#certificateTreshhold').val().trim() != '' && !isNaN($('#certificateTreshhold').val().trim()))) {
+                         isValidItem = true;
+                    $('#certificateTreshhold').siblings('span.error').css('visibility', 'visible');
+                     }
+                else {
+                    $('#certificateTreshhold').siblings('span.error').css('visibility', 'hidden');
+                     }
+
+                     if (isValidItem)
+                     {
+                         LevelDetail.push({
+                          Level: $('#Level').val().trim(),
+                          LevelDescription: $('#LevelDescription').val().trim(),
+                          SubjectName: $('#SubjectName').text(),
+                          certificateTreshhold: parseInt($('#certificateTreshhold').val().trim())
+                         });
+                     }
+                     GeneratedItemsTable();
+                 });
+            //////////////////
+            
+            $('#addSubSubject').click(function () {
+                var isValidItem = true;
+
+                if ($('#SubSubject').val().trim() == '') {
+                    //isValidItem = false;
+                    $('#SubSubject').siblings('span.error').css('visibility', 'visible');
+                }
+                else {
+                    $('#SubSubject').siblings('span.error').css('visibility', 'hidden');
+                }
+
+                if (isValidItem)
+                {
+                    SubSubjectDetail.push({
+                        SubSubject: $('#SubSubject').val().trim(),
+                        SubjectName: $('#SubjectName').text()
+                    });
+                }
+                GeneratedItemsTableSubSubject();
+            });
+            
+            //////////
+            $('#submit').click(function () {
+                     var isAllValid = true;
+
+                     if ($('#SubjectName').val().trim() == '') {
+                    $('#SubjectName').siblings('span.error').css('visibility', 'visible');
+                         isAllValid = false;
+                     }
+                else {
+                    $('#SubjectName').siblings('span.error').css('visibility', 'hidden');
+                     }
+                     if ($('#CreateDate').val().trim() == '') {
+                    $('#CreateDate').siblings('span.error').css('visibility', 'visible');
+                         isAllValid = false;
+                     }
+                else {
+                    $('#CreateDate').siblings('span.error').css('visibility', 'hidden');
+                     }
+
+                     //if (isAllValid)
+                     {
+
+                        var data = {
+                                SubjectName: $('#SubjectName').val().trim(),
+                                CreateDate:  $('#CreateDate').val().trim(),
+                                SubSubject: SubSubjectDetail,
+                                LevelDetails: LevelDetail
+                         }
+                 }
+                $(this).val('Please wait...');
+
+                $.ajax({
+                 url: '/QuizNameModels/Edit',
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    dataType: "JSON",
+                    contentType: "application/json",
+                    success: function (d) {
+                         //check is successfully save to database
+                         if (d.status == true) {
+                             alert('Successfully done.');
+                             window.location.href = "/QuizNameModels/Index";
+                             //clear form
+
+                         }
+                         else {
+                             alert('Failed');
+                         }
+                        $('#submit').val('Save');
+                     },
+                    error: function () {
+                         alert('Error. Please try again.');
+                        $('#submit').val('Save');
+                     }
+                 });
+
+                 });
+
+        })
+        function editThis(val){
+            alert(val);
+        }
+   </script>
+ 
+}
+
+<div class="container">
+    <h2 style="text-align:center;color:whitesmoke">Edit Quiz Subject</h2>
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row col-md-12">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.Label("SubjectName", htmlAttributes: new { @class = "control-label col-md-2", @readonly = "readonly" })
+                    <div class="col-md-4">
+                        <input value="@Model.SubjectName" type="text" id="SubjectName" class="form-control" readonly />
+                        <span class="error text-danger">SubjectName required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.Label("CreateDate", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        <input type="date" id="CreateDate" value="@Model.CreateDate.ToShortDateString()" class="form-control" />
+                        <span class="error text-danger">Date required</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div class="form-group">
+            <h4 style="text-align:center;color:whitesmoke">Sub Subject List</h4>
+            <div class="table-responsive">
+                <table id="myTable" class="table">
+                    <tr>
+                        <td style="text-align:center">Sub Subject</td>
+                        <td style="text-align:right">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="form-control" type="text" name="SubSubject" id="SubSubject" />
+                            <span class="error text-danger">Sub Subject required</span>
+                        </td>
+
+                        <td>
+                            <input type="button" id="addSubSubject" style="width:200px" value="add" class="btn btn-info" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="SubSubjectDetail" class="table-responsive">
+            </div>
+
+
+            <br />
+            <div class="form-group">
+                <h4 style="text-align:center;color:whitesmoke">Level Details</h4>
+                <div class="table-responsive">
+                    <table id="myTable" class="table">
+                        <tr>
+                            <td style="text-align:center">Level</td>
+                            <td style="text-align:center">Description</td>
+                            <td style="text-align:center">certificateTreshhold </td>
+                            <td style="text-align:right">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="form-control" type="text" name="Level" id="Level" />
+                                <span class="error text-danger">Level required</span>
+                            </td>
+                            <td>
+                                <input class="form-control" type="text" name="LevelDescription" id="LevelDescription" />
+                                <span class="error text-danger">Description required</span>
+                            </td>
+                            <td>
+                                <input class="form-control" name="certificateTreshhold" id="certificateTreshhold" type="number" />
+                                <span class="error text-danger">certificateTreshhold  required</span>
+                            </td>
+
+                            <td>
+                                <input type="button" id="add" value="add" style="width:200px" class="btn btn-info" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="LevelDetail" class="table-responsive">
+                </div>
+                <!--    -->
+                <!-- -->
+
+                <br />
+                <input style="width:100%" id="submit" type="button" value="Save" class="btn btn-info" />
+            </div>
+
+        </div>
+
+
+</div>

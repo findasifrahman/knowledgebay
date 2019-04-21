@@ -1,0 +1,351 @@
+﻿@model IEnumerable<KioskNavy.Models.LearningModels>
+
+<style>
+    body {
+        background-color: #ffffff;
+        background-image: url(../../img/36.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+    .arrow_box {
+	    position: relative;
+	    background: #000000;
+	    border: 60px solid transparent;
+    }
+.arrow_box:after, .arrow_box:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-bottom-color: black;
+	border-width: 100px;
+	margin-left: -100px;
+}
+.arrow_box:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-bottom-color: #6d7e8a;
+	border-width: 112px;
+	margin-left: -112px;
+}
+.arrow_bottom {
+	position: relative;
+	background: #000000;
+	border: 60px solid transparent;
+}
+.arrow_bottom:after, .arrow_bottom:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_bottom:after {
+	border-color: rgba(255, 253, 250, 0);
+	border-top-color: #000000;
+	border-width: 100px;
+	margin-left: -100px;
+}
+.arrow_bottom:before {
+	border-color: rgba(109, 126, 138, 0);
+	border-top-color: #6d7e8a;
+	border-width: 112px;
+	margin-left: -112px;
+}
+</style>
+@{
+    ViewBag.Title = "AllLearning";
+}
+@section Scripts{
+<script type="text/javascript">
+            var idleTime = 0;
+            $(document).ready(function () {
+                //Increment the idle time counter every minute.
+                var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+                //Zero the idle timer on mouse movement.
+                $(this).mousemove(function (e) {
+                    idleTime = 0;
+                });
+                $(this).keypress(function (e) {
+                    idleTime = 0;
+                });
+            });
+
+            function timerIncrement() {
+                idleTime = idleTime + 1;
+                if (idleTime > 1) { // 10 minutes
+                    //window.location.reload();
+                    url = "/home";
+                    location.href = url;
+                }
+            }
+</script>
+    <script>
+
+        $('#hidearrow').hide();
+        $('#hidearrow1').hide();
+        var text =  @Html.Raw(Json.Encode(ViewBag.name));
+        var rn = @Html.Raw(Json.Encode(ViewBag.rank));
+        var cc = @Html.Raw(Json.Encode(ViewBag.code));
+        $("#navchoice").attr("href","/user/choice?Name=" + text + "&code=" + cc + "&rank=" + rn);
+
+        //$('#navsubjects').show();
+        //$("#navsubjects").attr("href","/userlearning/Index?name=" + text + "&code=" + cc + "&rank=" + rn);
+
+        var stateofwindow;
+        //var stateofwindow = window.open('/userlearning/indexsecondscreen?name=' + text + "&rank=" + rn, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+        var commonwindow  = window.open('/user/commonpage', 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+        window.onunload = function () {
+            if (stateofwindow && !stateofwindow.closed) {
+                stateofwindow.close();
+            }
+            /*if (commonwindow && !commonwindow.closed) {
+                commonwindow.close();
+            }*/
+        };
+        var pdfortext = "pdf";
+        var sindex = 100;
+        var subject = @Html.Raw(Json.Encode(ViewBag.qname));
+        var sub = @Html.Raw(Json.Encode(ViewBag.subsubject));
+        function theFunction (val) {
+            $("#click_audio").get(0).play();
+            $.post("@Url.Action("gettype", "userLearning")?subject=" + subject + "&sub=" +  sub + "&topic=" + val, function (res) {
+                if(res.Data.type == "pdf"){
+                    $.post("@Url.Action("partialIndex", "UserLearning")?subject=" + subject + "&sub=" +  sub + "&topic=" + val, function (res) {
+                        sindex = 200;
+                        $('#Result').html(res);
+                    });
+                    //alert(val);
+                    $('#hidearrow').show();
+                    $('#allsubgroup').hide();
+
+                    if (stateofwindow && !stateofwindow.closed) {
+                        stateofwindow.close();
+                    }
+                    //stateofwindow = window.open('/userlearning/viewpdfpopup?pdfurl=' + res.Data.url + '&pages=' + res.Data.pages, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+                    pdfortext = "pdf";
+                    $("#lblsubject").text(subject);
+                    $("#lblsub").text(sub);
+                    $("#lbltopic").text(val);
+                }
+                else if(res.Data.type == "ppt"){
+
+                    $('#hidearrow').hide();
+                    if (stateofwindow && !stateofwindow.closed) {
+                        stateofwindow.close();
+                    }
+                    stateofwindow = window.open('/userlearning/viewpptpopup?ppturl=' + res.Data.url, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+                }
+                else if(res.Data.type == "vid"){
+
+                    $('#hidearrow').hide();
+                    if (stateofwindow && !stateofwindow.closed) {
+                        stateofwindow.close();
+                    }
+                    stateofwindow = window.open('/userlearning/vidview?vidurl=' + res.Data.url, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+                }
+                else if(res.Data.type == "img"){
+                }
+                else{
+                    if (stateofwindow && !stateofwindow.closed) {
+                        stateofwindow.close();
+                    }
+                    stateofwindow = window.open("/userlearning/otherlearning?subject=" + subject + "&subsubject=" +  sub + "&topic=" + val, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+                    pdfortext = "text";
+
+                    $('#hidearrow').show();
+                }
+
+            });
+            //location.href = "/UserLearning/alllearning?QuizName=" + qn + "&subsubject=" + val + "&name=" + uu + "&code=" + cc + "&rank=" + rr;
+        }
+
+        $(document).ready(function () {
+
+            
+            $('#btnup').click(function ()
+            {
+                if(pdfortext == "pdf"){
+                    //element = stateofwindow.document.getElementById("iframeContainer");
+                    stateofwindow.scrollTo(0, sindex);
+                }
+                else{
+                    stateofwindow.scrollTo(0, sindex);
+                }
+                if(sindex >= 200){
+                    sindex = sindex - 200;
+                }
+            });
+            $('#btndown').click(function ()
+            {
+
+                if(pdfortext == "pdf"){
+                    //element = stateofwindow.document.getElementById("iframeContainer");
+                    stateofwindow.scrollTo(0, sindex);
+                }
+                else{
+                    stateofwindow.scrollTo(0, sindex);
+                }
+
+                sindex = sindex + 200;
+            });
+
+            $('#alltopicview').click(function ()
+            {
+                location.reload();
+               
+
+            });
+        })
+    </script>
+}
+<audio id="click_audio" src="~/img/click.mp3"></audio>
+<div class="container">    <!--         --------------------------------------        -->
+    <br /><br />
+
+    <div class="row panel panel-danger" style="background-color:#1e1c1c;opacity:0.95;border-width:10px 10px 10px 10px;border-color:#0094ff;box-shadow:2px 2px 8px 5px #0094ff" id="hidearrow">
+
+        <div class="col-md-8">
+            <a class="a2 green" style="background-color:#006dcc;color:whitesmoke;width:100%;font-family:Tahoma;font-weight:bold;font-size:30px;text-align:center" id="alltopicview" name="alltopicview">Get Back To View All Topics</a>
+            <br /><br /><br />
+            <div id="Result"> </div>
+            <label id="lblsubject" style="box-shadow:0 0 0 #006dcc;color:rgba(48, 77, 147, 0.68);text-shadow:5px 5px 10px black, 0 0 15px blue, 0 0 15px #006dcc;font-size:30px">Subject</label>
+            ---> <label id="lblsub" style="box-shadow:0 0 0 #006dcc;color:rgba(48, 77, 147, 0.68);text-shadow:5px 5px 10px black, 0 0 15px blue, 0 0 15px #006dcc;font-size:30px">Subject</label>
+            ---> <label id="lbltopic" style="box-shadow:0 0 0 #006dcc;color:rgba(48, 77, 147, 0.68);text-shadow:5px 5px 10px black, 0 0 15px blue, 0 0 15px #006dcc;font-size:30px">Subject</label>
+            <br />
+            <label id="blinky" style="box-shadow:0 0 0 #006dcc;color:rgba(48, 77, 147, 0.68);text-shadow:5px 5px 10px black, 0 0 15px blue, 0 0 15px #006dcc;font-size:30px">Details of the topic appeared in top screen</label>
+
+        </div>
+        <div class="col-md-4" style="text-align:center">
+            <br /><br />
+            <br /><br />
+            <a id="btnup" class="arrow_box" href="#"></a>
+
+            <br /><br />
+            <br /><br />
+            <h4 style="text-align:center;color:whitesmoke">Press arrow For scrolling Up or Down </h4>
+            <br /><br />
+            <br /><br />
+
+            <a id="btndown" class="arrow_bottom" href="#"></a>
+        </div>
+    </div>
+
+    <div class="row" id="allsubgroup">
+        <div id="hidearrow1" class="col-md-4 col-lg-4" style="text-align:center">
+            <br /><br />
+            <br /><br />
+            <br /><br />
+            <br /><br />
+            <br /><br />
+            <a id="btnup1" class="arrow_box" href="#"></a>
+
+            <br /><br />
+            <br /><br />
+            <h4 style="text-align:center;color:whitesmoke">Press arrow For scrolling Up or Down </h4>
+            <br /><br />
+            <br /><br />
+
+            <a id="btndown1" class="arrow_bottom" href="#"></a>
+        </div>
+        <div class="col-md-7 col-lg-7">
+
+            @{
+                var g = Model.Where(x => x.pdfURL != null && x.content == null && x.vidURL == null).GroupBy(r => Model.ToList().IndexOf(r) / 3).ToList();
+            }
+            @{
+                if (g.FirstOrDefault() != null)
+                {
+                    <h3 class="panel" style="text-align:center;color:whitesmoke;background-color:#006dcc;font-family:Tahoma">All PDF</h3>
+                }
+            }
+            @foreach (var item in g)
+            {
+                <div class="row container margin-smalla">
+                    @foreach (var Item in item)
+                    {
+                        <div class="col-md-4 customBorder1">
+                            <a onClick="theFunction('@Item.TopicName');" style="text-align:left;color:white;font-size:medium;width:220px;height:120px; background-color:#006dcc;font-family:Tahoma;font-weight:bold" class="a2">
+                                <h4 style="text-align:center;color:whitesmoke"> @Item.TopicName </h4>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <br /> <br />
+            }
+            <br />
+
+            @{
+                g = Model.Where(x => x.content != null && x.vidURL == null && x.pdfURL == null).GroupBy(r => Model.ToList().IndexOf(r) / 3).ToList();
+            }
+            @{
+                if (g.FirstOrDefault() != null)
+                {
+                    <h3 class="panel" style="text-align:center;color:whitesmoke;background-color:#006dcc;font-family:Tahoma">All Word Document</h3>
+                    foreach (var item in g)
+                    {
+                            <div class="row container margin-smalla">
+                                @foreach (var Item in item)
+                                {
+                                    <div class="col-md-4 customBorder1">
+                                        <a onClick="theFunction('@Item.TopicName');" style="text-align:left;color:white;font-size:x-large;width:220px;height:auto; background-color:#006dcc;font-family:Tahoma;font-weight:bold" class="a2">
+                                            <h4 style="text-align:center;color:whitesmoke"> @Item.TopicName </h4>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                            <br /> <br />
+                    }
+                        <br/>
+                }
+            }
+
+            @{
+                g = Model.Where(x => x.vidURL != null && x.pdfURL == null && x.content == null).GroupBy(r => Model.ToList().IndexOf(r) / 3).ToList();
+            }
+
+            @{
+                if (g.FirstOrDefault() != null)
+                {
+                    <h3 class="panel" style="text-align:center;color:whitesmoke;background-color:#006dcc;font-family:Tahoma">All Video</h3>
+                }
+            }
+
+            @foreach (var item in g)
+            {
+                <div class="row container margin-smalla">
+                    @foreach (var Item in item)
+                    {
+                        <div class="col-md-4 customBorder1">
+                            <a onClick="theFunction('@Item.TopicName');" style="text-align:left;color:white;font-size:x-large;width:220px;height:120px; background-color:#006dcc;font-family:Tahoma;font-weight:bold" class="a2">
+                                <h4 style="text-align:center;color:whitesmoke"> @Item.TopicName </h4>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <br /> <br />
+            }
+        </div>
+
+    </div>
+    <!--------------------------------------------------------------->
+ 
+
+
+</div>
+<br /> <br /><br /> <br />

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<KioskNavy.Models.LevelNameModels>
+<style>
+    body {
+        background-color: #ffffff; //<!--- #@ViewBag.backcol; -->
+        //background-image: url("@ViewBag.backimg");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        font-size: @ViewBag.fontsize;
+        color: @ViewBag.fontcol
+    }
+</style>
+@{
+    ViewBag.Title = "Level Index Learning";
+}
+<div class="container">
+    <h4 class="panel" style="text-align:center">Select Level for @ViewBag.Quizname</h4>
+
+    @{
+
+        var g = Model.GroupBy(r => Model.ToList().IndexOf(r) / 3).ToList();
+    }
+
+
+    @foreach (var item in g)
+    {
+        <div class="row container margin-smalla">
+            @foreach (var Item in item)
+            {
+                <div class="col-md-4 customBorder1">
+                    <br />
+                    <div style="text-align:center; font-size:18px;font-style:italic">
+                        <b>@Item.Level</b>
+                    </div>
+                    <table class="table borderless">
+                        <tr>
+                            <td>
+                                <a class="a2 green" href="/UserLearning/allpdf?QuizName=@ViewBag.Quizname">
+                                    <h4 style="text-align:center;color:whitesmoke"> @Item.Level </h4>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            }
+
+        </div>
+        <br /> <br />
+    }
+
+</div>

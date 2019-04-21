@@ -1,0 +1,1070 @@
+﻿@model KioskNavy.Models.QuizQuestionModels
+
+@{
+    ViewBag.Title = "QuestionDetail";
+}
+<style>
+    body {
+        background-color: #778899;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #ffffff;
+    }
+    
+    @@keyframes fades {
+        0%   {opacity: 0.1;}
+        10%  {opacity: 0.2;}
+        20%  {opacity: 0.3;}
+        30% {opacity: 0.4;}
+        40%   {opacity: 0.5;}
+        50%  {opacity: 0.6;}
+        60%  {opacity: 0.7;}
+        70% {opacity: 0.8;}
+        80%  {opacity: 0.9;}
+        100% {opacity: 0.9;}
+    }
+
+    #divqh,#divqm,#divc31,#divc32,#divc33,#divc34 {
+        animation-name: fades;
+        animation-duration: 3s;
+    }
+
+    .intra{
+        transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        animation-delay:0s;
+    }
+    .outtra {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        animation-delay:0s;
+    }
+    .slide-in {
+        animation: slide-in 4.5s forwards;
+        -webkit-animation: slide-in 4.5s forwards;
+    }
+
+    .slide-out {
+        animation: slide-out 4.5s forwards;
+        -webkit-animation: slide-out 4.5s forwards;
+    }
+    
+    @@keyframes slide-in {
+        100% { transform: translateX(0%); }
+    }
+
+    @@-webkit-keyframes slide-in {
+        100% { -webkit-transform: translateX(0%); }
+    }
+    
+    @@keyframes slide-out {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-100%); }
+    }
+
+    @@-webkit-keyframes slide-out {
+        0% { -webkit-transform: translateX(0%); }
+        100% { -webkit-transform: translateX(-100%); }
+    }
+</style>
+@section Scripts{
+<script type="text/javascript">
+        var idleTime = 0;
+        $(document).ready(function () {
+            //Increment the idle time counter every minute.
+            var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+            //Zero the idle timer on mouse movement.
+            $(this).mousemove(function (e) {
+                idleTime = 0;
+            });
+            $(this).keypress(function (e) {
+                idleTime = 0;
+            });
+        });
+
+        function timerIncrement() {
+            idleTime = idleTime + 1;
+            if (idleTime > 10) { // 10 minutes
+                //window.location.reload();
+                url = "/home";
+                location.href = url;
+            }
+        }
+</script>
+    <script>
+        var background = ['url(../../img/60.jpg)',
+        'url(../../img/61.jpg)',
+        'url(../../img/62.jpg)',
+        'url(../../img/63.jpg)',
+        'url(../../img/64.jpg)',
+        'url(../../img/65.jpg)',
+        'url(../../img/66.jpg)',
+        'url(../../img/67.jpg)'];
+
+        PickRandomBackground();
+        function PickRandomBackground() {
+            var index = Math.floor(Math.random() * 5);
+            $("body").css("background-image", background[index]);
+        }
+        var c1 = document.getElementById('divc31');
+        c1.style.display = 'none';
+        var c2 = document.getElementById('divc32');
+        c2.style.display = 'none';
+        var c3 = document.getElementById('divc33');
+        c3.style.display = 'none';
+        var c4 = document.getElementById('divc34');
+        c4.style.display = 'none';
+
+        var prev = @Html.Raw(Json.Encode((Model.QuestionNumber).ToString()));
+        var qname = @Html.Raw(Json.Encode(Model.QuizName));
+        var level = @Html.Raw(Json.Encode(Model.Level));
+        var sub = @Html.Raw(Json.Encode(ViewBag.SubSubject));
+
+        var uu =   @Html.Raw(Json.Encode(ViewBag.names));
+        var cc =  @Html.Raw(Json.Encode(ViewBag.code));
+        var rn = @Html.Raw(Json.Encode(ViewBag.rank));
+
+        var furvidexist =  @Html.Raw(Json.Encode(Model.furthurInfoVidURL));
+        var imageexist = @Html.Raw(Json.Encode(Model.furthurInfoimageURL));
+        var stateofwindow;
+        var wronganswerwindow;
+        var wrightanswerwindow;
+        var commonwindow =  window.open('/user/QuestionPopup?qname=' + qname + "&subsubject=" + sub + "&level=" + level + "&quesno=" + prev + "&user=" + uu + "&code=" + cc +"&rank=" + rn, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+
+        window.onunload = function () {
+            if (commonwindow && !commonwindow.closed) {
+                commonwindow.close();
+                window.open('/user/commonpage', 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+            }
+            if (stateofwindow && !stateofwindow.closed) {
+                stateofwindow.close();
+                window.open('/user/commonpage', 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+            }
+            if (wronganswerwindow && !wronganswerwindow.closed) {
+                wronganswerwindow.close();
+            }
+            if (wrightanswerwindow && !wrightanswerwindow.closed) {
+                wrightanswerwindow.close();
+            }
+        };
+        //var selectedRadio = "";
+        $(document).ready(function () {
+            $('#atest').show();
+            $('#navgoback').hide();
+            $('#navsubjects').show();
+            $("#navchoice").attr("href","/user/choice?Name=" + uu + "&code=" + cc + "&rank=" + rn);
+            $("#navsubjects").attr("href","/user/Index?Name=" + uu + "&code=" + cc + "&rank=" + rn);
+
+            var x = document.getElementById('hides');
+            x.style.display = 'none';secondHide
+            var x = document.getElementById('secondHide');
+            x.style.display = 'none';
+            //window.onbeforeunload = function() { return "Your work will be lost."; };
+
+            $("#print").hide();
+            //$('#myLink').hide();
+            $('#needHelp').hide();
+            $('#learnMore').hide();
+            $('#nextQuestion').hide();
+
+            $('#printcertificate').click(function(){
+                printElement(document.getElementById("printThis"));
+            })
+
+            function printElement(elem) {
+                var domClone = elem.cloneNode(true);
+                var $printSection = document.getElementById("printSection");
+                if (!$printSection) {
+                    var $printSection = document.createElement("div");
+                    $printSection.id = "printSection";
+                    document.body.appendChild($printSection);
+                }
+
+                $printSection.innerHTML = "";
+                $printSection.appendChild(domClone);
+                window.print();
+            }
+            /////////////////////////////////////////////
+
+            var second_attempt_flag = 0;
+            var qn;
+            // change navbar choice window
+
+            var printeligible = 0;
+            $.post("@Url.Action("gettotalq", "user")?id=" + qname + "&code=" +  cc + "&level=" + level + "&subsubject=" + sub, function (res) {
+                //alert(res.Data.rand);
+                if(res.Data.level == "true"){
+                    $("#print").show();
+                }
+                if(res.Data.equals == "true"){
+                    printeligible = 1;
+                    $("#success_audio").get(0).play();
+                    var myModal = $("#certificateModal").modal('show');
+                    $('#certificateModal').on('hidden.bs.modal', function () {
+                        certificatesuccessmodal();
+                        return false;
+                    })
+                    return false;
+                }
+                else{
+                    certificatesuccessmodal();
+                    return false;
+                }
+            });
+            function certificatesuccessmodal(){
+
+                $('#print').click(function () {
+                    var myModal = $("#certificateModal").modal('show');
+                    return false;
+                })
+                $('#endSession').click(function(){
+                    progressModal
+                    var myModal = $("#progressModal").modal('show');
+                    return false;
+                })
+                $("input[name='Choice']").change(function () {
+                    var selectedRadio = $("input[name='Choice']:checked").val();
+                    $("#txt1").val(selectedRadio);
+                    //alert(selectedRadio);
+                });
+                var myvar;
+                var correct = '3';
+                function correct_answer(d,e){
+                    wrightanswerwindow =  window.open('/user/rightanswer?qname=' + qname + "&subsubject=" + sub + "&level=" + level + "&quesno=" + prev + "&user=" + uu + "&code=" + cc +"&rank=" + rn, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+                    var colorval = 1;
+                    var myset = setInterval(function() {
+                        if(colorval == 1){
+                            colorval = 2;
+                            $(d).css({"background-color" : "#87CEFA"})
+                        }
+                        else{
+                            colorval = 1;
+                            $(d).css({"background-color" : "#000080"})
+                        }
+                    }, 200);
+                    setTimeout(function() {
+                        $(d).css({"background-color" : "#000080"})
+                        window.clearInterval(myset);
+                    }, 2000);
+                    ////////////////////////////////////
+                    var flag_val = $('#txtaudiotest').text();
+                    if(flag_val != "1"){
+                        $("#correct_audio").get(0).play();
+                    }
+                    if(correct != "0"){
+                        correct = '1';
+                    }
+                    else{
+                        second_attempt_flag = 1;
+                    }
+                    $('#learnMore').show();
+                    ////////////////////////
+                    var rightcolorval = 1;
+                    var myset2 = setInterval(function() {
+                        if(rightcolorval == 1){
+                            rightcolorval = 2;
+                            $('#learnMore').css({"background-color" : "#303030"});
+                            $('#nextQuestion').css({"background-color" : "#303030"});
+                        }
+                        else{
+                            rightcolorval = 1;
+                            $('#learnMore').css({"background-color" : '#FFFF00'});
+                            $('#nextQuestion').css({"background-color" : '#FFFF00'});
+                        }
+                    }, 500);
+                    setTimeout(function() {
+                        $('#learnMore').css({"background-color" : "#006dcc"});
+                        $('#nextQuestion').css({"background-color" : "#006dcc"});
+                        window.clearInterval(myset2);
+                    }, 3000);
+                    ////////////////////////
+                    $('#nextQuestion').show();
+                    ////////////////////////////////////////////////////////
+                    $('#learnMore').text('Learn More');
+                    $('#condition').text('Correct Answer. Go to next Question or End this session');
+                    //var myModal = $("#successModal").modal('show');
+                }
+                function wronganswer(d,e){wronganswerwindow
+                    wronganswerwindow =  window.open('/user/wronganswer?qname=' + qname + "&subsubject=" + sub + "&level=" + level + "&quesno=" + prev + "&user=" + uu + "&code=" + cc +"&rank=" + rn, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+                    //////////////////////////
+                    var colorval = 1;
+                    var myset = setInterval(function() {
+                        if(colorval == 1){
+                            colorval = 2;
+                            $(d).css({"background-color" : "red"})
+                        }
+                        else{
+                            colorval = 1;
+                            $(d).css({"background-color" : "#006dcc"})
+                        }
+                    }, 200);
+                    setTimeout(function() {
+                        $(d).css({"background-color" : "red"});
+                        $(e).css({"color" : "red"});
+                        $(e).text('X');
+                        window.clearInterval(myset);
+                    }, 2000);
+                    //////////////////////////
+                    var flag_val = $('#txtaudiotest').text();
+                    if(flag_val != "1"){
+                        $("#wrong_audio").get(0).play();
+                    }
+                    $('#learnMore').show();
+                    ////////////////////////
+                    var wrongcolorval = 1;
+                    var myset1 = setInterval(function() {
+                        if(wrongcolorval == 1){
+                            wrongcolorval = 2;
+                            $('#learnMore').css({"background-color" : "#87CEFA"})
+                        }
+                        else{
+                            wrongcolorval = 1;
+                            $('#learnMore').css({"background-color" : '#000080'})
+                        }
+                    }, 500);
+
+                    ////////////////////////
+                    correct = '0';
+                    $('#learnMore').text('Know More');
+                    $('#condition').text('Wrong Answer.' + 'Click Help and try again');
+                    //var myModal = $("#wrongModal").modal('show');
+                }
+                $('#choice1,#choiceA').click(function () {
+                    //$("#myLink").show();
+                    var txt = @Html.Raw(Json.Encode(Model.choic1));//$('#lblchoice1').text();
+                    var answer = @Html.Raw(Json.Encode(Model.answer));
+                    var hint = @Html.Raw(Json.Encode(Model.hint1));
+
+                    if(answer == txt){
+                        correct_answer('#choice1','#choiceA');
+                    }
+                    else{
+                        wronganswer('#choice1','#choiceA');
+                    }
+                    return false;
+                })
+                $('#choice2,#choiceB').click(function () {
+                    //$("#myLink").show();
+                    var txt = @Html.Raw(Json.Encode(Model.choic2)); //$('#lblchoice2').text();
+                    var answer = @Html.Raw(Json.Encode(Model.answer));
+                    var hint = @Html.Raw(Json.Encode(Model.hint1));
+
+                    if(answer == txt){
+                        correct_answer('#choice2','#choiceB');
+                    }
+                    else{
+                        wronganswer('#choice2','#choiceB');
+                    }
+                    return false;
+                })
+                $('#choice3,#choiceC').click(function () {
+                    //$("#myLink").show();
+                    var txt = @Html.Raw(Json.Encode(Model.choic3)); //$('#lblchoice3').text();
+                    var answer = @Html.Raw(Json.Encode(Model.answer));
+                    var hint = @Html.Raw(Json.Encode(Model.hint1));
+                    if(answer == txt){
+                        correct_answer('#choice3','#choiceC');
+                    }
+                    else{
+                        wronganswer('#choice3','#choiceC');
+                    }
+                    return false;
+                })
+                $('#choice4,#choiceD').click(function () {
+                    //$("#myLink").show();
+                    var txt = @Html.Raw(Json.Encode(Model.choic4)); //$('#lblchoice4').text();
+                    var answer = @Html.Raw(Json.Encode(Model.answer));
+                    var hint = @Html.Raw(Json.Encode(Model.hint1));
+
+                    if(answer == txt){
+                        correct_answer('#choice4','#choiceD');
+                    }
+                    else{
+                        wronganswer('#choice4','#choiceD');
+                    }
+                    return false;
+                })
+
+
+                //////////////////////////////////////////
+                var muteall = 0;
+                var QuesSoundMute = 0;
+
+                var mu = 1;
+                $('#SecondVidMute').click(function () {
+                    var vid = stateofwindow.document.getElementById("myVid222");
+                    if(mu == 1){
+                        vid.muted = true;
+                        mu =2;
+                    }
+                    else{
+                        vid.muted = false;
+                        mu=1;
+                    }
+                    return false;
+                });
+                $('#SecondVidStop').click(function () {
+                    var vid = stateofwindow.document.getElementById("myVid222");
+                    if (vid.paused) {
+                        vid.play();
+                        //button.textContent = "||";
+                    } else {
+                        vid.pause();
+                        //button.textContent = ">";
+                    }
+                    return false;
+                });
+
+                function helpwindow(){
+                    if(furvidexist != null){
+                        //with video
+                        $('#secondHide').show();
+                        stateofwindow = window.open('/user/QuestionKnowMore?qname=' + qname + "&subsubject=" + sub + "&level=" + level + "&quesno=" + prev, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+                    }
+                    else if(imageexist != null){
+                        stateofwindow = window.open('/user/KnowMoreWitImage?qname=' + qname + "&subsubject=" + sub + "&level=" + level + "&quesno=" + prev, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+                    }
+                    else{
+                        stateofwindow = window.open('/user/KnowMoreWithoutvid?qname=' + qname + "&subsubject=" + sub + "&level=" + level + "&quesno=" + prev, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+                    }
+                    var myModal = $("#knowmoreModal").modal('show');
+                }
+                /////////////////////////////// knowMoremodal  stopQuesSound
+                $('#needHelp').click(function () {
+                    helpwindow();
+                    return false;
+                })
+
+                $('#learnMore').click(function () {
+                    helpwindow();
+                    return false;
+                })
+                $('#knowMoremodal').click(function () {
+                    helpwindow();
+                    return false;
+                })
+                $('#learnMoremodal').click(function () {
+                    helpwindow();
+                    return false;
+                })
+
+                function nextQuestion(){
+                    $("#click_audio").get(0).play();
+                    $.post("@Url.Action("getrandom", "user")?id=" + qname + "&level=" + level + "&code=" +  cc + "&curqn=" + prev + "&ans=" + correct + "&subsubject=" + sub, function (res) {
+                        qn = res.Data.rand;
+                        url = '/user/questiondetail' + "?choice=" + correct + "&level=" + level + "&id3=" + qname +"&subsubject=" + sub  + "&id1=" + qn + "&prev=" + prev + "&secondAttempt=" + second_attempt_flag + "&mname=" + uu + "&mcode=" + cc + "&mrank=" + rn;
+                        location.href = url;
+                    });
+                }
+
+                $('#nextQuestion').click(function () {
+                    nextQuestion();
+                    return false;
+                })
+                /*$('#nextQuestionmodal').click(function () {
+                    nextQuestion();
+                    return false;
+                })*/
+                ////////////////////////////
+                function aud_play(nexturl){
+                    setTimeout(function() {
+                        $("#audio_player").attr("src",nexturl);
+                        var aud = $('#audio_player').get(0);
+                        aud.play();
+                    }, 1000);
+                }
+                /////////////////////////////
+                var ques = @Html.Raw(Json.Encode(Model.Question));
+                var qHigh = @Html.Raw(Json.Encode(Model.QuestionHighlighted));
+                if(qHigh != null){
+                    var newUrl = '@Url.Action("PlayTextArea", "user")?text='+ ques + qHigh;
+                    //aud_play(newUrl);
+                    allaud(newUrl);
+
+                }
+                else{
+                    var newUrl = '@Url.Action("PlayTextArea", "user")?text='+ ques;
+                    //aud_play(newUrl);
+                    allaud(newUrl);
+                }
+                function showallc(){
+                    $('#divc31').show();
+                    $('#divc32').show();
+                    $('#divc33').show();
+                    $('#divc34').show();
+                }
+                function allaud(newUrl){
+                    $("#audio_player").attr("src",newUrl);
+                    //var audio = document.getElementById("audio_player");
+                    var aud = $('#audio_player').get(0);
+                                  
+                    var flag_val = $('#txtaudiotest').text();
+                    if(flag_val != "1"){
+                        aud.play();
+                    }
+                    else{
+                        showallc();
+                    }
+                    var audc1;
+                    aud.addEventListener("ended", function() {
+                        var choi1 = @Html.Raw(Json.Encode(Model.choic1));
+                        newUrl = '@Url.Action("PlayTextArea", "user")?text='+ choi1;
+
+                        $('#divc31').show();
+                        $("#audio_player_c1").attr("src",newUrl);
+                        audc1 = $('#audio_player_c1').get(0);
+                        flag_val = $('#txtaudiotest').text();
+                        if(flag_val != "1"){
+                            audc1.play();
+                        }
+                        else{
+                            showallc();
+                        }
+                        var audc2;
+                        audc1.addEventListener("ended", function() {
+                            var choi1 = @Html.Raw(Json.Encode(Model.choic2));
+                            newUrl = '@Url.Action("PlayTextArea", "user")?text='+ choi1;
+
+                            $('#divc32').show();
+                            $("#audio_player_c2").attr("src",newUrl);
+                            audc2 = $('#audio_player_c2').get(0);
+
+                            flag_val = $('#txtaudiotest').text();
+                            if(flag_val != "1"){
+                                audc2.play();
+                            }                           
+                            else{
+                                showallc();
+                            }
+                            var audc3;
+                            audc2.addEventListener("ended", function() {
+                                var choi1 = @Html.Raw(Json.Encode(Model.choic3));
+                                newUrl = '@Url.Action("PlayTextArea", "user")?text='+ choi1;
+
+                                $('#divc33').show();
+                                $("#audio_player_c3").attr("src",newUrl);
+                                audc3 = $('#audio_player_c3').get(0);
+                                
+                                flag_val = $('#txtaudiotest').text();
+                                if(flag_val != "1"){
+                                    audc3.play();
+                                }  
+                                else{
+                                    showallc();
+                                }
+                                var audc4;
+                                audc3.addEventListener("ended", function() {
+                                    var choi1 = @Html.Raw(Json.Encode(Model.choic4));
+                                    newUrl = '@Url.Action("PlayTextArea", "user")?text='+ choi1;
+
+                                    $('#divc34').show();
+                                    $("#audio_player_c4").attr("src",newUrl);
+                                    audc4 = $('#audio_player_c4').get(0);
+
+                                    flag_val = $('#txtaudiotest').text();
+                                    if(flag_val != "1"){
+                                        audc4.play();
+                                    } 
+                                    else{
+                                        showallc();
+                                    }
+                                    
+                                })
+
+                            })
+                        })
+                        
+                    });
+                }
+                ////////////////////////////////////////////////////////
+                var URLchoic1 = @Html.Raw(Json.Encode(Model.URLchoic1));
+                var vidurl = @Html.Raw(Json.Encode(Model.vidURL));
+                var imgurl = @Html.Raw(Json.Encode(Model.imageURL));
+
+
+                ///////////////////////////
+                var atest_flag = 1;
+                $('#atest').click(function () {
+                    var aud = $('#audio_player').get(0);
+                    aud.muted = true;
+                    if(atest_flag == 1){
+                        $('#txtaudiotest').text("1");
+                        atest_flag = 2;
+                    }
+                    else{
+                        $('#txtaudiotest').text("0");
+                        atest_flag = 1;
+                    }
+                    return false;
+                })
+            }
+            //////////////////////
+            $(window).load(function(){
+                $('#preloader').fadeOut('slow',function(){$(this).remove();});
+            });
+        })
+
+
+    </script>
+    <script type="text/javascript">
+        //var video112 = $("#myVid22");
+        document.onload = function(){
+            var elem = document.getElementById("myVid22");
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            }
+        }
+    </script>
+}
+<div id="preloader"></div>
+<audio id="click_audio" src="~/img/ding.mp3"></audio>
+<audio id="success_audio" src="~/img/success.mp3" ></audio>
+<audio id="correct_audio" src="~/img/correct.mp3" ></audio>
+<audio id="wrong_audio" src="~/img/wrong.mp3" ></audio>
+
+<div id="divAudio_Player" class="hidden">
+    <audio id="audio_player">
+        <source id="audio_player_wav" src="@Url.Action(" PlayTextArea", "user" ,new { text="type something in first" })" type="audio/mp3" />
+    </audio>
+    <input id="txtaudiotest" value="0" />
+</div>
+
+<div id="divAudio_Player_c1" class="hidden">
+    <audio id="audio_player_c1">
+        <source id="audio_player_wav" src="@Url.Action(" PlayTextArea", "user" ,new { text="type something in first" })" type="audio/mp3" />
+    </audio>
+    <input id="txtaudiotestc1" value="0" />
+</div>
+
+<div id="divAudio_Player_c2" class="hidden">
+    <audio id="audio_player_c2">
+        <source id="audio_player_wav" src="@Url.Action(" PlayTextArea", "user" ,new { text="type something in first" })" type="audio/mp3" />
+    </audio>
+    <input id="txtaudiotestc2" value="0" />
+</div>
+
+<div id="divAudio_Player_c3" class="hidden">
+    <audio id="audio_player_c3">
+        <source id="audio_player_wav" src="@Url.Action(" PlayTextArea", "user" ,new { text="type something in first" })" type="audio/mp3" />
+    </audio>
+    <input id="txtaudiotestc3" value="0" />
+</div>
+
+<div id="divAudio_Player_c4" class="hidden">
+    <audio id="audio_player_c4">
+        <source id="audio_player_wav" src="@Url.Action(" PlayTextArea", "user" ,new { text="type something in first" })" type="audio/mp3" />
+    </audio>
+    <input id="txtaudiotestc4" value="0" />
+</div>
+
+<div class="container">
+
+    <div class="example1">
+        <h6 style="color:whitesmoke;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"> Learner: @ViewBag.rank @ViewBag.names  </h6>
+    </div>
+
+    <div id="divqm" class="panel panel-primary" style="background:#337ab7;;opacity:0.95">
+        <h3 style="color:azure;text-align:left;font-family:Tahoma;font-weight:bold">&nbsp;@Model.Question </h3>
+    </div>
+    @{
+        if (Model.QuestionHighlighted != null)
+        {
+            <div id="divqh" class="btn-block panel panel-default" style="background:#006dcc;opacity:0.9">
+                <h2 style="color:whitesmoke;text-align:center;font-family:Tahoma;font-weight:bolder">@Model.QuestionHighlighted </h2>
+            </div>
+        }
+    }
+
+    @{
+        if (Model.URLchoic1 != null)
+        {
+            <div class="row">
+                <div class="col-md-5" id="divc31">
+                    <div class="wrapper fade-in" style="text-align:left;max-width:100%;max-height:100%;">
+                        <img id="c1Img" src="@Url.Content(Model.URLchoic1)" alt="@Model.Question" width="200" height="100" />
+                    </div>
+                    <br />
+                    <div  class="row panel panel-default" style="background-color:#337ab7;opacity:0.95;text-align:left">
+                        <button id="choiceA" name="choiceA" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>A</b></button>
+                        <button id="choice1" name="choice1" class="a2 green typewriter" style="text-align:left;width:451px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bold"> @Model.choic1</button>
+                    </div>
+                 </div>
+                 <div class="col-md-2"></div>
+                <div class="col-md-5" id="divc32">
+                    <div class="wrapper fade-in" style="text-align:left;max-width:100%;max-height:100%;">
+                        <img id="c2Img" src="@Url.Content(Model.URLchoic2)" alt="@Model.Question" width="200" height="100" />
+                    </div>
+                    <br />
+                    <div  class="row panel panel-default" style="background-color:#337ab7;opacity:0.95;text-align:left">
+                        <button id="choiceB" name="choiceB" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>B</b></button>
+                        <button id="choice2" name="choice2" class="a2 green" style="text-align:left;width:451px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bold"> @Model.choic2</button>
+                    </div>
+                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5" id="divc33">
+                    <div class="wrapper fade-in" style="text-align:left;max-width:100%;max-height:100%;">
+                        <img id="c3Img"  src="@Url.Content(Model.URLchoic3)" alt="@Model.Question" width="200" height="100" />
+                    </div>
+                    <br/>
+                    <div  class="row panel panel-default" style="background-color:#337ab7;opacity:0.9;text-align:left">
+                        <button id="choiceC" name="choiceC" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>C</b></button>
+                        <button id="choice3" name="choice3" class="a2 green" style="text-align:left;width:451px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic3</button>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5" id="divc34">
+                    <div class="wrapper fade-in" style="text-align:left;max-width:100%;max-height:100%;">
+                        <img id="c4Img" src="@Url.Content(Model.URLchoic4)" alt="@Model.Question" width="200" height="100" />
+                    </div>
+                    <br />
+                    <div  class="row panel panel-default" style="background-color:#337ab7;opacity:0.9;text-align:left">
+                        <button id="choiceD" name="choiceD" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>D</b></button>
+                        <button id="choice4" name="choice4" class="a2 green" style="text-align:left;width:451px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic4</button>
+                    </div>
+                 </div>
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-5">
+                    @{
+                        if (Model.vidURL != null)
+                        {
+                            <div class="wrapper" style="text-align:center;max-width:100%;max-height:100%;">
+                                <video width="500" height="300" id="myVid22" controls>
+                                    <source src="@Url.Content(Model.vidURL)" id="video_here">
+                                    Your browser does not support HTML5 video.
+                                </video>
+                            </div>
+                        }
+                    }
+                    @{
+                        if (Model.imageURL != null)
+                        {
+                            <div class="wrapper fade-in" style="text-align:center;max-width:100%;max-height:100%;">
+                                <img id="myImg" src="@Url.Content(Model.imageURL)" alt="@Model.Question" width="500" height="300" />
+                            </div>
+                        }
+                    }
+                </div>
+                @{
+                    if (Model.vidURL != null || Model.imageURL != null)
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">                            
+                        <br />
+                        <div class="wrapper fade-in">
+                            <div id="divc31" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9" >
+                                @{
+                                    if (Model.choic1 != null)
+                                    {
+                                        <button id="choiceA" name="choiceA" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:24px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>A</b></button>
+                                        <button id="choice1" name="choice1" class="a2 green" style="text-align:left;width:554px;height:auto;font-size:24px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic1</button>                                
+                                    }
+                                }
+             
+                             </div>                     
+                            <div id="divc32" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                    @{
+                                        if (Model.choic2 != null)
+                                        {
+                                            <button id="choiceB" name="choiceB" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:24px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>B</b></button>
+                                            <button id="choice2" name="choice2" class="a2 green" style="text-align:left;width:554px;height:auto;font-size:24px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic2</button>
+                                        }
+                                    }           
+                            </div>                  
+                            <div id="divc33" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">    
+                                    @{
+                                        if (Model.choic3 != null)
+                                        {
+                                            <button id="choiceC" name="choiceC" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:24px;font-family:Arial, Helvetica, sans-serif;font-weight:bold"><b>C</b></button>
+                                            <button id="choice3" name="choice3" class="a2 green" style="text-align:left;width:554px;height:auto;font-size:24px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder">@Model.choic3</button>
+                                        }
+                                    }
+    
+                            </div>
+                 
+                            <div id="divc34"  class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                @{
+                                    if (Model.choic4 != null)
+                                    {
+                                        <button id="choiceD" name="choiceD" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:24px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>D</b></button>
+                                        <button id="choice4" name="choice4" class="a2 green" style="text-align:left;width:554px;height:auto;font-size:24px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic4</button>
+                                    }
+                                }
+                            </div>    
+                        
+                        </div>
+                    </div>
+                }
+                else
+                {
+                  <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10 col-md-push-1">                            
+                        <br />
+                        <div class="wrapper">
+                            <div id="divc31"  class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                @{
+                                    if (Model.choic1 != null)
+                                    {
+                                        <button id="choiceA" name="choiceA" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>A</b></button>
+                                        <button id="choice1" name="choice1" class="a2 green" style="text-align:left;width:991px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic1</button>
+                                    }
+                                }
+                            </div>
+
+                            <div id="divc32"  class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                @{
+                                    if (Model.choic2 != null)
+                                    {
+                                        <button id="choiceB" name="choiceB" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>B</b></button>
+                                        <button id="choice2" name="choice2" class="a2 green" style="text-align:left;width:991px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic2</button>
+                                    }
+                                }
+                            </div>
+     
+                            <div id="divc33"  class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                @{
+                                    if (Model.choic3 != null)
+                                    {
+                                        <button id="choiceC" name="choiceC" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>C</b></button>
+                                        <button id="choice3" name="choice3" class="a2 green" style="text-align:left;width:991px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic3</button>
+                                    }
+                                }
+                            </div>
+           
+                            <div id="divc34"  class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                 @{
+                                     if (Model.choic4 != null)
+                                     {
+                                        <button id="choiceD" name="choiceD" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder"><b>D</b></button>
+                                        <button id="choice4" name="choice4" class="a2 green" style="text-align:left;width:991px;height:auto;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bolder">@Model.choic4</button>
+                                    }
+                                }
+                            </div>                  
+                        
+                        </div>
+                    </div>
+                 </div>
+                }
+  
+            }
+            </div>
+        }
+    }
+    <div class="row" id="hides">
+        <div class="col-md-12 well" style="text-align:center">
+            <label  style="font-size:large;font-family:Arial, Helvetica, sans-serif;color:red" id="condition"><span></span></label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3" style="text-align:center">
+               <a style="width:200px;font-size:32px;height:105px;font-family:Arial, Helvetica, sans-serif;font-weight:bold" class="a2 green" href="/user/QuestionDetail" id="endSession">View Progress</a>
+        </div>
+        <div class="col-md-3" style="text-align:center">
+            <a style="width:200px;font-size:32px;height:105px;font-family:Arial, Helvetica, sans-serif;font-weight:bold" class="a2 green" href="/user/QuestionDetail" id="print">Print Certificate</a>
+        </div>
+        <div class="col-md-3" style="text-align:center">
+            <a style="width:200px;font-size:35px;height:105px;font-family:Arial, Helvetica, sans-serif;font-weight:bold" name="print" class="a2 green" href="" id="learnMore">Know Details</a>
+        </div>
+        <div class="col-md-3" style="text-align:center">
+            <a style="width:200px;font-size:32px;height:105px;font-family:Arial, Helvetica, sans-serif;font-weight:bold" class="a2 green" href="/user/QuestionDetail" id="nextQuestion">Next Question</a>
+        </div>
+    </div>
+    <br/>
+
+    <div class="row" id="secondHide">
+        <div class="col-md-6" style="text-align:center">
+            <a  style="width:200px;font-size:medium;height:50px" class="a2 green" href="/user/QuestionDetail" id="SecondVidStop">Pause / Start</a>
+        </div>
+        <div class="col-md-6" style="text-align:center">
+            <a style="width:200px;font-size:medium;height:50px" name="print" class="a2 green" href="" id="SecondVidMute">Mute / Unmute</a>
+        </div>
+    </div>
+ </div>
+
+<input type="hidden" id="txt1" />
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+</div>
+
+<!--Progress Modal -->
+<div class="modal fade" id="progressModal" role="dialog">
+    <div class="modal-dialog" style="width:35%;height:60%;margin:auto;background-image:url('/img/logo.jpg');background-size:cover;background-repeat:no-repeat">
+        <!-- Modal content-->
+        <div style="background-color:#808080" id="printThisprogress" class="modal-content">
+            <div style="background-color:#808080;color:whitesmoke" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 style="text-align:center;color:greenyellow;font-family:Arial, Helvetica, sans-serif;font-weight:bold">Progress / Achievment </h4>
+            </div>
+
+            <div class="modal-body" style="background-color:#006dcc">
+                <h4 style="text-align:left;color:yellow;font-family:Arial, Helvetica, sans-serif;font-weight:bold;text-align:left"> Subject :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="color:aqua;text-align:right"> @Model.QuizName </font> </h4>
+                <h4 style="text-align:left;color:yellow;font-family:Arial, Helvetica, sans-serif;font-weight:bold;text-align:left"> Sub Subject :&nbsp;&nbsp; <font style="color:aqua;text-align:right">@Model.SubSubject</font> </h4>
+                <h4 style="text-align:left;color:yellow;font-family:Arial, Helvetica, sans-serif;font-weight:bold;text-align:left"> Level :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:aqua;text-align:right"> @Model.Level </font> </h4>
+                <br/>
+                <h4 style="text-align:left;font-weight:bold;color:yellow;font-family:Arial, Helvetica, sans-serif;font-weight:bold"> Name :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:lavender;text-align:right"> @ViewBag.names </font> </h4>
+                <h4 style="text-align:left;font-weight:bold;color:yellow;font-family:Arial, Helvetica, sans-serif;font-weight:bold"> Rank :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:lavender;text-align:right"> @ViewBag.rank </font> </h4>
+                <h4 style="text-align:left;font-weight:bold;color:yellow;font-family:Arial, Helvetica, sans-serif;font-weight:bold"> P/O no :&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:lavender;text-align:right"> @ViewBag.code </font> </h4>
+                <br/>
+                <h4 style="text-align:left;color:yellow;font-family:Arial, Helvetica, sans-serif;font-weight:bold"> Answered in 1st Attempt : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:springgreen;text-align:right"> @ViewBag.quescompleted</font> </h4>
+                <h4 style="text-align:left;color:yellow;font-family:Arial, Helvetica, sans-serif;font-weight:bold"> Answered in Multiple Attempt :&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:springgreen;text-align:right"> @ViewBag.secondAttemp</font></h4>
+
+            </div>
+            <div class="modal-footer" style="height:60px">
+                <h5 style="text-align:center;font-family:Arial, Helvetica, sans-serif;font-weight:bold"> DNT, NHQ</h5>
+            </div>
+            <div class="row" style="text-align:center">
+                <a class="a2 green" href="~/Home/Index" style="width:220px;font-size:30px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">End Session</a>
+                <button type="button" class="a2 green" style="width:220px;font-size:30px;font-family:Tahoma;font-weight:bold" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--certificate Modal -->
+<div class="modal fade" id="certificateModal" role="dialog" style="margin:0 !important">
+    <div  class="modal-dialog" style="width:25%;height:60%;margin:auto" >
+        <!-- Modal content-->
+        <div id="printThis" class="modal-content" style="margin:0 !important;padding:0 !important">
+            <div class="row" style="text-align:center">
+                <img src="~/img/logo.png" height="32" width="32" />
+            </div>
+            <div class="modal-header">               
+                    <h4 style="text-align:center;font-family:'Lucida Console';margin:0 !important"><b>Result of Knowledge Bay Professional test </b></h4>                           
+             </div>
+            <div class="modal-body">
+                <h4 style="text-align:left;font-family:'Lucida Console'"> <b><u>Name: @ViewBag.names</u></b></h4>
+                <h4 style="text-align:left;font-family:'Lucida Console'"> Rank: @ViewBag.rank </h4>
+                <h4 style="text-align:left;font-family:'Lucida Console'"> P/O No: @ViewBag.code</h4> 
+                <br />
+                <h4 style="font-family:'Lucida Console'"> <b>Subject: <u>@Model.QuizName</u></b> </h4>
+                <h4 style="font-family:'Lucida Console'"><b>Level : @Model.Level</b></h4>
+                <br/>
+                <h4 class="modal-title" style="text-align:center;font-family:'Lucida Console'"><b>Congratulations on </b></h4>
+                <h4 class="modal-title" style="text-align:center;font-family:'Lucida Console'">completing</h4>
+                <h4 class="modal-title" style="text-align:center;font-family:'Lucida Console'">@ViewBag.quescompleted Questions</h4>
+                <hr/>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h5 style="text-align:left;font-family:'Lucida Console'"><b>Date: @DateTime.Now.ToShortDateString()</b></h5>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 style="text-align:left;font-family:'Lucida Console'"><b>Arranged by: DNT, NHQ</b></h4>
+                    </div>
+                </div>
+           
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-simple" id="printcertificate">Print</button>
+            <button type="button" class="btn btn-danger btn-simple" data-dismiss="modal">Close</button>
+        </div>
+
+    </div>
+</div>
+
+<!--know more Modal -->
+<div class="modal fade" id="knowmoreModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div style="background-color:#006dcc;color:whitesmoke" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <br/>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 class="modal-title" style="text-align:center;color:whitesmoke">Details @Model.QuestionHighlighted 
+                         </h3>
+                    </div>
+                    <div class="col-md-4" style="text-align:right">
+                        <button type="button" class="a2 green" id="closeNext" style="background-color:red;width:200px;height:40px;text-align:center;font-size:larger;font-family:Tahoma" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+       
+            </div>
+            <div style="" class="modal-body">             
+                @{
+                    if (Model.furthurInfoVidURL != null && Model.furthurInfoimageURL != null)
+                    {
+                        <div class="row">
+                            <div class="col-md-12" style="background-color:#ffffff">
+                                <pre style="white-space:pre-line;justify-content:space-around;background-color:#ffffff">
+                                    <span class="inner-pre" style="font-size: 20px;font-family:Tahoma;color:black;opacity:0.9;background-color:#ffffff;text-align:unset"> 
+                                        @Model.furthurInfo 
+                                    </span> 
+                                 </pre>
+                            </div>
+                        </div>
+                    }
+                    else if (Model.furthurInfoimageURL != null)
+                    {
+                        <div class="row">
+                            <div class="col-md-12" style="background-color:#ffffff">
+                                <pre style="white-space:pre-line;justify-content:space-around;background-color:#ffffff">
+                                <span class="inner-pre" style="font-size: 20px;font-family:Tahoma;color:black;opacity:0.9;background-color:#ffffff;text-align:unset"> 
+                                        @Model.furthurInfo 
+                                    </span> 
+                                 </pre>
+                            </div>
+                        </div>
+                    }
+                    else if (Model.furthurInfoVidURL != null)
+                    {
+                        <div class="row">
+                            <div class="col-md-12" style="background-color:#ffffff">
+                                <pre style="white-space:pre-line;word-wrap:break-word;background-color:#ffffff;">
+                                    <span class="inner-pre" style="font-size: 20px;font-family:Tahoma;color:black;opacity:0.9;background-color:#ffffff;word-wrap:break-word;white-space:pre-line"> 
+                                        @Model.furthurInfo 
+                                    </span> 
+                                 </pre>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-md-12" style="background-color:#ffffff">
+                                <pre style="white-space:pre-line;justify-content:space-around;background-color:#ffffff">
+                                    <span class="inner-pre" style="font-size: 20px;font-family:Tahoma;color:black;opacity:0.9;background-color:#ffffff;text-align:unset"> 
+                                        @Model.furthurInfo 
+                                    </span> 
+                                 </pre>
+                            </div>
+                        </div>
+                    }
+
+                }
+                            
+            </div>
+            <div style="background-color:#006dcc" class="modal-footer">
+                <button type="button" class="a2 green" id="closeNext" style="width:1300px;height:80px;text-align:center;font-size:xx-large" data-dismiss="modal">Close and Back to question</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br/>
+<br/>
+<br />
+<br />
+<br />

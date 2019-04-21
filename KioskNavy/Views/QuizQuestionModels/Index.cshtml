@@ -1,0 +1,100 @@
+﻿@model PagedList.IPagedList<KioskNavy.Models.QuizQuestionModels>
+@using PagedList.Mvc;
+<style>
+    body {
+        background-color:  #0066cc;
+       background-image: none;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+@{
+    Layout = @ViewBag.Layout;
+    ViewBag.Title = "Quiz Question Index";
+}
+<div class="container">
+    <div class="well" style="text-align:center">
+        <h2>List Of Questions of @ViewBag.QNname</h2>
+    </div>
+    
+    <div class="row" style="text-align:center">
+        <div class="col-md-3">
+            @Html.ActionLink("Simple Question", "../QuizQuestionModels/Create", new { id = @ViewBag.QNname, type = "noimnovid" }, new { @class = "btn btn-success", @style = "width:200px" })
+        </div>
+        <div class="col-md-3">
+            @Html.ActionLink("Choice With Image Question", "../QuizQuestionModels/Create", new { id = @ViewBag.QNname, type = "choiceimage" }, new { @class = "btn btn-success", @style = "width:200px" })
+        </div>
+        <div class="col-md-3">
+            @Html.ActionLink("With Video Question", "../QuizQuestionModels/Create", new { id = @ViewBag.QNname, type = "videoques" }, new { @class = "btn btn-success", @style = "width:200px" })
+        </div>
+        <div class="col-md-3">
+            @Html.ActionLink("With Image Question", "../QuizQuestionModels/Create", new { id = @ViewBag.QNname, type = "imageques" }, new { @class = "btn btn-success", @style = "width:200px" })
+        </div>
+
+    </div>
+       
+    <br />
+    @using (Html.BeginForm("Index", "QuizQuestionModels", FormMethod.Get))
+            {
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-2 col-xs-6">
+                    <div class="input-group">
+                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "col-md-1 col-xs-1 form-control control-label" })
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    </div>
+                </div>
+                <div class="col-md-1 col-lg-1 col-xs-1">
+                    <input type="submit" value="Search" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+
+    }
+
+    <table class="table" style="color:whitesmoke">
+        <tr>
+            <th>
+                @Html.ActionLink("QuestionNumber", "Index", new { sortOrder = ViewBag.QuestionNumberSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("QuizName", "Index", new { sortOrder = ViewBag.QuizNameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("SubSubject", "Index", new { sortOrder = ViewBag.SubSubjectNameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Level", "Index", new { sortOrder = ViewBag.LevelNameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuestionNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuizName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubSubject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Level)
+                </td>
+                <td style="text-align:right">
+                    @Html.ActionLink("Details", "../QuizQuestionModels/Details", new { id = item.QuestionNumber, qname = item.QuizName, level = item.Level, subsubject = item.SubSubject }, new { @class = "btn btn-success" }) &nbsp;
+                    @Html.ActionLink("Edit", "../QuizQuestionModels/Edit", new { id = item.QuestionNumber, qname = item.QuizName, level = item.Level, subsubject = item.SubSubject }, new { @class = "btn btn-success" }) &nbsp;
+                    @Html.ActionLink("Delete", "../QuizQuestionModels/Delete", new { id = item.QuestionNumber, qname = item.QuizName,level = item.Level, subsubject = item.SubSubject }, new { @class = "btn btn-success" })
+                </td>
+            </tr>
+        }
+    </table>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    
+    @Html.PagedListPager(Model, page => Url.Action("Index", "QuizquestionModels",  new {id=ViewBag.QName ,page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+</div>

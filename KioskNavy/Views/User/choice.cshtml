@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "choice";
+}
+
+<style>
+    body{
+        background-image:url(../../img/12.jpg);
+    }
+    .panel-default{
+        display:inline-block;
+        background-color:#006dcc;
+        color:whitesmoke;
+        padding-left:20PX;
+        padding-right:20PX;
+    }
+</style>
+
+@section Scripts
+{
+     <script type="text/javascript">
+        var idleTime = 0;
+        $(document).ready(function () {
+            //Increment the idle time counter every minute.
+            var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+            //Zero the idle timer on mouse movement.
+            $(this).mousemove(function (e) {
+                idleTime = 0;
+            });
+            $(this).keypress(function (e) {
+                idleTime = 0;
+            });
+        });
+
+        function timerIncrement() {
+            idleTime = idleTime + 1;
+            if (idleTime > 10) { // 10 minutes
+                //window.location.reload();
+                url = "/home";
+                location.href = url;
+            }
+        }
+    </script>
+
+    <script>
+        var text =  @Html.Raw(Json.Encode(ViewBag.User));
+        var cd = @Html.Raw(Json.Encode(ViewBag.Code));
+        var rn = @Html.Raw(Json.Encode(ViewBag.Rank));
+
+       var stateofwindow = window.open('/user/loginsuccess?name=' + text + "&rank=" + rn , 'loginsuccess', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+       $(document).ready(function () {
+        
+            $(window).load(function(){
+                $('#preloader').fadeOut('slow',function(){$(this).remove();});
+            });
+
+            var el = document.getElementById('navchoice');
+            el.focus();
+            el.onblur = function () {
+                setTimeout(function () {
+                    el.focus();
+                });
+            };
+            //alert(text + "--" + cd + "--" + rn);
+            $('#quiz').click(function () {
+                $("#click_audio").get(0).play();
+                $(this).toggleClass('blob');
+
+                stateofwindow.close();
+                url = '/user/index' + '?Name=' + text + '&code=' + cd + '&rank=' + rn;
+                location.href = url;
+            })
+            $('#learning').click(function () {
+                $("#click_audio").get(0).play();
+                $(this).toggleClass('blob');
+                stateofwindow.close();
+                url = "/userLearning" + '?name=' + text + '&code=' + cd + '&rank=' + rn;
+                location.href = url;
+            })
+
+            window.onunload = function() {
+                if (stateofwindow && !stateofwindow.closed) {
+                    stateofwindow.close();
+                }
+            };    
+        })
+    </script>
+}
+<div id="preloader"></div>
+<div id="divAudio_Player" class="hidden">
+    <audio id="audio_player">
+        <source id="audio_player_wav" src="@Url.Action(" PlayTextArea", "user" ,new { text="type something in first" })" type="audio/mp3" />
+    </audio>
+    <input id="txtaudiotest" value="0" />
+</div>
+
+<audio id="liketodo_audio" src="~/img/liketodo.mp3" autoplay></audio>
+   
+<audio id="click_audio" src="~/img/click.mp3" ></audio>
+<div class="container">
+    <h3 class="well" style="text-align:center;color:whitesmoke;font-family:Arial, Helvetica, sans-serif;font-weight:bolder;background-color:#006dcc"> "What would you like to do?"</h3>
+    <br/><br/>
+    <div class="row">
+        <div class="col-md-6" style="text-align:center">
+            <div id="learning" class="a2 btncircle btn-blob">Study/Learn </div>
+            <br/>
+            <br />
+            <br/>
+            <div class="panel panel-default" style="box-shadow:2px 2px 2px 0px black">
+                <h3 style="text-align:center;color:black;font-family:AdorshoLipi;color: rgba(155,155,155,1);
+                    text-shadow: -1px -1px 0px rgba(255,255,255,0.8), 1px 1px 2px rgba(0,0,0,1);">শিখতে চাচ্ছি</h3>
+            </div>
+        </div>
+        <div class="col-md-6" style="text-align:center">
+            <div id="quiz" class="a2 btncircle btncircle-blob;">Quiz Test  </div>
+            <br />
+            <br />
+            <br/>
+            <div class="panel panel-default" style="box-shadow:2px 2px 2px 0px black">
+                <h3 style="text-align:center;color:black;font-family:AdorshoLipi;  color: rgba(155,155,155,1);
+                    text-shadow: -1px -1px 0px rgba(255,255,255,0.8), 1px 1px 2px rgba(0,0,0,1);">কুইজে অংশগ্রহণ করতে চাচ্ছি</h3>
+            </div>
+         </div>
+    </div>
+</div>

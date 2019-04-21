@@ -1,0 +1,141 @@
+﻿.container{
+      margin: 0 auto;
+      max-width: 1080px;
+}
+.p{
+    font-size:10px;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+body{
+  color: #808080;
+  font-family:Georgia;
+  background-color: #87CEFA;
+  //background-image:url("../img/3.tif");
+  
+}
+body{
+  color: #000000;
+  font-family:Georgia;
+  background-color: #ffffff;
+  background-image: url('/../img/9.jpg') ;
+
+  background-repeat:no-repeat;
+    background-size:cover;
+   min-height: 100%;
+ 
+
+}
+@media (min-width: 920px), (min-height: 530px) {
+    body { background-size: auto; }
+}
+.bg{
+     height: 100%; 
+     opacity:0.5;
+}
+h2,h4,h5{
+    color: #808080;
+    font-family:Georgia;
+}
+h1,h3{
+    color: floralwhite;
+    font-family:Georgia;
+
+
+
+}
+input[type=radio] {
+    border: 0px;
+    width: 1.5em;
+    height: 1.5em;
+    
+}
+.modal-backdrop {
+   background-color: black;
+}
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+/*
+.navbar {
+   background-color: transparent;
+   background: transparent;
+   border-color: transparent;
+}
+
+.navbar li { color: #000 }
+    */
+.image2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin:-60px 0 0 -60px;
+    -webkit-animation:spin 1s ease-in-out 1 alternate;
+    -moz-animation:spin 1s ease-in-out 1 alternate;
+    animation:spin 1s ease-in-out 1 alternate;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+/* */
+
+.a2 { font-size:0.9em; padding:3px 14px; display:inline-block; margin:2px; border-radius:3px; border:solid rgba(0,0,0,0.2); border-width:1px 1px 2px; box-shadow:0 3px 0 rgba(0,0,0,0.1), inset 0 0 3px rgba(255,255,255,0.3); cursor:pointer; user-select:none; transition:0.4s ease; }
+
+.a2:hover { transform:translateY(-3px); box-shadow:0 6px 0 rgba(0,0,0,0.1), inset 0 0 1px rgba(255,255,255,0.4); border-bottom-width:8px; }
+
+.a2:active { transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,0.1), inset 0 0 5px rgba(255,255,255,0.4); border-bottom-width:2px; transition:0.1s ease; }
+
+.red { background:hsl(8,59%,59%); color:rgba(255,255,255,0.95); text-shadow:-1px -1px 1px rgba(0,0,0,0.1); }
+.orange { background:hsl(41,76%,65%); }
+.yellow { background:hsl(50,81%,65%); }
+.green { background:#006dcc; color:whitesmoke; }
+.blue { background:hsl(176,59%,59%); }
+
+.navbar {
+  border-bottom: #008ed6 1px solid;
+  opacity: 0.5; }
+
+.js div#preloader { position: fixed; left: 0; top: 0; z-index: 999; width: 100%; height: 100%; 
+                    overflow: visible; 
+                    background: #006dcc url('../../img/preload.gif') no-repeat center center; 
+
+}
+@media (min-width: @screen-sm-min) { }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {  }
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { 
+
+}

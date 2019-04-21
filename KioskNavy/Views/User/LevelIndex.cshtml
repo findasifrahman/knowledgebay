@@ -1,0 +1,95 @@
+﻿@model IEnumerable<KioskNavy.Models.LevelNameModels>
+<style>
+    body {
+        background-color: #ffffff; 
+        background-image: url(../../img/30.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+    i {
+    transition: all 5s ease;
+    }
+    .spin {
+        transform: rotate(180deg);
+        transform-origin: 50% 50%;
+    }
+</style>
+@{
+    ViewBag.Title = "Level Index ";
+}
+
+@section Scripts{
+<script type="text/javascript">
+        var idleTime = 0;
+        $(document).ready(function () {
+            //Increment the idle time counter every minute.
+            var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+            //Zero the idle timer on mouse movement.
+            $(this).mousemove(function (e) {
+                idleTime = 0;
+            });
+            $(this).keypress(function (e) {
+                idleTime = 0;
+            });
+        });
+
+        function timerIncrement() {
+            idleTime = idleTime + 1;
+            if (idleTime > 10) { // 10 minutes
+                //window.location.reload();
+                url = "/home";
+                location.href = url;
+            }
+        }
+</script>
+<script>
+    var text =  @Html.Raw(Json.Encode(ViewBag.User));
+    var cd = @Html.Raw(Json.Encode(ViewBag.Code));
+    var rn = @Html.Raw(Json.Encode(ViewBag.Rank));
+    var sub = @Html.Raw(Json.Encode(ViewBag.Quizname));
+    var subsubject = @Html.Raw(Json.Encode(ViewBag.SubSubject));
+    var stateofwindow = window.open('/user/levelpopup?name=' + text + "&rank=" + rn + "&subject=" + sub + "&subsubject=" + subsubject, 'loginsuccess'  , 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+    window.onunload = function() {
+        if (stateofwindow && !stateofwindow.closed) {
+            stateofwindow.close();
+        }
+    };
+    function myfunc () {
+        $("#click_audio").get(0).play();
+    }
+    $(document).ready(function () {
+        $("#navchoice").attr("href","/user/choice?Name=" + text + "&code=" + cd + "&rank=" + rn);
+    })
+</script>
+}
+<audio id="click_audio" src="~/img/click.mp3"></audio>
+<div class="container">
+    <br/>
+    @{
+        var g = Model.GroupBy(r => Model.ToList().IndexOf(r) / 3).ToList();
+    }
+    <br/>
+    @foreach (var item in g)
+    {
+        foreach (var Item in item)
+        {
+            <div class="row">
+                <div class="col-md-12" style="text-align:center">
+                    <a onclick="myfunc()" style="text-align:center;color:white;font-size:50px;width:750px;height:90px; background-color:#006dcc;font-family:Arial, Helvetica, sans-serif;font-weight:bold" class="a2" href="/user/QuestionDetail?id3=@ViewBag.Quizname&subsubject=@ViewBag.SubSubject&level=@Item.Level&id1=default&choice=all&mname=@ViewBag.User&mcode=@ViewBag.Code&mrank=@ViewBag.Rank">                 
+                        @Item.Level 
+                    </a>
+                </div>
+                <br/> <br/>
+            </div>
+        }
+
+    }
+
+</div>
+
+<br />
+<br />
+<br />
+<br />

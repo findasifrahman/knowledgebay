@@ -1,0 +1,87 @@
+﻿@model IEnumerable<KioskNavy.Models.UserConditionModels>
+<style>
+    body{
+        color:black;
+        background-image:none;
+
+    }
+</style>
+@{
+    Layout = @ViewBag.Layout;
+    ViewBag.Title = "AllUserReport";
+}
+<h2 class="text-center" style="font-style:normal;color:black">Bangladesh Navy</h2>
+<h4 class="text-center" style="font-style:normal;color:black">Interactive Learning Report</h4>
+<hr />
+<br />
+<h4 class="text-center" style="color:black"><u><b>:: All User Report :: </b></u></h4>
+<br />
+<table style="color:black" class="table borderless">
+    <tr>
+        <td style="font-size:medium">
+            @DateTime.Now.ToShortDateString()
+        </td>
+        
+        <td style="font-size:medium;text-align:right">
+            @DateTime.Now.ToShortTimeString()
+        </td>
+        
+    </tr>
+    
+</table>
+
+<table class="table">
+    <tr>
+        <th>
+            User Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quizName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subjectLevel)
+        </th>
+        <th>
+            Last Attended
+        </th>
+        <th>
+            First Attemp Ans
+        </th>
+        <th>
+            Second Attempt Ans
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.mName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mCode)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.quizName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.subjectLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.allAnswers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userXP)
+        </td>
+
+    </tr>
+}
+
+</table>

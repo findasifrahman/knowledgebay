@@ -1,0 +1,42 @@
+﻿
+<style>
+    body {
+        background-color: #006dcc; 
+        background-image: none;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        color: #ffffff;
+    }
+
+</style>
+@section Scripts{
+    <script type="text/javascript">
+        document.onload = function(){
+        }
+    </script>
+}
+@{
+    ViewBag.Title = "othertext";
+    Layout = "~/Views/Shared/_instruction.cshtml";
+}
+
+<div class="container ">
+    <div class="row">
+        <!-- Modal content-->
+        <div class="">
+            <div style="" class="modal-body">
+                <br />
+      
+                  <pre style="white-space:pre-line;justify-content:space-around"> <span class="inner-pre" style="font-size: 20px"> @ViewBag.text </span> </pre>
+                            
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+

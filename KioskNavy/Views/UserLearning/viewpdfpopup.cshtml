@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,user-scalable=no,minimal-ui,minimum-scale=1.0,maximum-scale=1.0">
+    <link rel="stylesheet" href="/homeDesign/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/homeDesign/css/bootstrap.css">
+
+    <link rel="stylesheet" href="/homeDesign/css/style.css">
+    <title>Bangladesh Navy</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    <script src="/homeDesign/js/jquery.min.js"></script>
+    <script src="/homeDesign/js/popper.min.js"></script>
+
+    <script src="/homeDesign/js/bootstrap.min.js"></script>
+
+    <script src="~/js/pdf.js"></script>
+    <script src="~/js/pdf.worker.js"></script>
+
+    <script src="~/js/pdf2.js"></script>
+    <script>
+        $('#navinstruction').hide();
+
+        var pdfsrc = @Html.Raw(Json.Encode(ViewBag.pdf));
+        var canvas;
+        var url = pdfsrc;//'/pdf.pdf';
+        PDFJS.workerSrc = '/js/pdf.worker.js';
+
+        thePdf = null;
+        var scale = 2.1;
+
+        
+        var sp = parseInt(@Html.Raw(Json.Encode(ViewBag.sp)));
+        var ep = parseInt(@Html.Raw(Json.Encode(ViewBag.ep)));
+        tt(sp,ep);
+
+        
+        function tt(sp,ep){
+            PDFJS.getDocument(url).promise.then(function (pdf) {
+                thePdf = pdf;
+                viewer = document.getElementById('pdf-viewer');
+
+                for (page = sp; page <= ep; page++) {
+
+                    canvas = document.createElement("canvas");
+                    canvas.className = 'pdf-page-canvas';
+                    viewer.appendChild(canvas);
+                    renderPage(page, canvas);
+                }
+            });
+        }
+        function renderPage(pageNumber, canvas) {
+            thePdf.getPage(pageNumber).then(function (page) {
+                viewport = page.getViewport(scale);
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport });
+            });
+        }
+
+        /*setTimeout(function()
+        {
+            PDFJS.workerSrc = '/js/pdf.worker.js';
+            thePdf = null;
+            tt(15,25);
+        }, 10000);*/
+
+        
+        ////////////////
+        $(document).ready(function () {
+
+        })
+
+        window.onload = function () {
+        }
+    </script>
+
+    <style>
+        #pdf-viewer {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            overflow: auto;
+        }
+
+        .pdf-page-canvas {
+            display: block;
+            margin: 5px auto;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div id='pdf-viewer'>
+    </div>
+</body>
+</html>

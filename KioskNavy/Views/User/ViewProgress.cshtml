@@ -1,0 +1,83 @@
+﻿@model IEnumerable<KioskNavy.Models.UserConditionModels>
+<style>
+    body {
+        color: whitesmoke;
+        background-image: none;
+        background-color:#0066cc
+    }
+    .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: whitesmoke;
+   color:darkblue;
+}
+</style>
+@{
+    ViewBag.Title = "ViewProgress";
+    Layout = "~/Views/Shared/_instruction.cshtml";
+}
+@section Scripts{
+    <script>
+        $('#navinstruction').hide();
+    </script>
+}
+<h2 class="text-center" style="font-weight:bolder;color:whitesmoke;text-shadow:2px 2px 2px 3px #000000;font-family:Tahoma">Bangladesh Navy</h2>
+<div class="row" style="text-align:center">
+    <img src="~/img/logo.png" height="128" width="128" />
+</div>
+<h3 class="text-center" style="font-weight:bold;color:chartreuse;font-family:Tahoma">Progress Report</h3>
+<h3 class="text-center" style="font-weight:bold;color:chartreuse;font-family:Tahoma">@ViewBag.rank @ViewBag.name</h3>
+<h3 class="text-center" style="font-weight:bold;color:chartreuse;font-family:Tahoma">P/O no. - @ViewBag.code</h3>
+<br />
+<table style="color:whitesmoke;font-size:large" class="table borderless">
+    <tr>
+        <td style="font-size:medium;text-align:left">
+            @DateTime.Now.ToShortDateString()
+        </td>
+
+        <td style="font-size:medium;text-align:right">
+            @DateTime.Now.ToShortTimeString()
+        </td>
+    </tr>
+
+</table>
+
+<table style="color:whitesmoke;font-size:large;color:yellow;font-family:Tahoma" class="table table-bordered table-striped" >
+    <tr>
+        <th style="text-align:left">
+            Subject
+        </th>
+        <th style="text-align:center">
+            Level
+        </th>
+        <th style="text-align:right">
+            Answered in 1st Attempt
+        </th>
+        <th style="text-align:Right">
+            Answered in Multiple Attempt
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align:left">
+                @Html.DisplayFor(modelItem => item.quizName) - @Html.DisplayFor(modelItem => item.SubSubject)
+            </td>
+      
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.subjectLevel)
+            </td>
+            <td style="text-align:right">
+                @Html.DisplayFor(modelItem => item.currenLevel)
+            </td>
+            <td style="text-align:right">
+                @Html.DisplayFor(modelItem => item.prevlevel)
+            </td>
+
+        </tr>
+    }
+
+</table>
+<br/>
+
+
+

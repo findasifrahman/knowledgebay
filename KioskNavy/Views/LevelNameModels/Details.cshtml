@@ -1,0 +1,35 @@
+﻿@model KioskNavy.Models.LevelNameModels
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LevelNameModels</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LevelDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LevelDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Level }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

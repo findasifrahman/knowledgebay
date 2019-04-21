@@ -1,0 +1,33 @@
+﻿@model KioskNavy.Models.LearningModels
+<style>
+    body {
+        color: whitesmoke;
+        background-image: none;
+        background-color: #0066cc;
+    }
+</style>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+        })
+    </script>
+}
+<div id="iframeContainer" class="container">
+    <div class="row">
+        <h3 class="" style="color:whitesmoke;text-align:center;font-family:Georgia, 'Times New Roman', Times, serif">Topic -- @Model.TopicName</h3>
+    </div>
+    <br/>
+
+                      
+    <div class="row">
+    <div class="col-md-12" style="background-color:#ffffff">
+        <pre style="white-space:pre-line;word-wrap:break-word;background-color:#ffffff;">
+            <span class="inner-pre" style="font-size: 20px;font-family:Tahoma;color:black;background-color:#ffffff;word-wrap:break-word;white-space:pre-line"> 
+                @Model.content 
+            </span> 
+            </pre>
+    </div>
+    </div>
+
+</div>

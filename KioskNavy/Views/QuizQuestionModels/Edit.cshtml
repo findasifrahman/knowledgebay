@@ -1,0 +1,478 @@
+﻿@model KioskNavy.Models.QuizQuestionModels
+<style>
+    body {
+        background-color: #0066cc;
+        background-image: none;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: whitesmoke;
+    }
+</style>
+
+@{
+    Layout = @ViewBag.Layout;
+    ViewBag.Title = "Create New Question";
+}
+
+<h2 class="well" style="text-align:center">Edit Question for @ViewBag.Qname </h2>
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+@section Scripts
+{
+    <script>
+            $(document).ready(function () {
+                var qn = @Html.Raw(Json.Encode(ViewBag.Qname));
+                $.post("@Url.Action("subexist", "user")?subject=" + qn, function (res) {
+                    if (res.Data.SubExist != "true") {
+                        var x = document.getElementById('SubSubject');
+                        $("input.editableItems").val('').prop('disabled', true);
+                    }
+                    if(res.Data.LevExist != "true"){
+                        $("input.editableItems").val('').prop('disabled', true);
+                    }
+
+                });
+
+            })
+            $('#SubSubject').on('change', function () {
+            })
+            $('#Level').on('change', function () {
+            })
+
+            var comCheck;
+            $("#IsImage").change(function () {
+                tt = this.checked;
+                comCheck = document.getElementById('hides');
+                if (this.checked) {
+                    comCheck.style.display = 'block';
+                }
+                else {
+                    comCheck.style.display = 'none';
+                }
+            });
+            $("#IsVideo").change(function () {
+                tt = this.checked;
+                comCheck = document.getElementById('hides');
+                if (this.checked) {
+                    comCheck.style.display = 'block';
+                }
+                else {
+                    comCheck.style.display = 'none';
+                }
+            });
+            $("#furIsImage").change(function () {
+                tt = this.checked;
+                comCheck = document.getElementById('hides2');
+                if (this.checked) {
+                    comCheck.style.display = 'block';
+                }
+                else {
+                    comCheck.style.display = 'none';
+                }
+            });
+            $("#furIsVideo").change(function () {
+                tt = this.checked;
+                comCheck = document.getElementById('hides2');
+                if (this.checked) {
+                    comCheck.style.display = 'block';
+                }
+                else {
+                    comCheck.style.display = 'none';
+                }
+            });
+
+           function show(input) {
+              if (input.files && input.files[0]) {
+              var filerdr = new FileReader();
+              filerdr.onload = function (e) {
+                 $('#user_img').attr('src', e.target.result);
+              }
+              filerdr.readAsDataURL(input.files[0]);
+                }
+           }
+           function showfur(input) {
+               if (input.files && input.files[0]) {
+                   var filerdr = new FileReader();
+                   filerdr.onload = function (e) {
+                       $('#user_img_fur').attr('src', e.target.result);
+                   }
+                   filerdr.readAsDataURL(input.files[0]);
+               }
+           }
+           function show_c1(input) {
+               if (input.files && input.files[0]) {
+                   var filerdr = new FileReader();
+                   filerdr.onload = function (e) {
+                       $('#c1_img').attr('src', e.target.result);
+                   }
+                   filerdr.readAsDataURL(input.files[0]);
+               }
+           }
+           function show_c2(input) {
+               if (input.files && input.files[0]) {
+                   var filerdr = new FileReader();
+                   filerdr.onload = function (e) {
+                       $('#c2_img').attr('src', e.target.result);
+                   }
+                   filerdr.readAsDataURL(input.files[0]);
+               }
+           }
+           function show_c3(input) {
+               if (input.files && input.files[0]) {
+                   var filerdr = new FileReader();
+                   filerdr.onload = function (e) {
+                       $('#c3_img').attr('src', e.target.result);
+                   }
+                   filerdr.readAsDataURL(input.files[0]);
+               }
+           }
+           function show_c4(input) {
+               if (input.files && input.files[0]) {
+                   var filerdr = new FileReader();
+                   filerdr.onload = function (e) {
+                       $('#c4_img').attr('src', e.target.result);
+                   }
+                   filerdr.readAsDataURL(input.files[0]);
+               }
+           }
+
+           $(document).on("change", ".file_multi_video", function (evt) {
+
+               var $source = $('#video_here');
+               $source[0].src = URL.createObjectURL(this.files[0]);
+               $source.parent()[0].load();
+           });
+           $(document).on("change", ".file_multi_video_fur", function (evt) {
+
+               var $source = $('#video_here_fur');
+               $source[0].src = URL.createObjectURL(this.files[0]);
+               $source.parent()[0].load();
+           });
+
+
+    </script>
+
+}
+
+
+@using (Html.BeginForm("Edit", "QuizQuestionModels", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-horizontal">
+    @{
+        if (Model.URLchoic1 != null)
+        {
+                    <div class="row" id="hides22">
+                        <div class="form-group col-md-3">
+                            <h6 style="text-align:center">Image for Choice One</h6>
+                            <div> <img src="@Url.Content(Model.URLchoic1)" id="c1_img" height="128" width="128" style="border:solid" /> </div>
+                            <br />
+                            <div>
+                                <input  class="btn btn-default" type="file" title="search image" id="imgchoice1" name="imgchoice1" onchange="show_c1(this)" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <h6 style="text-align:center">Image for Choice Two</h6>
+                            <div> <img src="@Url.Content(Model.URLchoic2)" id="c2_img" height="128" width="128" style="border:solid" /> </div>
+                            <br />
+                            <div>
+                                <input class="btn btn-default" type="file" title="search image" id="imgchoice2" name="imgchoice2" onchange="show_c2(this)" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <h6 style="text-align:center">Image for Choice three</h6>
+                            <div> <img src="@Url.Content(Model.URLchoic3)" id="c3_img" height="128" width="128" style="border:solid" /> </div>
+                            <br />
+                            <div>
+                                <input class="btn btn-default" type="file" title="search image" id="imgchoice3" name="imgchoice3" onchange="show_c3(this)" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <h6 style="text-align:center">Image for Choice Four</h6>
+                            <div> <img src="@Url.Content(Model.URLchoic4)" id="c4_img" height="128" width="128" style="border:solid" /> </div>
+                            <br />
+                            <div>
+                                <input class="btn btn-default" type="file" title="search image" id="imgchoice4" name="imgchoice4" onchange="show_c4(this)" />
+                            </div>
+                        </div>
+                    </div>
+        }
+        else
+        {
+            <div class="row" id="hides22">
+                    <div class="form-group col-md-3">
+                        <h6 style="text-align:center">Image for Choice One</h6>
+                        <div> <img id="c1_img" height="128" width="128" style="border:solid" /> </div>
+                        <br />
+                        <div>
+                            <input  class="btn btn-default" type="file" title="search image" id="imgchoice1" name="imgchoice1" onchange="show_c1(this)" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <h6 style="text-align:center">Image for Choice Two</h6>
+                        <div> <img  id="c2_img" height="128" width="128" style="border:solid" /> </div>
+                        <br />
+                        <div>
+                            <input class="btn btn-default" type="file" title="search image" id="imgchoice2" name="imgchoice2" onchange="show_c2(this)" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <h6 style="text-align:center">Image for Choice three</h6>
+                        <div> <img  id="c3_img" height="128" width="128" style="border:solid" /> </div>
+                        <br />
+                        <div>
+                            <input class="btn btn-default" type="file" title="search image" id="imgchoice3" name="imgchoice3" onchange="show_c3(this)" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <h6 style="text-align:center">Image for Choice Four</h6>
+                        <div> <img  id="c4_img" height="128" width="128" style="border:solid" /> </div>
+                        <br />
+                        <div>
+                            <input class="btn btn-default" type="file" title="search image" id="imgchoice4" name="imgchoice4" onchange="show_c4(this)" />
+                        </div>
+                    </div>
+             </div>
+        }
+        }
+        <div class="row" id="hides">
+            <hr />
+            <div class="form-group col-lg-2"></div>
+             @{
+                 if (Model.vidURL != null)
+                 {
+                    <div id="mainvideochoice" class="form-group col-lg-6">
+                        @Html.Label("Choose Video", htmlAttributes: new { @class = "control-label col-md-2", @style = "text-allign:center" })
+                        <div class="col-md-10">
+                            <video width="400" height="270" controls>
+                                <source src="@Url.Content(Model.vidURL)" id="video_here">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            <br />
+                            <div>
+                                <input type="file" name="vfile" class="btn btn-default file_multi_video" accept="video/*">
+                            </div>
+                        </div>
+                    </div>
+                 }
+                 else
+                 {
+                    <div id="mainvideochoice" class="form-group col-lg-6">
+                        @Html.Label("Choose Video", htmlAttributes: new { @class = "control-label col-md-2", @style = "text-allign:center" })
+                        <div class="col-md-10">
+                            <video width="400" height="270">
+                                <source src="" id="video_here">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            <br />
+                            <div>
+                                <input type="file" name="vfile" class="btn btn-default file_multi_video" accept="video/*">
+                            </div>
+                        </div>
+                    </div>
+                 }
+            }
+            <div id="mainimagechoice" class="form-group col-lg-4">
+                @Html.Label("Choose Image", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @{
+                        if (Model.imageURL != null)
+                        {
+                            <div> <img src="@Url.Content(Model.imageURL)" id="user_img" height="256" width="256" style="border:solid" /> </div>
+                        }
+                        else
+                        {
+                            <div> <img src="" id="user_img" height="256" width="256" style="border:solid" /> </div>
+                        }
+                    }
+                    <br />
+                    <div>
+                        <input class="btn btn-default"  type="file" title="search image" id="file" name="file" onchange="show(this)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.Label("Q no", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.QuestionNumber, new { htmlAttributes = new { /*@Value = ViewBag.maxid,*/ @class = "form-control col-md-4", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.QuestionNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" style="text-align:right">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.QuizName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.QuizName, new { htmlAttributes = new { @class = "col-md-4 form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.QuizName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SubSubject, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SubSubject, new { htmlAttributes = new { @class = "col-md-4 form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.SubSubject, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5" style="text-align:right">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Level, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Level, new { htmlAttributes = new { @class = "col-md-4 form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.Level, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Question, 5, 30, new { @class = "col-md-10 form-control", @style = "max-width:90%" })
+
+                @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.QuestionHighlighted, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.QuestionHighlighted, new { htmlAttributes = new { @class = "form-control col-md-10", @style = "max-width:90%" } })
+                        @Html.ValidationMessageFor(model => model.QuestionHighlighted, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.answer, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.answer, new { htmlAttributes = new { @class = "form-control col-md-10", @style = "max-width:90%" } })
+                        @Html.ValidationMessageFor(model => model.answer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.choic1, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.choic1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.choic1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.choic2, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.choic2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.choic2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.choic3, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.choic3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.choic3, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.choic4, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.choic4, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.choic4, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.furthurInfo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.furthurInfo, 10, 70, new { @class = "col-md-10 form-control", @style = "max-width:90%" })
+                @Html.ValidationMessageFor(model => model.furthurInfo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <hr />
+            <div class="form-group col-lg-2"></div>
+            <div class="form-group col-lg-6">
+                @Html.Label("Choose Video for Furthur Reading", htmlAttributes: new { @class = "control-label col-md-2", @style = "text-allign:center" })
+                <div class="col-md-10">
+                    <video width="400" height="270" controls>
+                        @{
+                            if (Model.furthurInfoVidURL != null)
+                            {
+                                <source src="@Url.Content(Model.furthurInfoVidURL)" id="video_here_fur" >
+                            }
+                            else
+                            {
+                                <source src="" id="video_here_fur">
+                            }
+                        }
+                    </video>
+                    <br />
+                    <div>
+                        <input type="file"  value="" name="furvfile" class="btn btn-default file_multi_video_fur" accept="video/*">
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group col-lg-4">
+                @Html.Label("Choose Image for Furthur Reading", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @{
+                        if (Model.furthurInfoimageURL != null)
+                        {
+                            <div> <img src="@Url.Content(Model.furthurInfoimageURL)" id="user_img_fur" height="256" width="256" style="border:solid" /> </div>
+                        }
+                        else
+                        {
+                            <div> <img src="" id="user_img_fur" height="256" width="256" style="border:solid" /> </div>
+                        }
+                    }
+                    <br />
+                    <div>
+                        <input class="btn btn-default" type="file" title="search image" id="furfile" name="furfile" onchange="showfur(this)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create New Question" class="btn btn-danger" style="width:300px" />
+            </div>
+        </div>
+    </div>
+}
+

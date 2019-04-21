@@ -1,0 +1,317 @@
+﻿
+@{
+    ViewBag.Title = "InstructionPage";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,user-scalable=no,minimal-ui,minimum-scale=1.0,maximum-scale=1.0">
+    <link rel="stylesheet" href="/homeDesign/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/homeDesign/css/bootstrap.css">
+
+    <link rel="stylesheet" href="~/Content/slideshow2.css" />
+    <link rel="stylesheet" href="/homeDesign/css/style.css">
+    <title>Bangladesh Navy</title>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    <script src="/homeDesign/js/jquery.min.js"></script>
+    <script src="/homeDesign/js/popper.min.js"></script>
+
+    <script src="/homeDesign/js/bootstrap.min.js"></script>
+    <script>
+        $('#navinstruction').hide();
+        $('#div1').hide();
+        $('#div2').show();
+
+        var flag = 1;
+        var scflag = 1;
+        /*setInterval(function () {
+
+            if (scflag == 1) {
+                $('#scrolltext').text("কুইজ এর মাধ্যমে দক্ষতা যাচাই করুণ ");
+                scflag = 2;
+            }
+            else if (scflag == 2) {
+                $('#scrolltext').text("এটি কোন পরীক্ষা নয়");
+                scflag = 3;
+            }
+            else if (scflag == 3) {
+                $('#scrolltext').text("যে কোন সমস্যা দেখা দিলে ট্রেনিং অফিস এ যোগাযোগ করুন");
+                scflag = 4;
+            }
+            else {
+                $('#scrolltext').text("পেশাগত জ্ঞান অন্বেষণ করুন  ");
+                scflag = 1;
+            }
+        }, 20000);*/
+
+        $(document).ready(function () {
+
+           /* $(window).load(function () {
+                $('#preloader').fadeOut('slow', function () { $(this).remove(); });
+            });*/
+
+            setInterval(function () {
+                if (flag == 1) {
+                    $('#div1').show();
+                    $('#div2').hide();
+                    flag = 2;
+                }
+                else {
+                    flag = 1;
+                    $('#div1').hide();
+                    $('#div2').show();
+                }
+            }, 15000);
+
+            $('#Name1').focus();
+			var ty = "";
+            //window.opener.focus();
+            $("#Name1").on('keyup', function () {
+                //$('#Name').val($(this).val());
+                ty = $(this).val();
+                setTimeout(function () {
+                    var numb = ty.match(/\d/g);
+                    var code;
+                    var rank;
+                    var name;
+                    if (numb == null) {
+                        var tempty = ty;
+                        var tempty1 = tempty.replace(/\s+/g, '');
+                        for (var i = 1; i < (tempty1.length) ; i++) {
+                            if (tempty1[i] == tempty1[i].toUpperCase()) {
+                                if (tempty1[i - 1] == (tempty1[i - 1].toUpperCase())) {
+                                    //alert(tempty1[i] + tempty1[i-1]);
+                                    rank = tempty1.substring(tempty1.indexOf(tempty1[i - 1]), tempty1.length);
+                                    var indexx = tempty.indexOf(rank); //tempty.substring(0, tempty.indexOf(tempty[i]));
+                                    name = tempty.substring(0, indexx);
+                                    break;
+                                }
+                            }
+                        }
+                        code = null;
+                    }
+                    else {
+                        numb = numb.join("");
+                        code = numb;
+                        name = ty.substring(0, ty.indexOf(numb));
+                        rank = ty.substring(ty.indexOf(numb) + numb.length, (ty.length - 3));
+                    }
+                    $('#Name').val(name);
+
+                    opener.CallParent(name, code, rank);
+                }, 3000);
+                return false;
+            });
+
+        })
+        window.onload = function () {
+        }
+    </script>
+
+    <style>
+        .a2 {
+            font-size: 0.9em;
+            padding: 6px 28px;
+            display: inline-block;
+            margin: 5px;
+            border-radius: 6px;
+            border: solid rgba(0,0,0,0.2);
+            border-width: 1px 1px 5px;
+            box-shadow: 0 5px 0 rgba(0,0,0,0.1), inset 0 0 3px rgba(255,255,255,0.3);
+            cursor: pointer;
+            user-select: none;
+            transition: 0.4s ease;
+        }
+
+        .a2:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 0 rgba(0,0,0,0.1), inset 0 0 1px rgba(255,255,255,0.4);
+            border-bottom-width: 8px;
+        }
+
+        .a2:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.1), inset 0 0 5px rgba(255,255,255,0.4);
+            border-bottom-width: 2px;
+            transition: 0.1s ease;
+        }
+
+        .red {
+            background: hsl(8,59%,59%);
+            color: rgba(255,255,255,0.95);
+            text-shadow: -1px -1px 1px rgba(0,0,0,0.1);
+        }
+
+        .orange {
+            background: hsl(41,76%,65%);
+        }
+
+        .yellow {
+            background: hsl(50,81%,65%);
+        }
+
+        .green {
+            background: hsl(104,51%,62%);
+        }
+
+        .blue {
+            background: hsl(176,59%,59%);
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1080px;
+        }
+
+        @@media (min-width: 1000px) {
+            .container{
+                max-width: 1366px;
+            }
+        }
+
+        h3,h4,h5,h6{
+            font-weight:bolder;
+        }
+        /**/
+        .example1 {
+            width:140%;
+             height: 50px;	
+             overflow: hidden;
+             position: relative;
+             background-color:#006dcc;
+             margin:0 !important;
+            }
+            .example1 h6 {
+                width:145%;
+             font-size: 1.3em;
+             position: absolute;
+             height: 100%;
+             margin: 0;
+             line-height: 50px;
+             text-align: center;
+             /* Starting position */
+             -moz-transform:translateX(0%);
+             -webkit-transform:translateX(0%);	
+             transform:translateX(0%);
+             /* Apply animation to this element */	
+             -moz-animation: example1 35s linear infinite;
+             -webkit-animation: example1 35s linear infinite;
+             animation: example1 35s linear infinite;
+            }
+            /* Move it (define the animation) */
+            @@-moz-keyframes example1 {
+             0%   { -moz-transform: translateX(100%); }
+             100% { -moz-transform: translateX(-100%); }
+            }
+            @@-webkit-keyframes example1 {
+             0%   { -webkit-transform: translateX(100%); }
+             100% { -webkit-transform: translateX(-100%); }
+            }
+            @@keyframes example1 {
+             0%   { 
+             -moz-transform: translateX(40%); /* Firefox bug fix */
+             -webkit-transform: translateX(40%); /* Firefox bug fix */
+             transform: translateX(40%); 		
+             }
+             100% { 
+             -moz-transform: translateX(-45%); /* Firefox bug fix */
+             -webkit-transform: translateX(-45%); /* Firefox bug fix */
+             transform: translateX(-45%); 
+             }
+            }
+            
+    </style>
+</head>
+
+
+<body>
+    <div id="preloader"></div>
+
+    <div class="container">
+  <ul class="slideshow">
+            <li><span>Image 01</span></li>
+            <li><span>Image 02</span></li>
+            <li><span>Image 03</span></li>
+            <li><span>Image 04</span></li>
+            <li><span>Image 05</span></li>
+            <li><span>Image 06</span></li>
+        </ul>
+    </div>
+
+    <div class="container panel" style="background-color:#006dcc;opacity:0.8;height:78px;color:whitesmoke;font-family:Tahoma;font-weight:bold;">
+        <input type="text" autofocus class="form-control form-control-lg" name="Name1" id="Name1" placeholder="Username" style="opacity:0;width:0;height:0">
+
+        <div class="example1"  style="font-size:x-large;color:greenyellow">
+            <h6  >                
+                পেশাগত জ্ঞান অন্বেষণ করুন  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; কুইজ এর মাধ্যমে দক্ষতা যাচাই করুণ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 এটি কোন পরীক্ষা নয় &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; যে কোন সমস্যা দেখা দিলে ট্রেনিং অফিস এ যোগাযোগ করুন
+             </h6>
+        </div>
+
+        <div class="row">    
+            <div class="col-lg-12 col-md-12 panel page-header" style="text-align:center;background-color:#006dcc;opacity:0.9;height:310px;color:whitesmoke;font-family:Tahoma;font-weight:bold;box-shadow:2px 2px 2px 2px black;">
+                <br/>
+                <div class="" style="text-align:center">
+                    <img src="~/img/logo.png" height="128" width="128" />
+                </div>
+                <br/>
+                <h2 style="text-align:center;color:whitesmoke;font-family:AdorshoLipi;font-weight:bold">বাংলাদেশ নৌবাহিনী</h2>
+                <br />
+                <h3 style="text-align:center;color:whitesmoke;font-family:AdorshoLipi">প্রশিক্ষণ পরিদপ্তর </h3>
+
+            </div>
+        </div>
+        <div class="row">
+            <div id="div1" class="col-lg-12 col-md-12 panel page-header" style="text-align:center;background-color:#006dcc;opacity:0.9;height:446px;color:whitesmoke;font-family:Tahoma;font-weight:bold;box-shadow:2px 2px 2px 2px black;">
+                <br />
+                <h3 id="changepopup" style="color:whitesmoke;font-family:AdorshoLipi;text-align:center;"> এ সিস্টেম ব্যবহার এ করণীয় </h3>
+                <br /><br />
+                <h4 style="text-align:left;font-family:AdorshoLipi;text-align:left;margin-left:100px;">* আপনার আইডি কার্ড এর পিছনের QR Code টি বাম দিকের স্ক্যানার এর উপর ধরে Log In করুণ </h4>
+                <br />
+                <h4 style="text-align:left;font-family:AdorshoLipi;text-align:left;margin-left:100px;">* আপনার প্রয়োজন অনুসারে জ্ঞাণ অন্বেষণ (Professional Study) অথবা জ্ঞান যাচাই (Professional Quiz) প্রক্রিয়া বেছে নিন</h4>
+                <br />
+                <h4 style="text-align:left;font-family:AdorshoLipi;text-align:left;margin-left:100px;">* নিজের পছন্দমত বিষয়ে জ্ঞান অন্বেষণ / জ্ঞান যাচাই করুন </h4>
+                <br />
+                <h4 style="text-align:left;font-family:AdorshoLipi;text-align:left;margin-left:100px;">* Professional Quiz এর ক্ষেত্রে মূলত পদবি / চাকুরির অভিজ্ঞতা অনুসারে কয়েকটি লেভেল থাকবে </h4>
+            </div>
+        </div>
+        <div id="div2" class="row">
+            <div class="col-lg-12 col-md-12 panel page-header"  style="background-color:#006dcc;opacity:0.9;height:446px;color:whitesmoke;font-family:Tahoma;font-weight:bold;box-shadow:2px 2px 2px 2px black;">
+                <br />
+                <h4 style="color:whitesmoke;font-family:AdorshoLipi;text-align:center;justify-content:center">লেভেল - ১ : জেসিও / পিও পদবীর জন্য</h4>
+                <br/>
+                <h4 style="color:whitesmoke;font-family:AdorshoLipi;text-align:center;justify-content:center">লেভেল - ২ : পিও / লিডিং পদবীর জন্য  </h4>
+                <br />
+                <h4 style="color:whitesmoke;font-family:AdorshoLipi;text-align:center;justify-content:center">লেভেল - ৩ : এবি / ওডি পদবীর জন্য </h4>
+                <br />
+                <h5 style="text-align:center;font-family:AdorshoLipi">পরবর্তী সময়ে পুনরায় লগইন এর ক্ষেত্রে পূর্ববর্তী প্রশ্নের পুনরাবৃত্তি হবে না এবং আপনি আপনার Progress দেখতে পারবেন</h5>
+                <br/>
+                <h5 style="text-align:center;font-family:AdorshoLipi">সংশ্লিষ্ট বিষয়ে নির্ধারিত সংখ্যক প্রশ্ন সফল সমাপ্তির পর আপনি একটি সনদ Print করতে পারবেন</h5>
+                <br/>
+                <h5 style="text-align:center;font-family:AdorshoLipi"> সিস্টেম ব্যবহার শেষে Log Out করুণ  </h5>
+                <br/>
+                <div class="row" style="text-align:center">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-9">
+                        <div class="card card-inverse" style="text-align:center;color:black;margin:0 0 !important;height:65px;width:600px;">
+                            <div class="card-block" style="text-align:center">
+                                &nbsp; &nbsp;
+                                <h3 style="color:red;font-weight:bold;font-family:'Genghis Khan framed'">সিস্টেম টি যত্নের সাথে ব্যবহার করুন</h3>
+                                <br />
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+

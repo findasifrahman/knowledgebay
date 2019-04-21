@@ -1,0 +1,306 @@
+﻿@model KioskNavy.Models.QuizQuestionModels
+ <style>
+@@keyframes fades {
+    0%   {opacity: 0.1;}
+    10%  {opacity: 0.2;}
+    20%  {opacity: 0.3;}
+    30% {opacity: 0.4;}
+    40%   {opacity: 0.5;}
+    50%  {opacity: 0.6;}
+    60%  {opacity: 0.7;}
+    70% {opacity: 0.8;}
+    80%  {opacity: 0.9;}
+    100% {opacity: 0.9;}
+}
+
+#divqh,#divqm,#divc31,#divc32,#divc33,#divc34 {
+    animation-name: fades;
+    animation-duration: 3s;
+}
+
+
+WQE {
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    animation-delay:0s;
+}
+RTE {
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    animation-delay:0s;
+}
+.slide-in {
+    animation: slide-in 4.5s forwards;
+    -webkit-animation: slide-in 4.5s forwards;
+}
+
+.slide-out {
+    animation: slide-out 4.5s forwards;
+    -webkit-animation: slide-out 4.5s forwards;
+}
+    
+@@keyframes slide-in {
+    100% { transform: translateX(0%); }
+}
+
+@@-webkit-keyframes slide-in {
+    100% { -webkit-transform: translateX(0%); }
+}
+    
+@@keyframes slide-out {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-100%); }
+}
+
+ </style>
+@{
+    ViewBag.Title = "QuestionPopup";
+    Layout = "~/Views/Shared/_instruction.cshtml";
+}
+@section Scripts{
+    <script>
+        var us =  @Html.Raw(Json.Encode(ViewBag.User));
+        var rn = @Html.Raw(Json.Encode(ViewBag.Rank));
+        $('#curuser').show();
+        $('#curuser').text(rn + " " + us);
+
+        $('#divc31').hide();
+        $('#divc32').hide();
+        $('#divc33').hide();
+        $('#divc34').hide();
+
+        $(document).ready(function () {
+
+            setTimeout(function() {
+                $('#divc31').show();
+                $('#divc32').show();
+                $('#divc33').show();
+                $('#divc34').show();
+            }, 5000);
+
+            $(window).load(function(){
+                $('#preloader').fadeOut('slow',function(){$(this).remove();});
+            });
+        })
+    </script>
+}
+<ul class="slideshow">
+    <li><span>Image 01</span></li>
+    <li><span>Image 02</span></li>
+    <li><span>Image 03</span></li>
+    <li><span>Image 04</span></li>
+    <li><span>Image 05</span></li>
+    <li><span>Image 06</span></li>
+</ul>
+<br/>
+<div class="container">
+    @{
+
+    }
+    @{
+        if (Model.URLchoic1 != null)
+        {
+            if (Model.QuestionHighlighted != null)
+            {
+                <div id="divqh"  style="background:#006dcc;" class="btn-block panel panel-default"> 
+                    <h2 style="color:whitesmoke;text-align:center;font-family:Tahoma;font-weight:bold">@Model.Question @Model.QuestionHighlighted </h2>
+                </div>
+            }
+            else
+            {
+                <div id="divqm" style="background:#337ab7;;opacity:0.95" class="panel panel-primary" >
+                    <h2 style="color:whitesmoke;text-align:center;font-family:Tahoma;font-weight:bold">@Model.Question</h2>
+                </div>
+
+            }
+            <div class="row box">
+                <div class="col-md-5" id="divc31">
+                    <div class="wrapper fade-in" style="text-align:left;max-width:100%;max-height:100%;">
+                        <img id="c1Img" src="@Url.Content(Model.URLchoic1)" alt="@Model.Question" width="430" height="235" />
+                    </div>
+                    <br />
+                    <div class="row panel panel-default" style="background-color:#337ab7;opacity:0.95;text-align:left">
+                        <button id="choice1" name="choice1" class="a2 green typewriter" style="text-align:left;width:513px;height:auto;font-size:20px;font-family:Tahoma;font-weight:bold"> @Model.choic1</button>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5" id="divc32">
+                    <div class="wrapper fade-in" style="text-align:left;max-width:100%;max-height:100%;">
+                        <img id="c2Img" src="@Url.Content(Model.URLchoic2)" alt="@Model.Question" width="430" height="235" />
+                    </div>
+                    <br />
+                    <div class="row panel panel-default" style="background-color:#337ab7;opacity:0.95;text-align:left">
+                        <button id="choice2" name="choice2" class="a2 green" style="text-align:left;width:513px;height:auto;font-size:20px;font-family:Tahoma;font-weight:bold"> @Model.choic2</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5" id="divc33">
+                    <div class="wrapper fade-in" style="text-align:left;max-width:100%;max-height:100%;">
+                        <img id="c3Img" src="@Url.Content(Model.URLchoic3)" alt="@Model.Question" width="430" height="235" />
+                    </div>
+                    <br />
+                    <div class="row panel panel-default" style="background-color:#337ab7;opacity:0.9;text-align:left">
+                        <button id="choice3" name="choice3" class="a2 green" style="text-align:left;width:513px;height:auto;font-size:20px;font-family:Tahoma;font-weight:bold">@Model.choic3</button>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5" id="divc34">
+                    <div class="wrapper fade-in" style="text-align:left;max-width:100%;max-height:100%;">
+                        <img id="c4Img" src="@Url.Content(Model.URLchoic4)" alt="@Model.Question" width="430" height="235" />
+                    </div>
+                    <br />
+                    <div class="row panel panel-default" style="background-color:#337ab7;opacity:0.9;text-align:left">
+                        <button id="choice4" name="choice4" class="a2 green" style="text-align:left;width:513px;height:auto;font-size:20px;font-family:Tahoma;font-weight:bold">@Model.choic4</button>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            if (Model.QuestionHighlighted != null)
+            {
+                <div id="divqh" class="btn-block panel panel-default" style="background:#006dcc;opacity:0.9">
+                    <h1 style="color:whitesmoke;text-align:center;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.Question @Model.QuestionHighlighted </h1>
+                </div>
+            }
+            else
+            {
+                <div id="divqm" class="panel panel-primary" style="background:#337ab7;;opacity:0.95">
+                    <h1 style="color:whitesmoke;text-align:center;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.Question</h1>
+                </div>
+
+            }
+            <div class="row">
+                <div class="col-md-5">
+                    @{
+
+                        if (Model.vidURL != null)
+                        {
+                            <div class="wrapper" style="text-align:center;max-width:100%;max-height:100%;">
+                                <video width="500" height="300" id="myVid22" controls>
+                                    <source src="@Url.Content(Model.vidURL)" id="video_here">
+                                    Your browser does not support HTML5 video.
+                                </video>
+                            </div>
+                        }
+                    }
+                    @{
+                        if (Model.imageURL != null)
+                        {
+                            <div class="wrapper fade-in" style="text-align:center;max-width:100%;max-height:100%;">
+                                <img id="myImg" src="@Url.Content(Model.imageURL)" alt="@Model.Question" width="500" height="500" />
+                            </div>
+                        }
+                    }
+                </div>
+                @{
+
+                    if (Model.vidURL != null || Model.imageURL != null)
+                    {
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6">
+                            <br />
+                            <div class="wrapper fade-in">
+                                <div id="divc31" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                    @{
+                                        if (Model.choic1 != null)
+                                        {
+                                            <button id="choice1" name="choice1" class="a2 green" style="text-align:left;width:615px;height:auto;font-size:40px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic1</button>
+                                        }
+                                    }
+
+                                </div>
+                                <div id="divc32" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                    @{
+                                        if (Model.choic2 != null)
+                                        {
+                                            <button id="choice2" name="choice2" class="a2 green" style="text-align:left;width:615px;height:auto;font-size:40px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic2</button>
+                                        }
+                                    }
+                                </div>
+                                <div id="divc33" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                    @{
+                                        if (Model.choic3 != null)
+                                        {
+                                             <button id="choice3" name="choice3" class="a2 green" style="text-align:left;width:615px;height:auto;font-size:40px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic3</button>
+                                        }
+                                    }
+
+                                </div>
+
+                                <div id="divc34" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                    @{
+                                        if (Model.choic4 != null)
+                                        {
+                                          <button id="choice4" name="choice4" class="a2 green" style="text-align:left;width:615px;height:auto;font-size:40px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic4</button>
+                                        }
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-10 col-md-push-1">
+                                <br />
+                                <div class="wrapper">
+                                    <div id="divc31" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                        @{
+                                            if (Model.choic1 != null)
+                                            {
+                                                <button id="choiceA" name="choiceA" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:35px;font-family:Arial, Helvetica, sans-serif;font-weight:bold"><b>A</b></button>
+                                                <button id="choice1" name="choice1" class="a2 green" style="text-align:left;width:991px;height:auto;font-size:35px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic1</button>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div id="divc32" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                        @{
+                                            if (Model.choic2 != null)
+                                            {
+                                                <button id="choiceB" name="choiceB" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:35px;font-family:Arial, Helvetica, sans-serif;font-weight:bold"><b>B</b></button>
+                                                <button id="choice2" name="choice2" class="a2 green" style="text-align:left;width:991px;height:auto;font-size:35px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic2</button>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div id="divc33" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                        @{
+                                            if (Model.choic3 != null)
+                                            {
+                                                <button id="choiceC" name="choiceC" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:35px;font-family:Arial, Helvetica, sans-serif;font-weight:bold"><b>C</b></button>
+                                                <button id="choice3" name="choice3" class="a2 green" style="text-align:left;width:991px;height:auto;font-size:35px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic3</button>
+                                            }
+                                        }
+                                    </div>
+
+                                    <div id="divc34" class="row panel panel-default" style="background-color:#337ab7;opacity:0.9">
+                                        @{
+                                            if (Model.choic4 != null)
+                                            {
+                                                <button id="choiceD" name="choiceD" class="a2 green" style="opacity:0.95;text-align:left;width:50px;height:auto;font-size:35px;font-family:Arial, Helvetica, sans-serif;font-weight:bold"><b>D</b></button>
+                                                <button id="choice4" name="choice4" class="a2 green" style="text-align:left;width:991px;height:auto;font-size:35px;font-family:Arial, Helvetica, sans-serif;font-weight:bold">@Model.choic4</button>
+                                            }
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                           }
+
+                }
+            </div>
+         }
+    }
+</div>
+

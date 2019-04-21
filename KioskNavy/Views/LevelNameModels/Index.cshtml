@@ -1,0 +1,54 @@
+﻿@model IEnumerable<KioskNavy.Models.LevelNameModels>
+
+@{
+    ViewBag.Title = "LevelnameIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    body {
+        background-color: orange;
+        //background-image: url("../../img/ship1.gif");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<h2 style="text-align:center">Please Enter level name</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LevelDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.certificateTreshhold)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LevelDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.certificateTreshhold)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Level }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Level }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Level })
+        </td>
+    </tr>
+}
+
+</table>

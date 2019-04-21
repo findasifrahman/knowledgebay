@@ -1,0 +1,47 @@
+﻿@model IEnumerable<KioskNavy.Models.IndexForLearning>
+<style>
+    body {
+        background-color: #ffffff;
+        background-image: url(../../img/36.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+</style>
+@section Scripts
+{
+    <script type="text/javascript">
+     </script>
+
+    <script>
+        var comCheck;
+        var pdfurl = @Html.Raw(Json.Encode(ViewBag.pdfurl));
+        var pageno = @Html.Raw(Json.Encode(ViewBag.pages));
+        var stateofwindow = window.open('/userlearning/viewpdfpopup?pdfurl=' + pdfurl + '&pages=' + pageno + '&sp=1&ep=10', 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+
+        function theFunction (sp,ep) {
+            //alert(sp);
+            stateofwindow = window.open('/userlearning/viewpdfpopup?pdfurl=' + pdfurl + '&pages=' + pageno + '&sp=' + sp + '&ep=' + ep, 'learningindex', 'channelmode=1,resizable=1,scrollbars=0,location=0,titlebar=0,fullscreen=1,height=900,width=' + 1366 + '  , left=' + 1366 + ', toolbar=0, menubar=0,status=0');
+            //stateofwindow.tt(sp,ep);
+        }
+
+        $(document).ready(function () {
+
+        })
+    </script>
+
+}
+<table class="table table-bordered" style="color:whitesmoke">
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a onClick="theFunction('@item.startPage','@item.endPage');" class="a2" style="text-align:center;color:white;font-size:large;width:550px;height:auto; background-color:#006dcc;font-family:Tahoma;font-weight:bold;box-shadow:0px 0px 5px 3px rgba(0,0,0,0.2);text-align:left" href="#">
+                <font style="text-align:left" >@item.IndexName</font> 
+            </a>
+            <a href="#" class="a2" style="text-align:center;color:white;font-size:large;height:auto; background-color:#006dcc;font-family:Tahoma;font-weight:bold;box-shadow:0px 0px 5px 3px rgba(0,0,0,0.2);text-align:left">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font style="text-align:right">@item.startPage</font></a>
+        </td>
+    </tr>
+}
+
+</table>

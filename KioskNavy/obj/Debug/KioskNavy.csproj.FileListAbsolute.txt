@@ -1,0 +1,489 @@
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\ApplicationInsights.config
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\csc.exe
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\vbc.exe
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.dll.config
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.pdb
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Antlr3.Runtime.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Newtonsoft.Json.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Owin.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Helpers.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Mvc.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Optimization.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Razor.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\WebGrease.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Helpers.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Mvc.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Optimization.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Razor.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Antlr3.Runtime.pdb
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Newtonsoft.Json.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.pdb
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.csprojResolveAssemblyReference.cache
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\WebActivatorEx.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.Mvc.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.Mvc.xml
+E:\KioskNavy\KioskNavy\bin\ApplicationInsights.config
+E:\KioskNavy\KioskNavy\bin\roslyn\csc.exe
+E:\KioskNavy\KioskNavy\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\KioskNavy\KioskNavy\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\KioskNavy\KioskNavy\bin\roslyn\System.Collections.Immutable.dll
+E:\KioskNavy\KioskNavy\bin\roslyn\System.Reflection.Metadata.dll
+E:\KioskNavy\KioskNavy\bin\roslyn\vbc.exe
+E:\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe
+E:\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe.config
+E:\KioskNavy\KioskNavy\bin\KioskNavy.dll.config
+E:\KioskNavy\KioskNavy\bin\KioskNavy.dll
+E:\KioskNavy\KioskNavy\bin\KioskNavy.pdb
+E:\KioskNavy\KioskNavy\bin\Antlr3.Runtime.dll
+E:\KioskNavy\KioskNavy\bin\EntityFramework.dll
+E:\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.Agent.Intercept.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.Web.Infrastructure.dll
+E:\KioskNavy\KioskNavy\bin\Mvc.RazorTools.dll
+E:\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.dll
+E:\KioskNavy\KioskNavy\bin\Newtonsoft.Json.dll
+E:\KioskNavy\KioskNavy\bin\Owin.dll
+E:\KioskNavy\KioskNavy\bin\PagedList.dll
+E:\KioskNavy\KioskNavy\bin\PagedList.Mvc.dll
+E:\KioskNavy\KioskNavy\bin\System.Web.Helpers.dll
+E:\KioskNavy\KioskNavy\bin\System.Web.Mvc.dll
+E:\KioskNavy\KioskNavy\bin\System.Web.Optimization.dll
+E:\KioskNavy\KioskNavy\bin\System.Web.Razor.dll
+E:\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.dll
+E:\KioskNavy\KioskNavy\bin\System.Web.WebPages.dll
+E:\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.dll
+E:\KioskNavy\KioskNavy\bin\WebActivatorEx.dll
+E:\KioskNavy\KioskNavy\bin\WebGrease.dll
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\KioskNavy\KioskNavy\bin\Mvc.RazorTools.xml
+E:\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.xml
+E:\KioskNavy\KioskNavy\bin\PagedList.xml
+E:\KioskNavy\KioskNavy\bin\PagedList.Mvc.xml
+E:\KioskNavy\KioskNavy\bin\System.Web.Helpers.xml
+E:\KioskNavy\KioskNavy\bin\System.Web.Mvc.xml
+E:\KioskNavy\KioskNavy\bin\System.Web.Optimization.xml
+E:\KioskNavy\KioskNavy\bin\System.Web.Razor.xml
+E:\KioskNavy\KioskNavy\bin\System.Web.WebPages.xml
+E:\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.xml
+E:\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.xml
+E:\KioskNavy\KioskNavy\bin\Antlr3.Runtime.pdb
+E:\KioskNavy\KioskNavy\bin\Newtonsoft.Json.xml
+E:\KioskNavy\KioskNavy\bin\EntityFramework.xml
+E:\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.xml
+E:\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\KioskNavy\KioskNavy\obj\Debug\KioskNavy.csprojResolveAssemblyReference.cache
+E:\KioskNavy\KioskNavy\obj\Debug\KioskNavy.dll
+E:\KioskNavy\KioskNavy\obj\Debug\KioskNavy.pdb
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\ApplicationInsights.config
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\csc.exe
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\vbc.exe
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.dll.config
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.pdb
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Antlr3.Runtime.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Newtonsoft.Json.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Owin.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.Mvc.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Helpers.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Mvc.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Optimization.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Razor.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\WebActivatorEx.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\WebGrease.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.Mvc.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Helpers.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Mvc.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Optimization.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Razor.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Antlr3.Runtime.pdb
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Newtonsoft.Json.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.csprojResolveAssemblyReference.cache
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.pdb
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\libmp3lame.32.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\libmp3lame.64.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.Lame.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\libmp3lame.32.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\libmp3lame.64.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.Lame.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.xml
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Aspose.Slides.dll
+C:\Users\Bangladesh Navy\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Aspose.Slides.xml
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Aspose.Slides.dll
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Aspose.Slides.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\ApplicationInsights.config
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\csc.exe
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\vbc.exe
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\libmp3lame.32.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\libmp3lame.64.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.dll.config
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.pdb
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Antlr3.Runtime.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Aspose.Slides.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.Lame.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Newtonsoft.Json.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Owin.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.Mvc.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Helpers.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Mvc.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Optimization.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Razor.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\WebActivatorEx.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\WebGrease.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Aspose.Slides.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.Mvc.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Helpers.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Mvc.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Optimization.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Razor.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Antlr3.Runtime.pdb
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Newtonsoft.Json.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.dll
+C:\Users\User\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.pdb
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.Migrations.InitialCreate.resources
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.csproj.GenerateResource.Cache
+C:\Users\asif\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.Migrations.AdminKiosk.resources
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\ApplicationInsights.config
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\csc.exe
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\vbc.exe
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\libmp3lame.32.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\libmp3lame.64.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.dll.config
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\KioskNavy.pdb
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Antlr3.Runtime.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Aspose.Slides.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.Lame.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Newtonsoft.Json.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Owin.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.Mvc.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Helpers.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Mvc.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Optimization.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Razor.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\WebActivatorEx.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\WebGrease.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Aspose.Slides.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.Web.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.ApplicationInsights.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Mvc.RazorTools.FontAwesome.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\NAudio.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\PagedList.Mvc.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Helpers.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Mvc.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Optimization.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.Razor.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Deployment.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\System.Web.WebPages.Razor.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Antlr3.Runtime.pdb
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Newtonsoft.Json.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\EntityFramework.SqlServer.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.csprojResolveAssemblyReference.cache
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.Migrations.InitialCreate.resources
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.csproj.GenerateResource.Cache
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.dll
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.pdb
+C:\Users\DNT\Documents\Visual Studio 2015\Projects\KioskNavy\KioskNavy\obj\Debug\KioskNavy.Migrations.AdminKiosk.resources

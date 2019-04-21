@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>BN - Training</title>
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Asif">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="/testDesign/css/reveal.css">
+    <link rel="stylesheet" href="/testDesign/css/theme/default.css" id="theme">
+    
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="/testDesign/lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <style>
+        video {
+           max-width: 1640px; /* cannot exceed this width */
+           max-height: 690px; /* cannot exceed this height */
+           width: 100%; /* 640px or less depending on size of viewport */
+           height: auto; /* automatically calculates height from via above values */
+        }
+    </style>
+    <script>
+        document.write('<link rel="stylesheet" href="/testDesign/css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+    </script>
+</head>
+<body>
+
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            
+            <section>
+                <h1>Welcome</h1>
+                <h3>Bangladesh Navy Training Material</h3>
+                <p>
+                    <small>Created by Captain Hasan tareq</small>
+                </p>
+            </section>
+            <section>
+                    <h2>This is Navy </h2>
+                    <video controls>
+                        <source src="~/img/vid.mp4" id="video_here">
+                        Your browser does not support HTML5 video.
+                    </video>
+                
+                <aside class="notes">
+                  Hidden coponent (hit 's' on your keyboard).
+                </aside>
+            </section>
+            <!-- Example of nested vertical slides -->
+            <section>
+                <section>
+                    <h2>Content 3</h2>
+                    <p>
+                        Content paragaraph, go down
+                         <a href="#/2/1">down</a>.
+                    </p>
+                </section>
+                <section>
+                    <h2>Basement Level 1</h2>
+                    <p>go down.</p>
+                </section>
+                <section>
+                    <h2>Basement Level 2</h2>
+                    <p>Go down</p>
+                    
+                </section>
+                <section>
+                    <h2>Basement Level 3</h2>
+                    <p>Go up.</p>
+                    
+                </section>
+            </section>
+            <section>
+                <h2>Content</h2>
+                <p>
+                   Paragaraph
+                </p>
+            </section>
+            
+            <section>
+                <h2>Finish</h2>
+                
+                <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+                    Bangladesh Navy
+                </blockquote>
+            </section>
+            
+            <section>
+                <section>
+                    <h2>Content</h2>
+                    <p>Hit the next arrow...</p>
+                    <p class="fragment">Go</p>
+                    <ol>
+                        <li class="fragment"><code>One</code></li>
+                        <li class="fragment"><em>Two</em></li>
+                        <li class="fragment"><strong>Three</strong></li>
+                    </ol>
+                    <aside class="notes">
+                        Step
+                    </aside>
+                </section>
+                <section>
+                    <h2>Fragment Styles</h2>
+                    <p>There's a few styles of fragments, like:</p>
+                    <p class="fragment grow">grow</p>
+                    <p class="fragment shrink">shrink</p>
+                    <p class="fragment roll-in">roll-in</p>
+                    <p class="fragment fade-out">fade-out</p>
+                    <p class="fragment highlight-red">highlight-red</p>
+                    <p class="fragment highlight-green">highlight-green</p>
+                    <p class="fragment highlight-blue">highlight-blue</p>
+                </section>
+            </section>
+            <a class="fa fa-check" href="/home/index">Home</a>
+        </div>
+    </div>
+    <script src="/testDesign/lib/js/head.min.js"></script>
+    <script src="/testDesign/js/reveal.min.js"></script>
+    <script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/testDesign/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+					{ src: '/testDesign/plugin/markdown/showdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+					{ src: '/testDesign/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+					{ src: '/testDesign/plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+					{ src: '/testDesign/plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+					{ src: '/testDesign/plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+				]
+			});
+
+    </script>
+</body>
+</html>

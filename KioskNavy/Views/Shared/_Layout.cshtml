@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.googleapis.com/css?family=Cabin:400,500,600,bold" rel="stylesheet" type="text/css">
+
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold" rel="stylesheet" type="text/css">
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet">
+
+
+
+    <title>@ViewBag.Title - Bangladesh Navy Kiosk</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        @@media (min-width: 1000px) {
+            .container{
+                max-width: 1266px;
+            }
+        }
+        #particles-js{
+            background-color: transparent;
+        }
+    </style>
+
+ 
+
+</head>
+<body oncontextmenu="return false;">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container" >
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="navgoback" name="navgoback" onclick="JavaScript:window.history.back(1);return false;" class="navbar-right navbar-brand"  style="font-size:larger;color:whitesmoke;font-family:Arial, Helvetica, sans-serif;font-weight:bolder" href="#">Go Back</a>
+                <a id="navchoice" name="navchoice"  class="navbar-right navbar-brand" href="#" style="font-size:larger;color:whitesmoke;font-family:Arial, Helvetica, sans-serif;font-weight:bolder">Quiz/Study</a>
+                <a  id="navsubjects" name="navsubjects" hidden class="navbar-right navbar-brand" style="font-size:larger;color:whitesmoke;font-family:Arial, Helvetica, sans-serif;font-weight:bolder" href="#">Subject</a>
+            </div>
+            <div class="navbar-header navbar-collapse collapse">
+                <a  class="navbar-right navbar-brand" style="font-size: larger;color: whitesmoke; font-family: Arial, Helvetica, sans-serif; font-weight: bolder;"  href="/home/index">Logout</a>
+                <a id="atest" hidden class="navbar-right navbar-brand" style="font-size:larger;color:whitesmoke;font-family:Arial, Helvetica, sans-serif;font-weight:bolder" value="Stop/Play Audio">Stop/Play Audio</a>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content bg-dark">
+ 
+            @RenderBody()
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

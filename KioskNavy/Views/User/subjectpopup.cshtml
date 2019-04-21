@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "subjectpopup";
+    Layout = "~/Views/Shared/_instruction.cshtml";
+}
+<style>
+    body {
+        background-image: url(../../img/11.jpg);
+    }
+</style>
+@section Scripts{
+    <script>
+        var us =  @Html.Raw(Json.Encode(ViewBag.User));
+        var rn = @Html.Raw(Json.Encode(ViewBag.Rank));
+        $('#curuser').show();
+        $('#curuser').text(rn + " " + us);
+
+        $(document).ready(function () {
+            $(window).load(function () {
+                $('#preloader').fadeOut('slow', function () { $(this).remove(); });
+            });
+        })
+    </script>
+}
+<ul class="slideshow">
+    <li><span>Image 01</span></li>
+    <li><span>Image 02</span></li>
+    <li><span>Image 03</span></li>
+    <li><span>Image 04</span></li>
+    <li><span>Image 05</span></li>
+    <li><span>Image 06</span></li>
+</ul>
+<div id="preloader"></div>
+<br/>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="panel" style="background-color:#006dcc">
+                <h2 style="text-align:center;color:whitesmoke;font-family:Tahoma">Thank you for Participating</h2>
+                <h3 style="text-align:center;color:whitesmoke;font-family:Tahoma"><b>In Quiz Test</b></h3>
+                <h3 style="text-align:center;color:whitesmoke;font-family:Tahoma">Now Please Choose </h3>
+                <h3 style="text-align:center;color:whitesmoke;font-family:Tahoma">A Subject</h3>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <br />
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="panel fade-in" style="background-color:#006dcc">
+                <h2 style="text-align:center;color:whitesmoke;font-family:AdorshoLipi">বাংলাদেশ নৌবাহিনী</h2>
+                <h3 style="text-align:center;color:whitesmoke;font-family:AdorshoLipi;font-weight:bold">প্রশিক্ষণ পরিদপ্তর </h3>
+                <br />
+
+                <div class="panel panel-body" style="text-align:center;color:black">
+                    <h3 style="color:red;font-weight:bold;font-family:AdorshoLipi"> এটা কোন পরীক্ষা না</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
